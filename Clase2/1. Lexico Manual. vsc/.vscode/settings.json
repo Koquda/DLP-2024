@@ -1,0 +1,23 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "__error": true,
+    "antlr.src": true,
+    ".project": true,
+    "antlr": true,
+    "antlr.bat": true,
+    "gui.bat": true,
+    "lex.bat": true,
+    "tokens.bat": true,
+    "trace.bat": true,
+    ".vscode": true,
+    ".classpath": true,
+    "bin": true
+},
+"hide-files.files": []
+}
