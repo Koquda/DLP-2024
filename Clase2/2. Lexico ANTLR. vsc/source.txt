@@ -1,1 +1,28 @@
 24
+prueba
+variada
+de
+idents
+
+read
+print
+int
+float
+
+1 + 4
+2 - 3
+palabra = 3
+
+// a231s55oi5d3h34a??>"{|"Q{}ZASsdoasudhasbascs foi qbdas das
+float
+/*
+askdbasoas da dl;a [la\' ad'a d\' p\1212 w';m \d\do a'
+d
+ad
+asd
+ asd
+  a
+  d
+  ad
+  ad ad;
+*/

@@ -4,7 +4,7 @@ Añadir EN ESTE ORDEN:
 - Palabras reservadas: read, print, int y float.
 - Operadores aritméticos y otros simbolos:  + - = ;
 - Literales reales: 3.15, 78.23, ... (parte entera obligatoria/ parte decimal OBLIGATORIA).
-- Comentarios de una línea y multilinea (como en Java).
+- Comentarios de una línea y multilinea.
 
 - Tarea OBLIGATORIA para casa -> Ver "Tarea.pdf"
 */
@@ -12,21 +12,29 @@ Añadir EN ESTE ORDEN:
 lexer grammar Lexicon;
 
 LITENT : [0-9]+;
-LITREAL: LITENT '.' LITENT;
 
-MAS: '+';
-MENOS: '-';
-IGUAL: '=';
-PCOMA: ';';
+LITREAL : [0-9]+ '.' [0-9]+;
 
-READ: 'read';
-PRINT: 'print';
-INT: 'int';
-FLOAT: 'float';
+MAS : '+';
 
-IDENT: [a-zA-Z][a-zA-Z0-9_]*;
+MENOS : '-';
 
-LINE_COMMENT: '//'.*?('/n'|EOF) -> skip;
-BLOCK_COMMENT: '/*'.*?'*/' -> skip;
+IGUAL : '=';
+
+PCOMA : ';';
+
+READ : 'read';
+
+PRINT : 'print';
+
+INT : 'int';
+
+FLOAT : 'float';
+
+IDENT : [a-zA-Z][a-zA-Z0-9_]*;
+
+LINE_COMMENT : '//' .*? ('\n' | EOF) -> skip;
+
+MULTILINE_COMMENT : '/*' .*? '*/' -> skip;
 
 WHITESPACE : [ \t\r\n]+ -> skip;

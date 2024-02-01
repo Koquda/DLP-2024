@@ -8,8 +8,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-//        Lexicon textLexer = new Lexicon(CharStreams.fromFileName("source.txt"));
-         Lexicon textLexer = new Lexicon(CharStreams.fromFileName("test.txt"));
+        Lexicon textLexer = new Lexicon(CharStreams.fromFileName("test.txt"));
 
         Token token;
         while ((token = textLexer.nextToken()).getType() != Lexicon.EOF) {
@@ -21,6 +20,5 @@ public class Main {
             System.out.print("\tLinea: " + token.getLine());
             System.out.println("\tColumna: " + token.getCharPositionInLine());
         }
-
     }
 }
