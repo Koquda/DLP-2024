@@ -1,0 +1,9 @@
+DATA
+	real precio;
+	real total;
+
+	int ancho;
+	int alto;
+
+CODE
+    print (precio + 3.0) + 1.18;

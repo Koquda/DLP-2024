@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="antlr">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/antlr" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/antlr" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/antlr" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/antlr" recursive="false" type="SOURCES" />
+  </library>
+</component>

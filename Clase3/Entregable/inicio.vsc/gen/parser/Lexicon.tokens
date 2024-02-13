@@ -1,0 +1,9 @@
+LITENT=1
+LITREAL=2
+COMMENT=3
+REAL=4
+INT=5
+IDENT=6
+WS=7
+'real'=4
+'int'=5
