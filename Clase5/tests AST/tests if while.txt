@@ -1,0 +1,19 @@
+// Determinar qué AST debería salir para la siguiente entrada y LUEGO comprobarlo en AST.html
+
+main() {
+
+    if (1.5 > 1.0) {
+
+        print <int>(5.6);
+
+    } else {
+
+        print <char>(5.6);
+
+        while (5.6 < 1.0) {
+            println;
+        }
+
+    }
+
+}

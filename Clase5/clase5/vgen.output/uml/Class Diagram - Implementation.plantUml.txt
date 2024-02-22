@@ -1,0 +1,143 @@
+' Generated with VGen 2.0.0
+
+@startuml
+
+class Position {
+    +int getLine()
+    +int getColumn()
+    +boolean lessThan(Position other)
+    +boolean greaterThan(Position other)
+}
+
+interface AST {
+    +updatePositions(Object... children)
+    +updatePositions(Position start, Position end)
+    +Object accept(Visitor visitor, Object param)
+}
+
+AST *-[#404040,thickness=1]- Position : start >
+AST *-[#404040,thickness=1]- Position : end >
+
+
+interface Expression {
+}
+AST <|-[#808080]- Expression
+abstract AbstractExpression
+Expression <|-[#808080]- AbstractExpression
+AbstractAST <|-[#808080]- AbstractExpression
+
+interface Statement {
+}
+AST <|-[#808080]- Statement
+abstract AbstractStatement
+Statement <|-[#808080]- AbstractStatement
+AbstractAST <|-[#808080]- AbstractStatement
+
+interface Definition {
+}
+AST <|-[#808080]- Definition
+abstract AbstractDefinition
+Definition <|-[#808080]- AbstractDefinition
+AbstractAST <|-[#808080]- AbstractDefinition
+
+interface Type {
+}
+AST <|-[#808080]- Type
+abstract AbstractType
+Type <|-[#808080]- AbstractType
+AbstractAST <|-[#808080]- AbstractType
+
+interface AST {
+}
+abstract AbstractAST
+AST <|-[#808080]- AbstractAST
+
+class Program {
+	+List<definicion> definicions
+}
+AbstractAST <|-[#808080]- Program
+
+class VarDefinition {
+	+String name
+}
+AbstractDefinition <|-[#808080]- VarDefinition
+VarDefinition o-[#404040,thickness=2]-  Type : type >
+
+class StructDefinition {
+	+String name
+	+fields fields
+}
+AbstractAST <|-[#808080]- StructDefinition
+
+class FuncDefinition {
+	+String name
+}
+AbstractAST <|-[#808080]- FuncDefinition
+
+class Assignment {
+}
+AbstractStatement <|-[#808080]- Assignment
+Assignment o-[#404040,thickness=2]-  Variable : variable >
+Assignment o-[#404040,thickness=2]-  Expression : expression >
+
+class If {
+}
+AbstractStatement <|-[#808080]- If
+If o-[#404040,thickness=2]-  Expression : condition >
+If o-[#404040,thickness=2]- "✱" Statement : ifBody >
+If o-[#404040,thickness=2]- "✱" Statement : elseBody >
+
+class While {
+}
+AbstractStatement <|-[#808080]- While
+While o-[#404040,thickness=2]-  Expression : condition >
+While o-[#404040,thickness=2]- "✱" Statement : body >
+
+class Read {
+}
+AbstractStatement <|-[#808080]- Read
+Read o-[#404040,thickness=2]-  Expression : expression >
+
+class Print {
+}
+AbstractStatement <|-[#808080]- Print
+Print o-[#404040,thickness=2]-  Expression : expression >
+
+class Return {
+}
+AbstractStatement <|-[#808080]- Return
+Return o-[#404040,thickness=2]-  Expression : expression >
+
+class FuncCall {
+}
+AbstractStatement <|-[#808080]- FuncCall
+FuncCall o-[#404040,thickness=2]- "✱" Expression : params >
+
+class IntLiteral {
+	+int intValue
+}
+AbstractExpression <|-[#808080]- IntLiteral
+
+class FloatLiteral {
+	+float floatValue
+}
+AbstractExpression <|-[#808080]- FloatLiteral
+
+class CharLiteral {
+	+char charValue
+}
+AbstractExpression <|-[#808080]- CharLiteral
+
+class Variable {
+	+String name
+}
+AbstractExpression <|-[#808080]- Variable
+
+class Arithmetic {
+	+String operator
+}
+AbstractExpression <|-[#808080]- Arithmetic
+Arithmetic o-[#404040,thickness=2]-  Expression : left >
+Arithmetic o-[#404040,thickness=2]-  Expression : right >
+
+@enduml

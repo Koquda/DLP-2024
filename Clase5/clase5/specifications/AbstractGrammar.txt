@@ -1,0 +1,27 @@
+CATEGORIES
+expression;
+statement;
+definition;
+type;
+
+NODES
+
+program -> definicion* ;
+
+varDefinition:definition -> string type;
+structDefinition -> string fields;
+funcDefinition -> name:string;
+
+assignment:statement -> variable expression;
+if:statement -> condition:expression ifBody:statement* elseBody:statement*;
+while:statement -> condition:expression body:statement* ;
+read:statement -> expression;
+print:statement -> expression;
+return:statement -> expression;
+funcCall:statement -> params:expression*;
+
+intLiteral:expression -> int;
+floatLiteral:expression -> float;
+charLiteral:expression -> char;
+variable:expression -> string;
+arithmetic:expression -> left:expression operator:string right:expression;
