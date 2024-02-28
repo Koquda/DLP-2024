@@ -10,6 +10,7 @@ import ast.*;
 import ast.definition.*;
 import ast.statement.*;
 import ast.expression.*;
+import ast.type.*;
 
 
 
@@ -23,7 +24,13 @@ public interface Visitor {
 
 	public Object visit(FuncDefinition funcDefinition, Object param);
 
+	public Object visit(StructField structField, Object param);
+
+	public Object visit(FuncParam funcParam, Object param);
+
 	public Object visit(Assignment assignment, Object param);
+
+	public Object visit(FuncCallStatement funcCallStatement, Object param);
 
 	public Object visit(If ifValue, Object param);
 
@@ -35,8 +42,6 @@ public interface Visitor {
 
 	public Object visit(Return returnValue, Object param);
 
-	public Object visit(FuncCall funcCall, Object param);
-
 	public Object visit(IntLiteral intLiteral, Object param);
 
 	public Object visit(FloatLiteral floatLiteral, Object param);
@@ -46,6 +51,36 @@ public interface Visitor {
 	public Object visit(Variable variable, Object param);
 
 	public Object visit(Arithmetic arithmetic, Object param);
+
+	public Object visit(ArithmeticComparison arithmeticComparison, Object param);
+
+	public Object visit(LogicalComparison logicalComparison, Object param);
+
+	public Object visit(Negation negation, Object param);
+
+	public Object visit(FuncCallExpression funcCallExpression, Object param);
+
+	public Object visit(StructAccess structAccess, Object param);
+
+	public Object visit(Cast cast, Object param);
+
+	public Object visit(ArrayAccess arrayAccess, Object param);
+
+	public Object visit(IntType intType, Object param);
+
+	public Object visit(FloatType floatType, Object param);
+
+	public Object visit(CharType charType, Object param);
+
+	public Object visit(VarType varType, Object param);
+
+	public Object visit(ArrayType arrayType, Object param);
+
+	public Object visit(StructType structType, Object param);
+
+	public Object visit(VoidType voidType, Object param);
+
+	public Object visit(ErrorType errorType, Object param);
 
 
 }

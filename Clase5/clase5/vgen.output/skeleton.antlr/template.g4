@@ -11,72 +11,57 @@ grammar Grammar;
 }
 
 program returns[Program ast]
-    :                                     { $ast = new Program(/* new List<definicion>(...) */); }
+    : definitions+=definition*            { $ast = new Program($definitions); }                  
 	;
 
-
-//$ -----------------------------------------------------------------------------
-// WARNING. The following nodes are NOT accesibles from the first node of the
-// grammar (program)
-
-varDefinition returns[VarDefinition ast]
+definition returns[Definition ast]
     : name=IDENT type                     { $ast = new VarDefinition($name, $type.ast); }        
+    | name=IDENT structFields+=structField* { $ast = new StructDefinition($name, $structFields); } 
+    | name=IDENT funcParams+=funcParam* type definitions+=definition* statements+=statement* { $ast = new FuncDefinition($name, $funcParams, $type.ast, $definitions, $statements); }
 	;
 
-structDefinition returns[StructDefinition ast]
-    : name=IDENT                          { $ast = new StructDefinition($name, /* new fields(...) */); }
+type returns[Type ast]
+    :                                     { $ast = new IntType(); }                              
+    |                                     { $ast = new FloatType(); }                            
+    |                                     { $ast = new CharType(); }                             
+    | name=IDENT                          { $ast = new VarType($name); }                         
+    | INT_LITERAL type                    { $ast = new ArrayType($INT_LITERAL, $type.ast); }     
+    | name=IDENT                          { $ast = new StructType($name); }                      
+    |                                     { $ast = new VoidType(); }                             
+    |                                     { $ast = new ErrorType(); }                            
 	;
 
-funcDefinition returns[FuncDefinition ast]
-    : name=IDENT                          { $ast = new FuncDefinition($name); }                  
+structField returns[StructField ast]
+    : name=IDENT type                     { $ast = new StructField($name, $type.ast); }          
 	;
 
-assignment returns[Assignment ast]
-    : variable expression                 { $ast = new Assignment($variable.ast, $expression.ast); }
+funcParam returns[FuncParam ast]
+    : name=IDENT type                     { $ast = new FuncParam($name, $type.ast); }            
 	;
 
-if returns[If ast]
-    : expression ifBody+=statement* elseBody+=statement* { $ast = new If($expression.ast, $ifBody, $elseBody); }
+statement returns[Statement ast]
+    : left=expression right=expression    { $ast = new Assignment($left.ast, $right.ast); }      
+    | name=IDENT expressions+=expression* { $ast = new FuncCallStatement($name, $expressions); } 
+    | expression ifBody+=statement* elseBody+=statement* { $ast = new If($expression.ast, $ifBody, $elseBody); }
+    | expression statements+=statement*   { $ast = new While($expression.ast, $statements); }    
+    | expression                          { $ast = new Read($expression.ast); }                  
+    | expression? lexema=IDENT            { $ast = new Print(($expression.ctx == null) ? null : $expression.ast, $lexema); }
+    | expression?                         { $ast = new Return(($expression.ctx == null) ? null : $expression.ast); }
 	;
 
-while returns[While ast]
-    : expression body+=statement*         { $ast = new While($expression.ast, $body); }          
-	;
-
-read returns[Read ast]
-    : expression                          { $ast = new Read($expression.ast); }                  
-	;
-
-print returns[Print ast]
-    : expression                          { $ast = new Print($expression.ast); }                 
-	;
-
-return returns[Return ast]
-    : expression                          { $ast = new Return($expression.ast); }                
-	;
-
-funcCall returns[FuncCall ast]
-    : params+=expression*                 { $ast = new FuncCall($params); }                      
-	;
-
-intLiteral returns[IntLiteral ast]
+expression returns[Expression ast]
     : INT_LITERAL                         { $ast = new IntLiteral($INT_LITERAL); }               
-	;
-
-floatLiteral returns[FloatLiteral ast]
-    : FLOAT_LITERAL                       { $ast = new FloatLiteral($FLOAT_LITERAL); }           
-	;
-
-charLiteral returns[CharLiteral ast]
-    : CHAR_LITERAL                        { $ast = new CharLiteral($CHAR_LITERAL); }             
-	;
-
-variable returns[Variable ast]
-    : name=IDENT                          { $ast = new Variable($name); }                        
-	;
-
-arithmetic returns[Arithmetic ast]
-    : left=expression operator=IDENT right=expression { $ast = new Arithmetic($left.ast, $operator, $right.ast); }
+    | FLOAT_LITERAL                       { $ast = new FloatLiteral($FLOAT_LITERAL); }           
+    | CHAR_LITERAL                        { $ast = new CharLiteral($CHAR_LITERAL); }             
+    | name=IDENT                          { $ast = new Variable($name); }                        
+    | left=expression operator1=IDENT right=expression { $ast = new Arithmetic($left.ast, $operator1, $right.ast); }
+    | left=expression operator=IDENT right=expression { $ast = new ArithmeticComparison($left.ast, $operator, $right.ast); }
+    | left=expression operator=IDENT right=expression { $ast = new LogicalComparison($left.ast, $operator, $right.ast); }
+    | expression                          { $ast = new Negation($expression.ast); }              
+    | name=IDENT expressions+=expression* { $ast = new FuncCallExpression($name, $expressions); }
+    | expression name=IDENT               { $ast = new StructAccess($expression.ast, $name); }   
+    | type expression                     { $ast = new Cast($type.ast, $expression.ast); }       
+    | left=expression right=expression    { $ast = new ArrayAccess($left.ast, $right.ast); }     
 	;
 
 

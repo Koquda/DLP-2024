@@ -1,0 +1,16 @@
+// Determinar qué AST debería salir para la siguiente entrada y LUEGO comprobarlo en AST.html
+
+struct Jugador {
+	edad:int;
+}
+
+struct Equipo {
+	nombre:[20] char;
+	jugadores:[11] Jugador;
+}
+
+var racing: Equipo;
+
+main() {
+	print racing.jugadores[5].edad;  // IMPORTANTE: comprobar cómo ha quedado esto
+}
