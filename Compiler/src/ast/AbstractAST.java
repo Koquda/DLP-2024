@@ -17,7 +17,6 @@ import org.antlr.v4.runtime.Token;
 
 // %% -------------------------------
 
-
 /*
 	AST -> 
 */
@@ -138,5 +137,4 @@ public abstract class AbstractAST implements AST {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

@@ -28,7 +28,7 @@ import codegeneration.*;
  */
 
 public class Main {
-    public static final String TEST_FILE = "ejemplo.txt"; // Used in development and testing
+    public static final String TEST_FILE = "test calls.txt"; // Used in development and testing
     public static final String OUTPUT_FILE = "output.txt";
 
     public static void main(String[] args) throws Exception {

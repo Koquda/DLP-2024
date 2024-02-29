@@ -17,7 +17,6 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
 	functionDefinition: definition -> name:string functionParams:functionParam* type:type definitions:definition* statements:statement*
 	definition -> 
@@ -185,5 +184,4 @@ public class FunctionDefinition extends AbstractDefinition  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

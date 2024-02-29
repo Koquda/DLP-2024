@@ -52,7 +52,7 @@ statement returns[Statement ast]
 expression returns[Expression ast]
     : INT_LITERAL                         { $ast = new IntLiteral($INT_LITERAL); }               
     | FLOAT_LITERAL                       { $ast = new FloatLiteral($FLOAT_LITERAL); }           
-    | CHAR_LITERAL                        { $ast = new CharLiteral($CHAR_LITERAL); }             
+    | value=IDENT                         { $ast = new CharLiteral($value); }                    
     | name=IDENT                          { $ast = new Variable($name); }                        
     | left=expression operator=IDENT right=expression { $ast = new Arithmetic($left.ast, $operator, $right.ast); }
     | left=expression operator=IDENT right=expression { $ast = new ArithmeticComparison($left.ast, $operator, $right.ast); }
@@ -71,4 +71,3 @@ expression returns[Expression ast]
 IDENT: [a-zA-Z_][a-zA-Z0-9_]*;
 FLOAT_LITERAL: [0-9]+ '.' [0-9]+;
 INT_LITERAL: [0-9]+;
-CHAR_LITERAL: '\'' ~[\t\r\n] '\'' | '\'\\n\'';

@@ -11,7 +11,6 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
 	structAccess: expression -> expression:expression field:string
 	expression -> 
@@ -107,5 +106,4 @@ public class StructAccess extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

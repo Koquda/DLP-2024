@@ -11,9 +11,8 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
-	floatLiteral: expression -> floatValue:float
+	floatLiteral: expression -> value:float
 	expression -> 
 */
 public class FloatLiteral extends AbstractExpression  {
@@ -21,48 +20,48 @@ public class FloatLiteral extends AbstractExpression  {
     // ----------------------------------
     // Instance Variables
 
-	// floatLiteral: expression -> float
-	private float floatValue;
+	// floatLiteral: expression -> value:float
+	private float value;
 
     // ----------------------------------
     // Constructors
 
-	public FloatLiteral(float floatValue) {
+	public FloatLiteral(float value) {
 		super();
 
-		this.floatValue = floatValue;
+		this.value = value;
 
-		updatePositions(floatValue);
+		updatePositions(value);
 	}
 
-	public FloatLiteral(Object floatValue) {
+	public FloatLiteral(Object value) {
 		super();
 
-        if (floatValue == null)
-            throw new IllegalArgumentException("Parameter 'floatValue' can't be null. Pass a non-null value or use 'float?' in the abstract grammar");
-        var floatValue_temp = floatValue;
-        if (floatValue_temp instanceof Token)
-            floatValue_temp = ((Token) floatValue_temp).getText();
-        if (floatValue_temp instanceof String)
-            floatValue_temp = Float.valueOf((String) floatValue_temp);
-        this.floatValue = (float) floatValue_temp;
+        if (value == null)
+            throw new IllegalArgumentException("Parameter 'value' can't be null. Pass a non-null value or use 'float?' in the abstract grammar");
+        var value_temp = value;
+        if (value_temp instanceof Token)
+            value_temp = ((Token) value_temp).getText();
+        if (value_temp instanceof String)
+            value_temp = Float.valueOf((String) value_temp);
+        this.value = (float) value_temp;
 
-		updatePositions(floatValue);
+		updatePositions(value);
 	}
 
 
     // ----------------------------------
-    // floatLiteral: expression -> float
+    // floatLiteral: expression -> value:float
 
-	// Child 'float' 
+	// Child 'value:float' 
 
-	public void setFloatValue(float floatValue) {
-		this.floatValue = floatValue;
+	public void setValue(float value) {
+		this.value = value;
 
 	}
 
-    public float getFloatValue() {
-        return floatValue;
+    public float getValue() {
+        return value;
     }
 
 
@@ -76,7 +75,7 @@ public class FloatLiteral extends AbstractExpression  {
 
     @Override
     public String toString() {
-        return "FloatLiteral{" + " floatValue=" + this.getFloatValue() + "}";
+        return "FloatLiteral{" + " value=" + this.getValue() + "}";
     }
 
 
@@ -85,5 +84,4 @@ public class FloatLiteral extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

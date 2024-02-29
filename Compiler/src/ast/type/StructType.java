@@ -11,7 +11,6 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
 	structType: type -> name:string
 	type -> 
@@ -84,5 +83,4 @@ public class StructType extends AbstractType  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

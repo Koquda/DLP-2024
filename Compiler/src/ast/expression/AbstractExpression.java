@@ -10,7 +10,6 @@ import ast.*;
 
 // %% -------------------------------
 
-
 /*
 	expression -> 
 */
@@ -24,5 +23,4 @@ public abstract class AbstractExpression extends AbstractAST implements Expressi
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

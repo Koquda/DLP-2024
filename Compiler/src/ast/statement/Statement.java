@@ -10,7 +10,6 @@ import ast.*;
 
 // %% -------------------------------
 
-
 /*
 	statement -> 
 */
@@ -24,5 +23,4 @@ public interface Statement extends AST {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

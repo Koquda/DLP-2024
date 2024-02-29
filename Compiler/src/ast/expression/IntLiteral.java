@@ -11,9 +11,8 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
-	intLiteral: expression -> intValue:int
+	intLiteral: expression -> value:int
 	expression -> 
 */
 public class IntLiteral extends AbstractExpression  {
@@ -21,48 +20,48 @@ public class IntLiteral extends AbstractExpression  {
     // ----------------------------------
     // Instance Variables
 
-	// intLiteral: expression -> int
-	private int intValue;
+	// intLiteral: expression -> value:int
+	private int value;
 
     // ----------------------------------
     // Constructors
 
-	public IntLiteral(int intValue) {
+	public IntLiteral(int value) {
 		super();
 
-		this.intValue = intValue;
+		this.value = value;
 
-		updatePositions(intValue);
+		updatePositions(value);
 	}
 
-	public IntLiteral(Object intValue) {
+	public IntLiteral(Object value) {
 		super();
 
-        if (intValue == null)
-            throw new IllegalArgumentException("Parameter 'intValue' can't be null. Pass a non-null value or use 'int?' in the abstract grammar");
-        var intValue_temp = intValue;
-        if (intValue_temp instanceof Token)
-            intValue_temp = ((Token) intValue_temp).getText();
-        if (intValue_temp instanceof String)
-            intValue_temp = Integer.valueOf((String) intValue_temp);
-        this.intValue = (int) intValue_temp;
+        if (value == null)
+            throw new IllegalArgumentException("Parameter 'value' can't be null. Pass a non-null value or use 'int?' in the abstract grammar");
+        var value_temp = value;
+        if (value_temp instanceof Token)
+            value_temp = ((Token) value_temp).getText();
+        if (value_temp instanceof String)
+            value_temp = Integer.valueOf((String) value_temp);
+        this.value = (int) value_temp;
 
-		updatePositions(intValue);
+		updatePositions(value);
 	}
 
 
     // ----------------------------------
-    // intLiteral: expression -> int
+    // intLiteral: expression -> value:int
 
-	// Child 'int' 
+	// Child 'value:int' 
 
-	public void setIntValue(int intValue) {
-		this.intValue = intValue;
+	public void setValue(int value) {
+		this.value = value;
 
 	}
 
-    public int getIntValue() {
-        return intValue;
+    public int getValue() {
+        return value;
     }
 
 
@@ -76,7 +75,7 @@ public class IntLiteral extends AbstractExpression  {
 
     @Override
     public String toString() {
-        return "IntLiteral{" + " intValue=" + this.getIntValue() + "}";
+        return "IntLiteral{" + " value=" + this.getValue() + "}";
     }
 
 
@@ -85,5 +84,4 @@ public class IntLiteral extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

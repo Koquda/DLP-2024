@@ -132,17 +132,17 @@ AbstractStatement <|-[#808080]- Return
 Return o-[#404040,thickness=2]- "0..1" Expression : expression >
 
 class IntLiteral {
-	+int intValue
+	+int value
 }
 AbstractExpression <|-[#808080]- IntLiteral
 
 class FloatLiteral {
-	+float floatValue
+	+float value
 }
 AbstractExpression <|-[#808080]- FloatLiteral
 
 class CharLiteral {
-	+char charValue
+	+String value
 }
 AbstractExpression <|-[#808080]- CharLiteral
 

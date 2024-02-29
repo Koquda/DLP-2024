@@ -12,7 +12,6 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
 	functionParam -> name:string type:type
 */
@@ -107,5 +106,4 @@ public class FunctionParam extends AbstractAST  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

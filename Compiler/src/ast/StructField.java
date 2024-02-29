@@ -12,7 +12,6 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
 	structField -> name:string type:type
 */
@@ -107,5 +106,4 @@ public class StructField extends AbstractAST  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

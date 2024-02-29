@@ -36,6 +36,7 @@ import ast.type.VarType;
 import ast.type.VoidType;
 
 public class PrintVisitor extends DefaultVisitor {
+
     public void process(AST ast) {
         ast.accept(this, null);
     }
@@ -176,7 +177,7 @@ public class PrintVisitor extends DefaultVisitor {
 	@Override
 	public Object visit(IntLiteral intLiteral, Object param) {
 
-		System.out.println("IntLiteral: " + intLiteral.getIntValue());
+		System.out.println("IntLiteral: " + intLiteral.getValue());
 		return null;
 	}
 
@@ -184,7 +185,7 @@ public class PrintVisitor extends DefaultVisitor {
 	@Override
 	public Object visit(FloatLiteral floatLiteral, Object param) {
 
-		System.out.println("FloatLiteral: " + floatLiteral.getFloatValue());
+		System.out.println("FloatLiteral: " + floatLiteral.getValue());
 		return null;
 	}
 
@@ -192,7 +193,7 @@ public class PrintVisitor extends DefaultVisitor {
 	@Override
 	public Object visit(CharLiteral charLiteral, Object param) {
 
-		System.out.println("CharLiteral: " + charLiteral.getCharValue());
+		System.out.println("CharLiteral: " + charLiteral.getCharacter());
 		return null;
 	}
 

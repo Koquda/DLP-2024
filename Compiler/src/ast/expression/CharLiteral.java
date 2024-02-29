@@ -11,9 +11,8 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
-	charLiteral: expression -> charValue:char
+	charLiteral: expression -> value:string
 	expression -> 
 */
 public class CharLiteral extends AbstractExpression  {
@@ -21,48 +20,47 @@ public class CharLiteral extends AbstractExpression  {
     // ----------------------------------
     // Instance Variables
 
-	// charLiteral: expression -> char
-	private char charValue;
+	// charLiteral: expression -> value:string
+	private String value;
 
     // ----------------------------------
     // Constructors
 
-	public CharLiteral(char charValue) {
+	public CharLiteral(String value) {
 		super();
 
-		this.charValue = charValue;
+		if (value == null)
+			throw new IllegalArgumentException("Parameter 'value' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
+		this.value = value;
 
-		updatePositions(charValue);
+		updatePositions(value);
 	}
 
-	public CharLiteral(Object charValue) {
+	public CharLiteral(Object value) {
 		super();
 
-        if (charValue == null)
-            throw new IllegalArgumentException("Parameter 'charValue' can't be null. Pass a non-null value or use 'char?' in the abstract grammar");
-        var charValue_temp = charValue;
-        if (charValue_temp instanceof Token)
-            charValue_temp = ((Token) charValue_temp).getText();
-        if (charValue_temp instanceof String)
-            charValue_temp = ((String) charValue_temp).charAt(0);
-        this.charValue = (char) charValue_temp;
+        if (value == null)
+            throw new IllegalArgumentException("Parameter 'value' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
+		this.value = (value instanceof Token) ? ((Token) value).getText() : (String) value;
 
-		updatePositions(charValue);
+		updatePositions(value);
 	}
 
 
     // ----------------------------------
-    // charLiteral: expression -> char
+    // charLiteral: expression -> value:string
 
-	// Child 'char' 
+	// Child 'value:string' 
 
-	public void setCharValue(char charValue) {
-		this.charValue = charValue;
+	public void setValue(String value) {
+		if (value == null)
+			throw new IllegalArgumentException("Parameter 'value' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
+		this.value = value;
 
 	}
 
-    public char getCharValue() {
-        return charValue;
+    public String getValue() {
+        return value;
     }
 
 
@@ -76,14 +74,20 @@ public class CharLiteral extends AbstractExpression  {
 
     @Override
     public String toString() {
-        return "CharLiteral{" + " charValue=" + this.getCharValue() + "}";
+        return "CharLiteral{" + " value=" + this.getValue() + "}";
     }
 
 
     // %% User Members -------------------------
 
-        // Methods/attributes in this section will be preserved. Delete if not needed
+    public char getCharacter() {
+        if (value.length() == 3) {
+            return value.charAt(1);
+        }
+        
+        assert value.equals("'\\n'");
+        return 10;
+    }
 
     // %% --------------------------------------
-
 }

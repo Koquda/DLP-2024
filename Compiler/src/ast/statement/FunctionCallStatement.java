@@ -15,7 +15,6 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
 	functionCallStatement: statement -> name:string expressions:expression*
 	statement -> 
@@ -112,5 +111,4 @@ public class FunctionCallStatement extends AbstractStatement  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

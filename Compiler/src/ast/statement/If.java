@@ -14,7 +14,6 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
 	if: statement -> condition:expression ifBody:statement* elseBody:statement*
 	statement -> 
@@ -135,5 +134,4 @@ public class If extends AbstractStatement  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

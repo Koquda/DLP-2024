@@ -15,7 +15,6 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
 	structDefinition: definition -> name:string structFields:structField*
 	definition -> 
@@ -112,5 +111,4 @@ public class StructDefinition extends AbstractDefinition  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

@@ -10,7 +10,6 @@ import ast.*;
 
 // %% -------------------------------
 
-
 /*
 	type -> 
 */
@@ -24,5 +23,4 @@ public abstract class AbstractType extends AbstractAST implements Type {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }

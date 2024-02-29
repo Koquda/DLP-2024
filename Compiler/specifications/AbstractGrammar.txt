@@ -24,9 +24,9 @@ print:statement -> expression? lexema:string;
 return:statement -> expression? ;
 
 
-intLiteral:expression -> int ;
-floatLiteral:expression -> float ;
-charLiteral:expression -> char ;
+intLiteral:expression -> value:int ;
+floatLiteral:expression -> value:float ;
+charLiteral:expression -> value:string ;
 variable:expression -> string ;
 arithmetic:expression -> left:expression operator:string right:expression ;
 arithmeticComparison:expression -> left:expression operator:string right:expression ;

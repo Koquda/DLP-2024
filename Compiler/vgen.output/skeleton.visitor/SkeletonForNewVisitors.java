@@ -206,21 +206,21 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class IntLiteral(int intValue)
+	// class IntLiteral(int value)
 	@Override
 	public Object visit(IntLiteral intLiteral, Object param) {
 
 		return null;
 	}
 
-	// class FloatLiteral(float floatValue)
+	// class FloatLiteral(float value)
 	@Override
 	public Object visit(FloatLiteral floatLiteral, Object param) {
 
 		return null;
 	}
 
-	// class CharLiteral(char charValue)
+	// class CharLiteral(String value)
 	@Override
 	public Object visit(CharLiteral charLiteral, Object param) {
 

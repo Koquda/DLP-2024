@@ -11,7 +11,6 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
-
 /*
 	arithmeticComparison: expression -> left:expression operator:string right:expression
 	expression -> 
@@ -130,5 +129,4 @@ public class ArithmeticComparison extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
-
 }
