@@ -22,15 +22,15 @@ public interface Visitor {
 
 	public Object visit(StructDefinition structDefinition, Object param);
 
-	public Object visit(FuncDefinition funcDefinition, Object param);
+	public Object visit(FunctionDefinition functionDefinition, Object param);
 
 	public Object visit(StructField structField, Object param);
 
-	public Object visit(FuncParam funcParam, Object param);
+	public Object visit(FunctionParam functionParam, Object param);
 
 	public Object visit(Assignment assignment, Object param);
 
-	public Object visit(FuncCallStatement funcCallStatement, Object param);
+	public Object visit(FunctionCallStatement functionCallStatement, Object param);
 
 	public Object visit(If ifValue, Object param);
 
@@ -58,7 +58,7 @@ public interface Visitor {
 
 	public Object visit(Negation negation, Object param);
 
-	public Object visit(FuncCallExpression funcCallExpression, Object param);
+	public Object visit(FunctionCallExpression functionCallExpression, Object param);
 
 	public Object visit(StructAccess structAccess, Object param);
 

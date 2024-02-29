@@ -10,6 +10,7 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
 	negation: expression -> expression:expression
 	expression -> 
@@ -82,4 +83,5 @@ public class Negation extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

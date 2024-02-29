@@ -10,6 +10,7 @@ import ast.*;
 
 // %% -------------------------------
 
+
 /*
 	statement -> 
 */
@@ -23,4 +24,5 @@ public abstract class AbstractStatement extends AbstractAST implements Statement
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

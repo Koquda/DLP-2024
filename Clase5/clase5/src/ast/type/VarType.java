@@ -11,6 +11,7 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
 	varType: type -> name:string
 	type -> 
@@ -83,4 +84,5 @@ public class VarType extends AbstractType  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

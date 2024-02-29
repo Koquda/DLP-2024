@@ -11,6 +11,7 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
 	floatLiteral: expression -> floatValue:float
 	expression -> 
@@ -84,4 +85,5 @@ public class FloatLiteral extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

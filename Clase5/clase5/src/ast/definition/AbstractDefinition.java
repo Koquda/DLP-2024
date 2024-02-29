@@ -10,6 +10,7 @@ import ast.*;
 
 // %% -------------------------------
 
+
 /*
 	definition -> 
 */
@@ -23,4 +24,5 @@ public abstract class AbstractDefinition extends AbstractAST implements Definiti
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

@@ -12,6 +12,7 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
 	varDefinition: definition -> name:string type:type
 	definition -> 
@@ -107,4 +108,5 @@ public class VarDefinition extends AbstractDefinition  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

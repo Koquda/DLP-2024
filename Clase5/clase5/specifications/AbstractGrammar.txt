@@ -10,15 +10,15 @@ program -> definition* ;
 
 varDefinition:definition -> string type;
 structDefinition:definition -> string structField*;
-funcDefinition:definition -> string funcParam* type definition* statement*;
+functionDefinition:definition -> string functionParam* type definition* statement*;
 
 structField -> string type ;
-funcParam -> string type ;
+functionParam -> string type ;
 
 assignment:statement -> left:expression right:expression;
-funcCallStatement:statement -> string expression* ;
-if:statement -> expression ifBody:statement* elseBody:statement*;
-while:statement -> expression statement* ;
+functionCallStatement:statement -> string expression* ;
+if:statement -> condition:expression ifBody:statement* elseBody:statement*;
+while:statement -> condition:expression statement* ;
 read:statement -> expression ;
 print:statement -> expression? lexema:string;
 return:statement -> expression? ;
@@ -28,12 +28,12 @@ intLiteral:expression -> int ;
 floatLiteral:expression -> float ;
 charLiteral:expression -> char ;
 variable:expression -> string ;
-arithmetic:expression -> left:expression operator1:string right:expression ;
+arithmetic:expression -> left:expression operator:string right:expression ;
 arithmeticComparison:expression -> left:expression operator:string right:expression ;
 logicalComparison:expression -> left:expression operator:string right:expression ;
 negation:expression -> expression ;
-funcCallExpression:expression -> string expression* ;
-structAccess:expression -> expression string ;
+functionCallExpression:expression -> string expression* ;
+structAccess:expression -> expression field:string ;
 cast:expression -> type expression ;
 arrayAccess:expression -> left:expression right:expression ;
 
@@ -41,7 +41,7 @@ intType:type -> ;
 floatType:type -> ;
 charType:type -> ;
 varType:type -> string;
-arrayType:type -> int type ;
+arrayType:type -> size:int type ;
 structType:type -> string ;
 voidType:type -> ;
 errorType:type -> ;

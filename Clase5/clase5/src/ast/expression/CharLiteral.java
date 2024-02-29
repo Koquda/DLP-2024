@@ -11,6 +11,7 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
 	charLiteral: expression -> charValue:char
 	expression -> 
@@ -84,4 +85,5 @@ public class CharLiteral extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

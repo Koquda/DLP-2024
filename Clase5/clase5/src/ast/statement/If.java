@@ -14,8 +14,9 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
-	if: statement -> expression:expression ifBody:statement* elseBody:statement*
+	if: statement -> condition:expression ifBody:statement* elseBody:statement*
 	statement -> 
 */
 public class If extends AbstractStatement  {
@@ -23,20 +24,20 @@ public class If extends AbstractStatement  {
     // ----------------------------------
     // Instance Variables
 
-	// if: statement -> expression ifBody:statement* elseBody:statement*
-	private Expression expression;
+	// if: statement -> condition:expression ifBody:statement* elseBody:statement*
+	private Expression condition;
 	private List<Statement> ifBody;
 	private List<Statement> elseBody;
 
     // ----------------------------------
     // Constructors
 
-	public If(Expression expression, List<Statement> ifBody, List<Statement> elseBody) {
+	public If(Expression condition, List<Statement> ifBody, List<Statement> elseBody) {
 		super();
 
-		if (expression == null)
-			throw new IllegalArgumentException("Parameter 'expression' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
-		this.expression = expression;
+		if (condition == null)
+			throw new IllegalArgumentException("Parameter 'condition' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
+		this.condition = condition;
 
 		if (ifBody == null)
 			ifBody = new ArrayList<>();
@@ -46,36 +47,36 @@ public class If extends AbstractStatement  {
 			elseBody = new ArrayList<>();
 		this.elseBody = elseBody;
 
-		updatePositions(expression, ifBody, elseBody);
+		updatePositions(condition, ifBody, elseBody);
 	}
 
-	public If(Object expression, Object ifBody, Object elseBody) {
+	public If(Object condition, Object ifBody, Object elseBody) {
 		super();
 
-        if (expression == null)
-            throw new IllegalArgumentException("Parameter 'expression' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
-		this.expression = (Expression) expression;
+        if (condition == null)
+            throw new IllegalArgumentException("Parameter 'condition' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
+		this.condition = (Expression) condition;
 
         this.ifBody = castList(ifBody, unwrapIfContext.andThen(Statement.class::cast));
         this.elseBody = castList(elseBody, unwrapIfContext.andThen(Statement.class::cast));
-		updatePositions(expression, ifBody, elseBody);
+		updatePositions(condition, ifBody, elseBody);
 	}
 
 
     // ----------------------------------
-    // if: statement -> expression ifBody:statement* elseBody:statement*
+    // if: statement -> condition:expression ifBody:statement* elseBody:statement*
 
-	// Child 'expression' 
+	// Child 'condition:expression' 
 
-	public void setExpression(Expression expression) {
-		if (expression == null)
-			throw new IllegalArgumentException("Parameter 'expression' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
-		this.expression = expression;
+	public void setCondition(Expression condition) {
+		if (condition == null)
+			throw new IllegalArgumentException("Parameter 'condition' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
+		this.condition = condition;
 
 	}
 
-    public Expression getExpression() {
-        return expression;
+    public Expression getCondition() {
+        return condition;
     }
 
 
@@ -125,7 +126,7 @@ public class If extends AbstractStatement  {
 
     @Override
     public String toString() {
-        return "If{" + " expression=" + this.getExpression() + " ifBody=" + this.getIfBody() + " elseBody=" + this.getElseBody() + "}";
+        return "If{" + " condition=" + this.getCondition() + " ifBody=" + this.getIfBody() + " elseBody=" + this.getElseBody() + "}";
     }
 
 
@@ -134,4 +135,5 @@ public class If extends AbstractStatement  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

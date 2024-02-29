@@ -13,6 +13,7 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
 	print: statement -> expression:expression? lexema:string
 	statement -> 
@@ -105,4 +106,5 @@ public class Print extends AbstractStatement  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

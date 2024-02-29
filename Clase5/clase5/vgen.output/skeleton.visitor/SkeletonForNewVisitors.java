@@ -99,15 +99,15 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class FuncDefinition(String name, List<FuncParam> funcParams, Type type, List<Definition> definitions, List<Statement> statements)
+	// class FunctionDefinition(String name, List<FunctionParam> functionParams, Type type, List<Definition> definitions, List<Statement> statements)
 	@Override
-	public Object visit(FuncDefinition funcDefinition, Object param) {
+	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
-		// funcDefinition.getFuncParams().forEach(funcParam -> funcParam.accept(this, param));
-		// funcDefinition.getType().accept(this, param);
-		// funcDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
-		// funcDefinition.getStatements().forEach(statement -> statement.accept(this, param));
-		super.visit(funcDefinition, param);
+		// functionDefinition.getFunctionParams().forEach(functionParam -> functionParam.accept(this, param));
+		// functionDefinition.getType().accept(this, param);
+		// functionDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
+		// functionDefinition.getStatements().forEach(statement -> statement.accept(this, param));
+		super.visit(functionDefinition, param);
 
 		return null;
 	}
@@ -122,12 +122,12 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class FuncParam(String name, Type type)
+	// class FunctionParam(String name, Type type)
 	@Override
-	public Object visit(FuncParam funcParam, Object param) {
+	public Object visit(FunctionParam functionParam, Object param) {
 
-		// funcParam.getType().accept(this, param);
-		super.visit(funcParam, param);
+		// functionParam.getType().accept(this, param);
+		super.visit(functionParam, param);
 
 		return null;
 	}
@@ -143,21 +143,21 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class FuncCallStatement(String name, List<Expression> expressions)
+	// class FunctionCallStatement(String name, List<Expression> expressions)
 	@Override
-	public Object visit(FuncCallStatement funcCallStatement, Object param) {
+	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
 
-		// funcCallStatement.getExpressions().forEach(expression -> expression.accept(this, param));
-		super.visit(funcCallStatement, param);
+		// functionCallStatement.getExpressions().forEach(expression -> expression.accept(this, param));
+		super.visit(functionCallStatement, param);
 
 		return null;
 	}
 
-	// class If(Expression expression, List<Statement> ifBody, List<Statement> elseBody)
+	// class If(Expression condition, List<Statement> ifBody, List<Statement> elseBody)
 	@Override
 	public Object visit(If ifValue, Object param) {
 
-		// ifValue.getExpression().accept(this, param);
+		// ifValue.getCondition().accept(this, param);
 		// ifValue.getIfBody().forEach(statement -> statement.accept(this, param));
 		// ifValue.getElseBody().forEach(statement -> statement.accept(this, param));
 		super.visit(ifValue, param);
@@ -165,11 +165,11 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class While(Expression expression, List<Statement> statements)
+	// class While(Expression condition, List<Statement> statements)
 	@Override
 	public Object visit(While whileValue, Object param) {
 
-		// whileValue.getExpression().accept(this, param);
+		// whileValue.getCondition().accept(this, param);
 		// whileValue.getStatements().forEach(statement -> statement.accept(this, param));
 		super.visit(whileValue, param);
 
@@ -234,7 +234,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class Arithmetic(Expression left, String operator1, Expression right)
+	// class Arithmetic(Expression left, String operator, Expression right)
 	@Override
 	public Object visit(Arithmetic arithmetic, Object param) {
 
@@ -277,17 +277,17 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class FuncCallExpression(String name, List<Expression> expressions)
+	// class FunctionCallExpression(String name, List<Expression> expressions)
 	@Override
-	public Object visit(FuncCallExpression funcCallExpression, Object param) {
+	public Object visit(FunctionCallExpression functionCallExpression, Object param) {
 
-		// funcCallExpression.getExpressions().forEach(expression -> expression.accept(this, param));
-		super.visit(funcCallExpression, param);
+		// functionCallExpression.getExpressions().forEach(expression -> expression.accept(this, param));
+		super.visit(functionCallExpression, param);
 
 		return null;
 	}
 
-	// class StructAccess(Expression expression, String name)
+	// class StructAccess(Expression expression, String field)
 	@Override
 	public Object visit(StructAccess structAccess, Object param) {
 
@@ -347,7 +347,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class ArrayType(int intValue, Type type)
+	// class ArrayType(int size, Type type)
 	@Override
 	public Object visit(ArrayType arrayType, Object param) {
 

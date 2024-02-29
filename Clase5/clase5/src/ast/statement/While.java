@@ -14,8 +14,9 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
-	while: statement -> expression:expression statements:statement*
+	while: statement -> condition:expression statements:statement*
 	statement -> 
 */
 public class While extends AbstractStatement  {
@@ -23,53 +24,53 @@ public class While extends AbstractStatement  {
     // ----------------------------------
     // Instance Variables
 
-	// while: statement -> expression statement*
-	private Expression expression;
+	// while: statement -> condition:expression statement*
+	private Expression condition;
 	private List<Statement> statements;
 
     // ----------------------------------
     // Constructors
 
-	public While(Expression expression, List<Statement> statements) {
+	public While(Expression condition, List<Statement> statements) {
 		super();
 
-		if (expression == null)
-			throw new IllegalArgumentException("Parameter 'expression' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
-		this.expression = expression;
+		if (condition == null)
+			throw new IllegalArgumentException("Parameter 'condition' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
+		this.condition = condition;
 
 		if (statements == null)
 			statements = new ArrayList<>();
 		this.statements = statements;
 
-		updatePositions(expression, statements);
+		updatePositions(condition, statements);
 	}
 
-	public While(Object expression, Object statements) {
+	public While(Object condition, Object statements) {
 		super();
 
-        if (expression == null)
-            throw new IllegalArgumentException("Parameter 'expression' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
-		this.expression = (Expression) expression;
+        if (condition == null)
+            throw new IllegalArgumentException("Parameter 'condition' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
+		this.condition = (Expression) condition;
 
         this.statements = castList(statements, unwrapIfContext.andThen(Statement.class::cast));
-		updatePositions(expression, statements);
+		updatePositions(condition, statements);
 	}
 
 
     // ----------------------------------
-    // while: statement -> expression statement*
+    // while: statement -> condition:expression statement*
 
-	// Child 'expression' 
+	// Child 'condition:expression' 
 
-	public void setExpression(Expression expression) {
-		if (expression == null)
-			throw new IllegalArgumentException("Parameter 'expression' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
-		this.expression = expression;
+	public void setCondition(Expression condition) {
+		if (condition == null)
+			throw new IllegalArgumentException("Parameter 'condition' can't be null. Pass a non-null value or use 'expression?' in the abstract grammar");
+		this.condition = condition;
 
 	}
 
-    public Expression getExpression() {
-        return expression;
+    public Expression getCondition() {
+        return condition;
     }
 
 
@@ -101,7 +102,7 @@ public class While extends AbstractStatement  {
 
     @Override
     public String toString() {
-        return "While{" + " expression=" + this.getExpression() + " statements=" + this.getStatements() + "}";
+        return "While{" + " condition=" + this.getCondition() + " statements=" + this.getStatements() + "}";
     }
 
 
@@ -110,4 +111,5 @@ public class While extends AbstractStatement  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

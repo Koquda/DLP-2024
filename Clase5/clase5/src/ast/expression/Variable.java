@@ -11,6 +11,7 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
 	variable: expression -> name:string
 	expression -> 
@@ -83,4 +84,5 @@ public class Variable extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

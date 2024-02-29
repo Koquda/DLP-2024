@@ -358,7 +358,7 @@ public class GrammarParser extends Parser {
 				setState(74);
 				match(T__5);
 
-						 	((DefinitionContext)_localctx).ast =  new FuncDefinition(((DefinitionContext)_localctx).IDENT, ((DefinitionContext)_localctx).paramList, _localctx.t, ((DefinitionContext)_localctx).definitions, ((DefinitionContext)_localctx).statements); 
+						 	((DefinitionContext)_localctx).ast =  new FunctionDefinition(((DefinitionContext)_localctx).IDENT, ((DefinitionContext)_localctx).paramList, _localctx.t, ((DefinitionContext)_localctx).definitions, ((DefinitionContext)_localctx).statements); 
 						
 				}
 				break;
@@ -422,7 +422,7 @@ public class GrammarParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ParamContext extends ParserRuleContext {
-		public FuncParam ast;
+		public FunctionParam ast;
 		public Token IDENT;
 		public TypeContext type;
 		public TerminalNode IDENT() { return getToken(GrammarParser.IDENT, 0); }
@@ -447,7 +447,7 @@ public class GrammarParser extends Parser {
 			match(T__1);
 			setState(86);
 			((ParamContext)_localctx).type = type();
-			 ((ParamContext)_localctx).ast =  new FuncParam(((ParamContext)_localctx).IDENT, ((ParamContext)_localctx).type.ast); 
+			 ((ParamContext)_localctx).ast =  new FunctionParam(((ParamContext)_localctx).IDENT, ((ParamContext)_localctx).type.ast); 
 			}
 		}
 		catch (RecognitionException re) {
@@ -553,7 +553,7 @@ public class GrammarParser extends Parser {
 				match(T__8);
 				setState(108);
 				match(T__2);
-				 ((StatementContext)_localctx).ast =  new FuncCallStatement(((StatementContext)_localctx).IDENT, ((StatementContext)_localctx).expressions); 
+				 ((StatementContext)_localctx).ast =  new FunctionCallStatement(((StatementContext)_localctx).IDENT, ((StatementContext)_localctx).expressions); 
 				}
 				break;
 			case 3:
@@ -883,7 +883,7 @@ public class GrammarParser extends Parser {
 
 				setState(209);
 				match(T__8);
-				 ((ExpressionContext)_localctx).ast =  new FuncCallExpression(((ExpressionContext)_localctx).IDENT, ((ExpressionContext)_localctx).expressions); 
+				 ((ExpressionContext)_localctx).ast =  new FunctionCallExpression(((ExpressionContext)_localctx).IDENT, ((ExpressionContext)_localctx).expressions); 
 				}
 				break;
 			case 8:

@@ -55,14 +55,14 @@ class StructDefinition {
 Definition <|-[#808080]- StructDefinition
 StructDefinition o-[#404040,thickness=2]- "✱" StructField : structFields >
 
-class FuncDefinition {
+class FunctionDefinition {
 	+String name
 }
-Definition <|-[#808080]- FuncDefinition
-FuncDefinition o-[#404040,thickness=2]- "✱" FuncParam : funcParams >
-FuncDefinition o-[#404040,thickness=2]-  Type : type >
-FuncDefinition o-[#404040,thickness=2]- "✱" Definition : definitions >
-FuncDefinition o-[#404040,thickness=2]- "✱" Statement : statements >
+Definition <|-[#808080]- FunctionDefinition
+FunctionDefinition o-[#404040,thickness=2]- "✱" FunctionParam : functionParams >
+FunctionDefinition o-[#404040,thickness=2]-  Type : type >
+FunctionDefinition o-[#404040,thickness=2]- "✱" Definition : definitions >
+FunctionDefinition o-[#404040,thickness=2]- "✱" Statement : statements >
 
 class StructField {
 	+String name
@@ -70,11 +70,11 @@ class StructField {
 AST <|-[#808080]- StructField
 StructField o-[#404040,thickness=2]-  Type : type >
 
-class FuncParam {
+class FunctionParam {
 	+String name
 }
-AST <|-[#808080]- FuncParam
-FuncParam o-[#404040,thickness=2]-  Type : type >
+AST <|-[#808080]- FunctionParam
+FunctionParam o-[#404040,thickness=2]-  Type : type >
 
 class Assignment {
 }
@@ -82,23 +82,23 @@ Statement <|-[#808080]- Assignment
 Assignment o-[#404040,thickness=2]-  Expression : left >
 Assignment o-[#404040,thickness=2]-  Expression : right >
 
-class FuncCallStatement {
+class FunctionCallStatement {
 	+String name
 }
-Statement <|-[#808080]- FuncCallStatement
-FuncCallStatement o-[#404040,thickness=2]- "✱" Expression : expressions >
+Statement <|-[#808080]- FunctionCallStatement
+FunctionCallStatement o-[#404040,thickness=2]- "✱" Expression : expressions >
 
 class If {
 }
 Statement <|-[#808080]- If
-If o-[#404040,thickness=2]-  Expression : expression >
+If o-[#404040,thickness=2]-  Expression : condition >
 If o-[#404040,thickness=2]- "✱" Statement : ifBody >
 If o-[#404040,thickness=2]- "✱" Statement : elseBody >
 
 class While {
 }
 Statement <|-[#808080]- While
-While o-[#404040,thickness=2]-  Expression : expression >
+While o-[#404040,thickness=2]-  Expression : condition >
 While o-[#404040,thickness=2]- "✱" Statement : statements >
 
 class Read {
@@ -138,7 +138,7 @@ class Variable {
 Expression <|-[#808080]- Variable
 
 class Arithmetic {
-	+String operator1
+	+String operator
 }
 Expression <|-[#808080]- Arithmetic
 Arithmetic o-[#404040,thickness=2]-  Expression : left >
@@ -163,14 +163,14 @@ class Negation {
 Expression <|-[#808080]- Negation
 Negation o-[#404040,thickness=2]-  Expression : expression >
 
-class FuncCallExpression {
+class FunctionCallExpression {
 	+String name
 }
-Expression <|-[#808080]- FuncCallExpression
-FuncCallExpression o-[#404040,thickness=2]- "✱" Expression : expressions >
+Expression <|-[#808080]- FunctionCallExpression
+FunctionCallExpression o-[#404040,thickness=2]- "✱" Expression : expressions >
 
 class StructAccess {
-	+String name
+	+String field
 }
 Expression <|-[#808080]- StructAccess
 StructAccess o-[#404040,thickness=2]-  Expression : expression >
@@ -205,7 +205,7 @@ class VarType {
 Type <|-[#808080]- VarType
 
 class ArrayType {
-	+int intValue
+	+int size
 }
 Type <|-[#808080]- ArrayType
 ArrayType o-[#404040,thickness=2]-  Type : type >

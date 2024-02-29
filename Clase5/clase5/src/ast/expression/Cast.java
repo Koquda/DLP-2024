@@ -11,6 +11,7 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
 	cast: expression -> type:type expression:expression
 	expression -> 
@@ -106,4 +107,5 @@ public class Cast extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

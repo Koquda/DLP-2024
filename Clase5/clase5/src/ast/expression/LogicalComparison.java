@@ -11,6 +11,7 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
 	logicalComparison: expression -> left:expression operator:string right:expression
 	expression -> 
@@ -129,4 +130,5 @@ public class LogicalComparison extends AbstractExpression  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

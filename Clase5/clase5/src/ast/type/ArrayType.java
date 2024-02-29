@@ -11,8 +11,9 @@ import visitor.Visitor;
 
 // %% -------------------------------
 
+
 /*
-	arrayType: type -> intValue:int type:type
+	arrayType: type -> size:int type:type
 	type -> 
 */
 public class ArrayType extends AbstractType  {
@@ -20,57 +21,57 @@ public class ArrayType extends AbstractType  {
     // ----------------------------------
     // Instance Variables
 
-	// arrayType: type -> int type
-	private int intValue;
+	// arrayType: type -> size:int type
+	private int size;
 	private Type type;
 
     // ----------------------------------
     // Constructors
 
-	public ArrayType(int intValue, Type type) {
+	public ArrayType(int size, Type type) {
 		super();
 
-		this.intValue = intValue;
+		this.size = size;
 
 		if (type == null)
 			throw new IllegalArgumentException("Parameter 'type' can't be null. Pass a non-null value or use 'type?' in the abstract grammar");
 		this.type = type;
 
-		updatePositions(intValue, type);
+		updatePositions(size, type);
 	}
 
-	public ArrayType(Object intValue, Object type) {
+	public ArrayType(Object size, Object type) {
 		super();
 
-        if (intValue == null)
-            throw new IllegalArgumentException("Parameter 'intValue' can't be null. Pass a non-null value or use 'int?' in the abstract grammar");
-        var intValue_temp = intValue;
-        if (intValue_temp instanceof Token)
-            intValue_temp = ((Token) intValue_temp).getText();
-        if (intValue_temp instanceof String)
-            intValue_temp = Integer.valueOf((String) intValue_temp);
-        this.intValue = (int) intValue_temp;
+        if (size == null)
+            throw new IllegalArgumentException("Parameter 'size' can't be null. Pass a non-null value or use 'int?' in the abstract grammar");
+        var size_temp = size;
+        if (size_temp instanceof Token)
+            size_temp = ((Token) size_temp).getText();
+        if (size_temp instanceof String)
+            size_temp = Integer.valueOf((String) size_temp);
+        this.size = (int) size_temp;
 
         if (type == null)
             throw new IllegalArgumentException("Parameter 'type' can't be null. Pass a non-null value or use 'type?' in the abstract grammar");
 		this.type = (Type) type;
 
-		updatePositions(intValue, type);
+		updatePositions(size, type);
 	}
 
 
     // ----------------------------------
-    // arrayType: type -> int type
+    // arrayType: type -> size:int type
 
-	// Child 'int' 
+	// Child 'size:int' 
 
-	public void setIntValue(int intValue) {
-		this.intValue = intValue;
+	public void setSize(int size) {
+		this.size = size;
 
 	}
 
-    public int getIntValue() {
-        return intValue;
+    public int getSize() {
+        return size;
     }
 
 
@@ -98,7 +99,7 @@ public class ArrayType extends AbstractType  {
 
     @Override
     public String toString() {
-        return "ArrayType{" + " intValue=" + this.getIntValue() + " type=" + this.getType() + "}";
+        return "ArrayType{" + " size=" + this.getSize() + " type=" + this.getType() + "}";
     }
 
 
@@ -107,4 +108,5 @@ public class ArrayType extends AbstractType  {
         // Methods/attributes in this section will be preserved. Delete if not needed
 
     // %% --------------------------------------
+
 }

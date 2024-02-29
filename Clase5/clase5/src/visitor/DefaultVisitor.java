@@ -47,12 +47,12 @@ public class DefaultVisitor implements Visitor {
 	}
 
 	@Override
-	public Object visit(FuncDefinition funcDefinition, Object param) {
+	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
-		funcDefinition.getFuncParams().forEach(funcParam -> funcParam.accept(this, param));
-		funcDefinition.getType().accept(this, param);
-		funcDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
-		funcDefinition.getStatements().forEach(statement -> statement.accept(this, param));
+		functionDefinition.getFunctionParams().forEach(functionParam -> functionParam.accept(this, param));
+		functionDefinition.getType().accept(this, param);
+		functionDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
+		functionDefinition.getStatements().forEach(statement -> statement.accept(this, param));
 		return null;
 	}
 
@@ -64,9 +64,9 @@ public class DefaultVisitor implements Visitor {
 	}
 
 	@Override
-	public Object visit(FuncParam funcParam, Object param) {
+	public Object visit(FunctionParam functionParam, Object param) {
 
-		funcParam.getType().accept(this, param);
+		functionParam.getType().accept(this, param);
 		return null;
 	}
 
@@ -79,16 +79,16 @@ public class DefaultVisitor implements Visitor {
 	}
 
 	@Override
-	public Object visit(FuncCallStatement funcCallStatement, Object param) {
+	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
 
-		funcCallStatement.getExpressions().forEach(expression -> expression.accept(this, param));
+		functionCallStatement.getExpressions().forEach(expression -> expression.accept(this, param));
 		return null;
 	}
 
 	@Override
 	public Object visit(If ifValue, Object param) {
 
-		ifValue.getExpression().accept(this, param);
+		ifValue.getCondition().accept(this, param);
 		ifValue.getIfBody().forEach(statement -> statement.accept(this, param));
 		ifValue.getElseBody().forEach(statement -> statement.accept(this, param));
 		return null;
@@ -97,7 +97,7 @@ public class DefaultVisitor implements Visitor {
 	@Override
 	public Object visit(While whileValue, Object param) {
 
-		whileValue.getExpression().accept(this, param);
+		whileValue.getCondition().accept(this, param);
 		whileValue.getStatements().forEach(statement -> statement.accept(this, param));
 		return null;
 	}
@@ -179,9 +179,9 @@ public class DefaultVisitor implements Visitor {
 	}
 
 	@Override
-	public Object visit(FuncCallExpression funcCallExpression, Object param) {
+	public Object visit(FunctionCallExpression functionCallExpression, Object param) {
 
-		funcCallExpression.getExpressions().forEach(expression -> expression.accept(this, param));
+		functionCallExpression.getExpressions().forEach(expression -> expression.accept(this, param));
 		return null;
 	}
 

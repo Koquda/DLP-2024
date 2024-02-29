@@ -41,9 +41,9 @@ public class ExceptionThrowerVisitor implements Visitor {
 	}
 
 	@Override
-	public Object visit(FuncDefinition funcDefinition, Object param) {
+	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
-        throw new UnsupportedOperationException("'ExceptionThrowerVisitor.visit(FuncDefinition)' has been invoked but it has not been implemented.");
+        throw new UnsupportedOperationException("'ExceptionThrowerVisitor.visit(FunctionDefinition)' has been invoked but it has not been implemented.");
 	}
 
 	@Override
@@ -53,9 +53,9 @@ public class ExceptionThrowerVisitor implements Visitor {
 	}
 
 	@Override
-	public Object visit(FuncParam funcParam, Object param) {
+	public Object visit(FunctionParam functionParam, Object param) {
 
-        throw new UnsupportedOperationException("'ExceptionThrowerVisitor.visit(FuncParam)' has been invoked but it has not been implemented.");
+        throw new UnsupportedOperationException("'ExceptionThrowerVisitor.visit(FunctionParam)' has been invoked but it has not been implemented.");
 	}
 
 	@Override
@@ -65,9 +65,9 @@ public class ExceptionThrowerVisitor implements Visitor {
 	}
 
 	@Override
-	public Object visit(FuncCallStatement funcCallStatement, Object param) {
+	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
 
-        throw new UnsupportedOperationException("'ExceptionThrowerVisitor.visit(FuncCallStatement)' has been invoked but it has not been implemented.");
+        throw new UnsupportedOperationException("'ExceptionThrowerVisitor.visit(FunctionCallStatement)' has been invoked but it has not been implemented.");
 	}
 
 	@Override
@@ -149,9 +149,9 @@ public class ExceptionThrowerVisitor implements Visitor {
 	}
 
 	@Override
-	public Object visit(FuncCallExpression funcCallExpression, Object param) {
+	public Object visit(FunctionCallExpression functionCallExpression, Object param) {
 
-        throw new UnsupportedOperationException("'ExceptionThrowerVisitor.visit(FuncCallExpression)' has been invoked but it has not been implemented.");
+        throw new UnsupportedOperationException("'ExceptionThrowerVisitor.visit(FunctionCallExpression)' has been invoked but it has not been implemented.");
 	}
 
 	@Override
