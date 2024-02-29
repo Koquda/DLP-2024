@@ -1,0 +1,47 @@
+CATEGORIES
+expression;
+statement;
+definition;
+type;
+
+NODES
+
+program -> definition* ;
+
+varDefinition:definition -> string type;
+structDefinition:definition -> string structField*;
+functionDefinition:definition -> string functionParam* type definition* statement*;
+
+structField -> string type ;
+functionParam -> string type ;
+
+assignment:statement -> left:expression right:expression;
+functionCallStatement:statement -> string expression* ;
+if:statement -> condition:expression ifBody:statement* elseBody:statement*;
+while:statement -> condition:expression statement* ;
+read:statement -> expression ;
+print:statement -> expression? lexema:string;
+return:statement -> expression? ;
+
+
+intLiteral:expression -> int ;
+floatLiteral:expression -> float ;
+charLiteral:expression -> char ;
+variable:expression -> string ;
+arithmetic:expression -> left:expression operator:string right:expression ;
+arithmeticComparison:expression -> left:expression operator:string right:expression ;
+logicalComparison:expression -> left:expression operator:string right:expression ;
+negation:expression -> expression ;
+functionCallExpression:expression -> string expression* ;
+structAccess:expression -> expression field:string ;
+cast:expression -> type expression ;
+arrayAccess:expression -> left:expression right:expression ;
+
+intType:type -> ;
+floatType:type -> ;
+charType:type -> ;
+varType:type -> string;
+arrayType:type -> size:int type ;
+structType:type -> string ;
+voidType:type -> ;
+errorType:type -> ;

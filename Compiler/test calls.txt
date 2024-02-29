@@ -1,0 +1,14 @@
+// Determinar qué AST debería salir para la siguiente entrada y LUEGO comprobarlo en AST.html
+
+f(a:char):char{
+    return a;
+}
+
+main() {
+    var c:char;
+
+    read c;
+    f(c);
+
+    c = f('\n');
+}

@@ -1,0 +1,3 @@
+// Determinar qué AST debería salir para la siguiente entrada y LUEGO comprobarlo en AST.html
+
+var matriz:[2][5][7] float;  // Mirar en qué orden han quedado los índices

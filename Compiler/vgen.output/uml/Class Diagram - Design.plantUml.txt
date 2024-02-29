@@ -1,0 +1,226 @@
+' Generated with VGen 2.0.0
+
+@startuml
+
+class Position {
+    +int getLine()
+    +int getColumn()
+    +boolean lessThan(Position other)
+    +boolean greaterThan(Position other)
+}
+
+interface AST {
+    +updatePositions(Object... children)
+    +updatePositions(Position start, Position end)
+    +Object accept(Visitor visitor, Object param)
+}
+
+AST *-[#404040,thickness=1]- Position : start >
+AST *-[#404040,thickness=1]- Position : end >
+
+
+interface Expression {
+}
+AST <|-[#808080]- Expression
+
+interface Statement {
+}
+AST <|-[#808080]- Statement
+
+interface Definition {
+}
+AST <|-[#808080]- Definition
+
+interface Type {
+}
+AST <|-[#808080]- Type
+
+interface AST {
+}
+
+class Program {
+}
+AST <|-[#808080]- Program
+Program o-[#404040,thickness=2]- "✱" Definition : definitions >
+
+class VarDefinition {
+	+String name
+}
+Definition <|-[#808080]- VarDefinition
+VarDefinition o-[#404040,thickness=2]-  Type : type >
+
+class StructDefinition {
+	+String name
+}
+Definition <|-[#808080]- StructDefinition
+StructDefinition o-[#404040,thickness=2]- "✱" StructField : structFields >
+
+class FunctionDefinition {
+	+String name
+}
+Definition <|-[#808080]- FunctionDefinition
+FunctionDefinition o-[#404040,thickness=2]- "✱" FunctionParam : functionParams >
+FunctionDefinition o-[#404040,thickness=2]-  Type : type >
+FunctionDefinition o-[#404040,thickness=2]- "✱" Definition : definitions >
+FunctionDefinition o-[#404040,thickness=2]- "✱" Statement : statements >
+
+class StructField {
+	+String name
+}
+AST <|-[#808080]- StructField
+StructField o-[#404040,thickness=2]-  Type : type >
+
+class FunctionParam {
+	+String name
+}
+AST <|-[#808080]- FunctionParam
+FunctionParam o-[#404040,thickness=2]-  Type : type >
+
+class Assignment {
+}
+Statement <|-[#808080]- Assignment
+Assignment o-[#404040,thickness=2]-  Expression : left >
+Assignment o-[#404040,thickness=2]-  Expression : right >
+
+class FunctionCallStatement {
+	+String name
+}
+Statement <|-[#808080]- FunctionCallStatement
+FunctionCallStatement o-[#404040,thickness=2]- "✱" Expression : expressions >
+
+class If {
+}
+Statement <|-[#808080]- If
+If o-[#404040,thickness=2]-  Expression : condition >
+If o-[#404040,thickness=2]- "✱" Statement : ifBody >
+If o-[#404040,thickness=2]- "✱" Statement : elseBody >
+
+class While {
+}
+Statement <|-[#808080]- While
+While o-[#404040,thickness=2]-  Expression : condition >
+While o-[#404040,thickness=2]- "✱" Statement : statements >
+
+class Read {
+}
+Statement <|-[#808080]- Read
+Read o-[#404040,thickness=2]-  Expression : expression >
+
+class Print {
+	+String lexema
+}
+Statement <|-[#808080]- Print
+Print o-[#404040,thickness=2]- "0..1" Expression : expression >
+
+class Return {
+}
+Statement <|-[#808080]- Return
+Return o-[#404040,thickness=2]- "0..1" Expression : expression >
+
+class IntLiteral {
+	+int intValue
+}
+Expression <|-[#808080]- IntLiteral
+
+class FloatLiteral {
+	+float floatValue
+}
+Expression <|-[#808080]- FloatLiteral
+
+class CharLiteral {
+	+char charValue
+}
+Expression <|-[#808080]- CharLiteral
+
+class Variable {
+	+String name
+}
+Expression <|-[#808080]- Variable
+
+class Arithmetic {
+	+String operator
+}
+Expression <|-[#808080]- Arithmetic
+Arithmetic o-[#404040,thickness=2]-  Expression : left >
+Arithmetic o-[#404040,thickness=2]-  Expression : right >
+
+class ArithmeticComparison {
+	+String operator
+}
+Expression <|-[#808080]- ArithmeticComparison
+ArithmeticComparison o-[#404040,thickness=2]-  Expression : left >
+ArithmeticComparison o-[#404040,thickness=2]-  Expression : right >
+
+class LogicalComparison {
+	+String operator
+}
+Expression <|-[#808080]- LogicalComparison
+LogicalComparison o-[#404040,thickness=2]-  Expression : left >
+LogicalComparison o-[#404040,thickness=2]-  Expression : right >
+
+class Negation {
+}
+Expression <|-[#808080]- Negation
+Negation o-[#404040,thickness=2]-  Expression : expression >
+
+class FunctionCallExpression {
+	+String name
+}
+Expression <|-[#808080]- FunctionCallExpression
+FunctionCallExpression o-[#404040,thickness=2]- "✱" Expression : expressions >
+
+class StructAccess {
+	+String field
+}
+Expression <|-[#808080]- StructAccess
+StructAccess o-[#404040,thickness=2]-  Expression : expression >
+
+class Cast {
+}
+Expression <|-[#808080]- Cast
+Cast o-[#404040,thickness=2]-  Type : type >
+Cast o-[#404040,thickness=2]-  Expression : expression >
+
+class ArrayAccess {
+}
+Expression <|-[#808080]- ArrayAccess
+ArrayAccess o-[#404040,thickness=2]-  Expression : left >
+ArrayAccess o-[#404040,thickness=2]-  Expression : right >
+
+class IntType {
+}
+Type <|-[#808080]- IntType
+
+class FloatType {
+}
+Type <|-[#808080]- FloatType
+
+class CharType {
+}
+Type <|-[#808080]- CharType
+
+class VarType {
+	+String name
+}
+Type <|-[#808080]- VarType
+
+class ArrayType {
+	+int size
+}
+Type <|-[#808080]- ArrayType
+ArrayType o-[#404040,thickness=2]-  Type : type >
+
+class StructType {
+	+String name
+}
+Type <|-[#808080]- StructType
+
+class VoidType {
+}
+Type <|-[#808080]- VoidType
+
+class ErrorType {
+}
+Type <|-[#808080]- ErrorType
+
+@enduml
