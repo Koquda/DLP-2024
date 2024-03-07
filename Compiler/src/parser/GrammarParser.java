@@ -422,7 +422,7 @@ public class GrammarParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ParamContext extends ParserRuleContext {
-		public FunctionParam ast;
+		public VarDefinition ast;
 		public Token IDENT;
 		public TypeContext type;
 		public TerminalNode IDENT() { return getToken(GrammarParser.IDENT, 0); }
@@ -447,7 +447,7 @@ public class GrammarParser extends Parser {
 			match(T__1);
 			setState(86);
 			((ParamContext)_localctx).type = type();
-			 ((ParamContext)_localctx).ast =  new FunctionParam(((ParamContext)_localctx).IDENT, ((ParamContext)_localctx).type.ast); 
+			 ((ParamContext)_localctx).ast =  new VarDefinition(((ParamContext)_localctx).IDENT, ((ParamContext)_localctx).type.ast); 
 			}
 		}
 		catch (RecognitionException re) {

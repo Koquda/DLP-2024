@@ -49,7 +49,7 @@ public class DefaultVisitor implements Visitor {
 	@Override
 	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
-		functionDefinition.getFunctionParams().forEach(functionParam -> functionParam.accept(this, param));
+		functionDefinition.getVarDefinitions().forEach(varDefinition -> varDefinition.accept(this, param));
 		functionDefinition.getType().accept(this, param);
 		functionDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
 		functionDefinition.getStatements().forEach(statement -> statement.accept(this, param));
@@ -60,13 +60,6 @@ public class DefaultVisitor implements Visitor {
 	public Object visit(StructField structField, Object param) {
 
 		structField.getType().accept(this, param);
-		return null;
-	}
-
-	@Override
-	public Object visit(FunctionParam functionParam, Object param) {
-
-		functionParam.getType().accept(this, param);
 		return null;
 	}
 

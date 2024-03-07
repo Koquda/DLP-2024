@@ -99,11 +99,11 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class FunctionDefinition(String name, List<FunctionParam> functionParams, Type type, List<Definition> definitions, List<Statement> statements)
+	// class FunctionDefinition(String name, List<VarDefinition> varDefinitions, Type type, List<Definition> definitions, List<Statement> statements)
 	@Override
 	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
-		// functionDefinition.getFunctionParams().forEach(functionParam -> functionParam.accept(this, param));
+		// functionDefinition.getVarDefinitions().forEach(varDefinition -> varDefinition.accept(this, param));
 		// functionDefinition.getType().accept(this, param);
 		// functionDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
 		// functionDefinition.getStatements().forEach(statement -> statement.accept(this, param));
@@ -122,16 +122,6 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class FunctionParam(String name, Type type)
-	@Override
-	public Object visit(FunctionParam functionParam, Object param) {
-
-		// functionParam.getType().accept(this, param);
-		super.visit(functionParam, param);
-
-		return null;
-	}
-
 	// class Assignment(Expression left, Expression right)
 	@Override
 	public Object visit(Assignment assignment, Object param) {
@@ -144,6 +134,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class FunctionCallStatement(String name, List<Expression> expressions)
+	// phase Identification { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
 
@@ -228,6 +219,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Variable(String name)
+	// phase Identification { VarDefinition varDefinition }
 	@Override
 	public Object visit(Variable variable, Object param) {
 
@@ -278,6 +270,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class FunctionCallExpression(String name, List<Expression> expressions)
+	// phase Identification { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(FunctionCallExpression functionCallExpression, Object param) {
 
@@ -358,6 +351,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class StructType(String name)
+	// phase Identification { StructDefinition structDefinition }
 	@Override
 	public Object visit(StructType structType, Object param) {
 

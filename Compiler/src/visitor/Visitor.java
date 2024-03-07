@@ -26,8 +26,6 @@ public interface Visitor {
 
 	public Object visit(StructField structField, Object param);
 
-	public Object visit(FunctionParam functionParam, Object param);
-
 	public Object visit(Assignment assignment, Object param);
 
 	public Object visit(FunctionCallStatement functionCallStatement, Object param);

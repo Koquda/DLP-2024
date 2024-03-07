@@ -17,7 +17,7 @@ program returns[Program ast]
 definition returns[Definition ast]
     : name=IDENT type                     { $ast = new VarDefinition($name, $type.ast); }        
     | name=IDENT structFields+=structField* { $ast = new StructDefinition($name, $structFields); } 
-    | name=IDENT functionParams+=functionParam* type definitions+=definition* statements+=statement* { $ast = new FunctionDefinition($name, $functionParams, $type.ast, $definitions, $statements); }
+    | name=IDENT varDefinitions+=varDefinition* type definitions+=definition* statements+=statement* { $ast = new FunctionDefinition($name, $varDefinitions, $type.ast, $definitions, $statements); }
 	;
 
 type returns[Type ast]
@@ -35,8 +35,8 @@ structField returns[StructField ast]
     : name=IDENT type                     { $ast = new StructField($name, $type.ast); }          
 	;
 
-functionParam returns[FunctionParam ast]
-    : name=IDENT type                     { $ast = new FunctionParam($name, $type.ast); }        
+varDefinition returns[VarDefinition ast]
+    : name=IDENT type                     { $ast = new VarDefinition($name, $type.ast); }        
 	;
 
 statement returns[Statement ast]

@@ -1,4 +1,4 @@
-// Generated from c:/Users/aleja/Desktop/DLP-2024/Clase5/clase5/specifications/Grammar.g4 by ANTLR 4.13.1
+// Generated from c:/Users/aleja/Desktop/DLP-2024/Compiler/specifications/Grammar.g4 by ANTLR 4.13.1
 
 	import ast.*;
 	import ast.expression.*;
@@ -421,7 +421,7 @@ public class GrammarParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ParamContext extends ParserRuleContext {
-		public FunctionParam ast;
+		public VarDefinition ast;
 		public Token IDENT;
 		public TypeContext type;
 		public TerminalNode IDENT() { return getToken(GrammarParser.IDENT, 0); }
@@ -446,7 +446,7 @@ public class GrammarParser extends Parser {
 			match(T__1);
 			setState(86);
 			((ParamContext)_localctx).type = type();
-			 ((ParamContext)_localctx).ast =  new FunctionParam(((ParamContext)_localctx).IDENT, ((ParamContext)_localctx).type.ast); 
+			 ((ParamContext)_localctx).ast =  new VarDefinition(((ParamContext)_localctx).IDENT, ((ParamContext)_localctx).type.ast); 
 			}
 		}
 		catch (RecognitionException re) {

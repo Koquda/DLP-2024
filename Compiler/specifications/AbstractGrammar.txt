@@ -10,10 +10,9 @@ program -> definition* ;
 
 varDefinition:definition -> string type;
 structDefinition:definition -> string structField*;
-functionDefinition:definition -> string functionParam* type definition* statement*;
+functionDefinition:definition -> string varDefinition* type definition* statement*;
 
 structField -> string type ;
-functionParam -> string type ;
 
 assignment:statement -> left:expression right:expression;
 functionCallStatement:statement -> string expression* ;
@@ -45,3 +44,11 @@ arrayType:type -> size:int type ;
 structType:type -> string ;
 voidType:type -> ;
 errorType:type -> ;
+
+// -----------------------
+ATTRIBUTE GRAMMAR Identification
+
+variable -> varDefinition;
+structType -> structDefinition;
+functionCallExpression -> functionDefinition;
+functionCallStatement -> functionDefinition;

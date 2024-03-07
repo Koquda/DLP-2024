@@ -13,65 +13,51 @@ import visitor.Visitor;
 // %% -------------------------------
 
 /*
-	functionParam -> name:string type:type
+	varDefinition -> type:type name:string
 */
-public class FunctionParam extends AbstractAST  {
+public class VarDefinition extends AbstractAST  {
 
     // ----------------------------------
     // Instance Variables
 
-	// functionParam -> string type
-	private String name;
+	// varDefinition -> type string
 	private Type type;
+	private String name;
 
     // ----------------------------------
     // Constructors
 
-	public FunctionParam(String name, Type type) {
+	public VarDefinition(Type type, String name) {
 		super();
-
-		if (name == null)
-			throw new IllegalArgumentException("Parameter 'name' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
-		this.name = name;
 
 		if (type == null)
 			throw new IllegalArgumentException("Parameter 'type' can't be null. Pass a non-null value or use 'type?' in the abstract grammar");
 		this.type = type;
 
-		updatePositions(name, type);
+		if (name == null)
+			throw new IllegalArgumentException("Parameter 'name' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
+		this.name = name;
+
+		updatePositions(type, name);
 	}
 
-	public FunctionParam(Object name, Object type) {
+	public VarDefinition(Object type, Object name) {
 		super();
-
-        if (name == null)
-            throw new IllegalArgumentException("Parameter 'name' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
-		this.name = (name instanceof Token) ? ((Token) name).getText() : (String) name;
 
         if (type == null)
             throw new IllegalArgumentException("Parameter 'type' can't be null. Pass a non-null value or use 'type?' in the abstract grammar");
 		this.type = (Type) type;
 
-		updatePositions(name, type);
+        if (name == null)
+            throw new IllegalArgumentException("Parameter 'name' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
+		this.name = (name instanceof Token) ? ((Token) name).getText() : (String) name;
+
+		updatePositions(type, name);
 	}
 
 
     // ----------------------------------
-    // functionParam -> string type
-
-	// Child 'string' 
-
-	public void setName(String name) {
-		if (name == null)
-			throw new IllegalArgumentException("Parameter 'name' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
-		this.name = name;
-
-	}
-
-    public String getName() {
-        return name;
-    }
-
+    // varDefinition -> type string
 
 	// Child 'type' 
 
@@ -87,6 +73,20 @@ public class FunctionParam extends AbstractAST  {
     }
 
 
+	// Child 'string' 
+
+	public void setName(String name) {
+		if (name == null)
+			throw new IllegalArgumentException("Parameter 'name' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
+		this.name = name;
+
+	}
+
+    public String getName() {
+        return name;
+    }
+
+
     // ----------------------------------
     // Helper methods
 
@@ -97,7 +97,7 @@ public class FunctionParam extends AbstractAST  {
 
     @Override
     public String toString() {
-        return "FunctionParam{" + " name=" + this.getName() + " type=" + this.getType() + "}";
+        return "VarDefinition{" + " type=" + this.getType() + " name=" + this.getName() + "}";
     }
 
 

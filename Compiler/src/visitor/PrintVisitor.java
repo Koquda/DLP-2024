@@ -1,7 +1,6 @@
 package visitor;
 
 import ast.AST;
-import ast.FunctionParam;
 import ast.Program;
 import ast.StructField;
 import ast.definition.FunctionDefinition;
@@ -89,16 +88,6 @@ public class PrintVisitor extends DefaultVisitor {
 
         System.out.println("StructField: " + structField.getName() + ", type: " + structField.getType());
 		super.visit(structField, param);
-
-		return null;
-	}
-
-	// class FunctionParam(String name, Type type)
-	@Override
-	public Object visit(FunctionParam functionParam, Object param) {
-
-        System.out.println("FunctionParam: " + functionParam.getName() + ", type: " + functionParam.getType());
-		super.visit(functionParam, param);
 
 		return null;
 	}

@@ -25,8 +25,8 @@ structField returns[StructField ast]
 	: IDENT ':' type ';' { $ast = new StructField($IDENT, $type.ast); }
 	;
 
-param returns[FunctionParam ast]
-	: IDENT ':' type { $ast = new FunctionParam($IDENT, $type.ast); }
+param returns[VarDefinition ast]
+	: IDENT ':' type { $ast = new VarDefinition($IDENT, $type.ast); }
 	;
 
 statement returns[Statement ast]

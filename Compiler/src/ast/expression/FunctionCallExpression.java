@@ -2,6 +2,7 @@
 
 package ast.expression;
 
+import ast.definition.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -17,6 +18,9 @@ import visitor.Visitor;
 /*
 	functionCallExpression: expression -> name:string expressions:expression*
 	expression -> 
+	
+	PHASE Identification
+	functionCallExpression -> functionDefinition:functionDefinition
 */
 public class FunctionCallExpression extends AbstractExpression  {
 
@@ -26,6 +30,9 @@ public class FunctionCallExpression extends AbstractExpression  {
 	// functionCallExpression: expression -> string expression*
 	private String name;
 	private List<Expression> expressions;
+
+    // PHASE Identification
+	private FunctionDefinition functionDefinition;
 
     // ----------------------------------
     // Constructors
@@ -88,6 +95,24 @@ public class FunctionCallExpression extends AbstractExpression  {
 
     public Stream<Expression> expressions() {
         return expressions.stream();
+    }
+
+
+
+    // --------------------------------
+    // PHASE Identification
+
+	// Attribute 'functionDefinition' 
+
+	public void setFunctionDefinition(FunctionDefinition functionDefinition) {
+		if (functionDefinition == null)
+			throw new IllegalArgumentException("Parameter 'functionDefinition' can't be null. Pass a non-null value or use 'functionDefinition?' in the abstract grammar");
+		this.functionDefinition = functionDefinition;
+
+	}
+
+    public FunctionDefinition getFunctionDefinition() {
+        return functionDefinition;
     }
 
 

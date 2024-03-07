@@ -2,6 +2,7 @@
 
 package ast.type;
 
+import ast.definition.*;
 import org.antlr.v4.runtime.Token;
 import visitor.Visitor;
 
@@ -14,6 +15,9 @@ import visitor.Visitor;
 /*
 	structType: type -> name:string
 	type -> 
+	
+	PHASE Identification
+	structType -> structDefinition:structDefinition
 */
 public class StructType extends AbstractType  {
 
@@ -22,6 +26,9 @@ public class StructType extends AbstractType  {
 
 	// structType: type -> string
 	private String name;
+
+    // PHASE Identification
+	private StructDefinition structDefinition;
 
     // ----------------------------------
     // Constructors
@@ -61,6 +68,24 @@ public class StructType extends AbstractType  {
 
     public String getName() {
         return name;
+    }
+
+
+
+    // --------------------------------
+    // PHASE Identification
+
+	// Attribute 'structDefinition' 
+
+	public void setStructDefinition(StructDefinition structDefinition) {
+		if (structDefinition == null)
+			throw new IllegalArgumentException("Parameter 'structDefinition' can't be null. Pass a non-null value or use 'structDefinition?' in the abstract grammar");
+		this.structDefinition = structDefinition;
+
+	}
+
+    public StructDefinition getStructDefinition() {
+        return structDefinition;
     }
 
 

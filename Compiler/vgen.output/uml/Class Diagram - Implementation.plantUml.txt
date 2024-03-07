@@ -73,7 +73,7 @@ class FunctionDefinition {
 	+String name
 }
 AbstractDefinition <|-[#808080]- FunctionDefinition
-FunctionDefinition o-[#404040,thickness=2]- "✱" FunctionParam : functionParams >
+FunctionDefinition o-[#404040,thickness=2]- "✱" VarDefinition : varDefinitions >
 FunctionDefinition o-[#404040,thickness=2]-  Type : type >
 FunctionDefinition o-[#404040,thickness=2]- "✱" Definition : definitions >
 FunctionDefinition o-[#404040,thickness=2]- "✱" Statement : statements >
@@ -83,12 +83,6 @@ class StructField {
 }
 AbstractAST <|-[#808080]- StructField
 StructField o-[#404040,thickness=2]-  Type : type >
-
-class FunctionParam {
-	+String name
-}
-AbstractAST <|-[#808080]- FunctionParam
-FunctionParam o-[#404040,thickness=2]-  Type : type >
 
 class Assignment {
 }
@@ -101,6 +95,7 @@ class FunctionCallStatement {
 }
 AbstractStatement <|-[#808080]- FunctionCallStatement
 FunctionCallStatement o-[#404040,thickness=2]- "✱" Expression : expressions >
+FunctionCallStatement -[#ff6600,thickness=3]-  FunctionDefinition #text:ff6600 : functionDefinition >
 
 class If {
 }
@@ -150,6 +145,7 @@ class Variable {
 	+String name
 }
 AbstractExpression <|-[#808080]- Variable
+Variable -[#ff6600,thickness=3]-  VarDefinition #text:ff6600 : varDefinition >
 
 class Arithmetic {
 	+String operator
@@ -182,6 +178,7 @@ class FunctionCallExpression {
 }
 AbstractExpression <|-[#808080]- FunctionCallExpression
 FunctionCallExpression o-[#404040,thickness=2]- "✱" Expression : expressions >
+FunctionCallExpression -[#ff6600,thickness=3]-  FunctionDefinition #text:ff6600 : functionDefinition >
 
 class StructAccess {
 	+String field
@@ -228,6 +225,7 @@ class StructType {
 	+String name
 }
 AbstractType <|-[#808080]- StructType
+StructType -[#ff6600,thickness=3]-  StructDefinition #text:ff6600 : structDefinition >
 
 class VoidType {
 }

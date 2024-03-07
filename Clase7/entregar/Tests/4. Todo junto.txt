@@ -1,0 +1,20 @@
+// En este fichero NO HAY ningún error: puede haber funciones, structs y variables que tenga el mismo nombre
+
+f() {
+}
+
+struct f {      // Puede haber una struct que se llame igual que una función
+    edad:int;
+}
+
+var f:int;    // Puede haber una variable que se llame igual que una función y que una struct
+
+main() {
+
+    var f:f;    // Puede haber una variable que se llame igual que un tipo
+
+    print f.edad;
+
+	f();
+
+}

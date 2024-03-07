@@ -1,0 +1,33 @@
+// Tiene 7 errores
+struct Punto {
+	x:int;
+	y:int;
+}
+var b:int;
+
+main() {
+	d = b; // d no definida
+	f(8); // f no definida
+}
+
+var p:int;
+
+f(p:int) {
+	var p:int; // param mismo name
+}
+
+struct Punto { // definicion duplicada
+	x:float;
+	y:float;
+}
+
+struct Persona {
+	a: [20]Empresa; // empresa no def
+}
+
+
+f():float {
+ // f ya definida
+}
+
+var b:char; // var duplicada

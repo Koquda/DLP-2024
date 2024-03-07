@@ -1,4 +1,4 @@
-// Generated from c:/Users/aleja/Desktop/DLP-2024/Clase5/clase5/specifications/Lexer.g4 by ANTLR 4.13.1
+// Generated from c:/Users/aleja/Desktop/DLP-2024/Compiler/specifications/Lexer.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
