@@ -1,0 +1,22 @@
+struct Persona {
+    edad:int;
+}
+
+main() {
+    var a:int;
+    var c:char;
+    var f:float;
+    var v:[10]int;
+    var raul:Persona;
+
+    print <[10]int>(8)[0];  // ERROR: no se puede hacer cast a tipo array
+    print <Persona>(8).edad;  // ERROR: no se puede hacer cast a tipo struct
+
+    print <int>(v);     // ERROR: no se puede convertir un array
+    print <int>(raul);  // ERROR: no se puede convertir un struct
+
+    print <int>(8);     // ERROR: el tipo de la expresión y el tipo destino deben ser distintos
+    print <char>('a');  // ERROR: el tipo de la expresión y el tipo destino deben ser distintos
+    print <float>(1.5); // ERROR: el tipo de la expresión y el tipo destino deben ser distintos
+
+}

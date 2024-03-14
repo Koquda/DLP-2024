@@ -1,0 +1,31 @@
+// Este test no debe producir NINGÚN error de compilacion
+
+struct Nombre {
+    letras:[10]char;
+}
+
+struct Persona {
+    nombre:Nombre;
+    edad:int;
+}
+
+main() {
+    var a:int;
+    var f:float;
+    var c:char;
+    var v:[10]int;
+    var v1:[10][10]int;
+
+    var raul:Persona;
+
+    read a;
+    read f;
+    read c;
+
+    read v[0];
+    read v1[0][0];
+
+    read raul.edad;
+    read raul.nombre.letras[0];
+
+}

@@ -1,6 +1,8 @@
 package semantic;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import ast.*;
 import ast.definition.FunctionDefinition;
@@ -55,6 +57,15 @@ public class Identification extends DefaultVisitor {
             notifyError("Struct already defined: " + structDefinition.getName(), structDefinition);
         else
             structs.put(structDefinition.getName(), structDefinition);
+
+        Set<String> fieldNames = new HashSet<>();
+        for (var field : structDefinition.getStructFields()) {
+            if (fieldNames.contains(field.getName())) {
+                notifyError("Field already defined: " + field.getName(), field);
+            } else {
+                fieldNames.add(field.getName());
+            }
+        }
 
 		super.visit(structDefinition, param);
 

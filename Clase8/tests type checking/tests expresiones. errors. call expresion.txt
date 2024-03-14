@@ -1,0 +1,37 @@
+struct Persona {
+    edad:int;
+}
+
+fVoid() { }
+fInt(a:int):int { }
+fIntInt(a:int, b:int):int { }
+
+fReturnInt():int { return 1; }
+
+main() {
+    var v:[10]int;
+    var raul:Persona;
+
+    // Comprobar llamada a función sin valor de retorno
+
+    print fVoid();   // ERROR + ERROR: la función no devuelve nada y print espera un tipo simple
+    print 2 + fVoid();   // ERROR: la función no devuelve nada
+
+    // Comprobar número de argumentos
+    print fInt(); // ERROR: número erróneo de argumentos
+    print fInt(1, 2); // ERROR: número erróneo de argumentos
+
+    print fIntInt(); // ERROR: número erróneo de argumentos
+    print fIntInt(1); // ERROR: número errónea de argumentos
+
+    // Comprobar tipos de los argumentos
+
+    print fInt(4.5);  // ERROR: argument type
+    print fInt('a');  // ERROR: argument type
+
+    print fIntInt(1, 4.5); // ERROR: argument type
+    print fIntInt('a', 1); // ERROR: argument type
+    print fIntInt(v, 1); // ERROR: argument type
+    print fIntInt(1, raul); // ERROR: argument type
+    print fIntInt('a', 4.5); // ERROR + ERROR: ambos están mal
+}

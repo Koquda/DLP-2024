@@ -1,0 +1,35 @@
+struct Persona {
+    edad:int;
+}
+
+f() { }
+fInt(a:int) { }
+fIntInt(a:int, b:int) { }
+
+
+main() {
+    var v:[10]int;
+    var raul:Persona;
+
+    // Comprobar número de argumentos
+
+    f(1);   // ERROR: número erróneo de argumentos
+    f(1, 2);    // ERROR: número erróneo de argumentos
+
+    fInt(); // ERROR: número erróneo de argumentos
+    fInt(1, 2); // ERROR: número erróneo de argumentos
+
+    fIntInt(); // ERROR: número erróneo de argumentos
+    fIntInt(1); // ERROR: número errónea de argumentos
+
+    // Comprobar tipos de los argumentos
+
+    fInt(4.5);  // ERROR: argument type
+    fInt('a');  // ERROR: argument type
+
+    fIntInt(1, 4.5); // ERROR: argument type
+    fIntInt('a', 1); // ERROR: argument type
+    fIntInt(v, 1); // ERROR: argument type
+    fIntInt(raul, 1); // ERROR: argument type
+    fIntInt('a', 4.5); // ERROR + ERROR: ambos están mal
+}

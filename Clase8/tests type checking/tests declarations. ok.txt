@@ -1,0 +1,64 @@
+struct Base {
+
+}
+
+struct Persona {
+    c1:char;
+    c2:int;
+    c3:float;
+
+    c12:Base;
+
+    c4:[10]char;
+    c5:[10]int;
+    c6:[10]float;
+    c10:[10]Base;
+
+    c7:[10][20]char;
+    c8:[10][20]int;
+    c9:[10][20]float;
+    c11:[10][20]Base;
+}
+
+f1() {}
+
+f2(a:int, c:char, f:float) {}
+
+f3():int {}
+f4():float {}
+f5():char {}
+
+var v1:int;
+var v2:float;
+var v3:char;
+
+var v4:Persona;
+
+var v5:[10]char;
+var v6:[10]int;
+var v7:[10]float;
+var v8:[10]Persona;
+
+var v9:[10][20]char;
+var v10:[10][20]int;
+var v11:[10][20]float;
+var v12:[10][20]Persona;
+
+f_locales() {
+    var l1:int;
+    var l2:float;
+    var l3:char;
+
+    var l4:Persona;
+
+    var l5:[10]char;
+    var l6:[10]int;
+    var l7:[10]float;
+    var l8:[10]Persona;
+
+    var l9:[10][20]char;
+    var l10:[10][20]int;
+    var l11:[10][20]float;
+    var l12:[10][20]Persona;
+
+}

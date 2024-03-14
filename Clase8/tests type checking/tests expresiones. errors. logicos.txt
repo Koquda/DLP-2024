@@ -1,0 +1,41 @@
+struct Persona {
+    edad:int;
+}
+
+main() {
+    var a:int;
+    var v:[10]int;
+    var raul:Persona;
+
+    // No se puede con char
+    a = 'a' || 1;    // ERROR: el primer operando debe ser entero
+    a = 1 || 'a';    // ERROR: el segundo operando tienen que ser enteros
+    a = 'a' && 1;    // ERROR: el primer operando debe ser entero
+    a = 1 && 'a';    // ERROR: el segundo operando tienen que ser enteros
+
+    // No se puede con float
+    a = 1.5 || 1;    // ERROR: el primer operando debe ser entero
+    a = 1 || 1.5;    // ERROR: el segundo operando tienen que ser enteros
+    a = 1.5 && 1;    // ERROR: el primer operando debe ser entero
+    a = 1 && 1.5;    // ERROR: el segundo operando tienen que ser enteros
+
+    // No se puede con arrays
+    a = v || 1;    // ERROR: el primer operando debe ser entero
+    a = 1 || v;    // ERROR: el segundo operando tienen que ser enteros
+    a = v && 1;    // ERROR: el primer operando debe ser entero
+    a = 1 && v;    // ERROR: el segundo operando tienen que ser enteros
+
+    // No se puede con structs
+    a = raul || 1;    // ERROR: el primer operando debe ser entero
+    a = 1 || raul;    // ERROR: el segundo operando tienen que ser enteros
+    a = raul && 1;    // ERROR: el primer operando debe ser entero
+    a = 1 && raul;    // ERROR: el segundo operando tienen que ser enteros
+
+    // NOT tiene que ser int
+
+    a = !1.6;    // ERROR: el operando debe ser int
+    a = !'a';    // ERROR: el operando debe ser int
+    a = !v;      // ERROR: el operando debe ser int
+    a = !raul;   // ERROR: el operando debe ser int
+
+}

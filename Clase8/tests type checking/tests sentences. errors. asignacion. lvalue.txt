@@ -1,0 +1,16 @@
+
+f():int { return 1; }
+
+main() {
+
+    5 + 6 = 1;          // ERROR: no es lvalue
+    1 && 2 = 1;         // ERROR: no es lvalue
+    1 > 2 = 1;          // ERROR: no es lvalue
+    !1 = 1;             // ERROR: no es lvalue
+    <int>(1.5) = 1;     // ERROR: no es lvalue
+    1 = 1;              // ERROR: no es lvalue
+    5.4 = 1.4;          // ERROR: no es lvalue
+    'a' = 'b';          // ERROR: no es lvalue
+    f() = 1;            // ERROR: no es lvalue
+
+}

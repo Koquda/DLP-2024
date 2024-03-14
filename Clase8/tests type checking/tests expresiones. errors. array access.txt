@@ -1,0 +1,19 @@
+struct Persona {
+    edad:int;
+}
+
+main() {
+    var a:int;
+    var v:[10]int;
+    var raul:Persona;
+
+    print 1[0]; // ERROR + ERROR: acceso a no-array y error en print
+    print 1.5[0]; // ERROR + ERROR: acceso a no-array y error en print
+    print 'a'[0]; // ERROR + ERROR: acceso a no-array y error en print
+    print raul[0]; // ERROR + ERROR: acceso a no-array y error en print
+
+    print v[1.5]; // ERROR: acceso a array con indice no entero
+    print v['a']; // ERROR: acceso a array con indice no entero
+    print v[raul]; // ERROR: acceso a array con indice no entero
+    print v[v]; // ERROR: acceso a array con indice no entero
+}

@@ -1,0 +1,12 @@
+struct Persona {
+    edad:int;
+}
+
+f1(a:[10] int) { }  // ERROR. Tipo del parámetro debe ser simple
+
+
+f2(pepe:Persona) { }   // ERROR. Tipo del parámetro debe ser simple
+
+f3():[10]int { }   // ERROR. tipo de retorno debe ser simple o void
+
+f4():Persona { }   // ERROR. tipo de retorno debe ser simple void

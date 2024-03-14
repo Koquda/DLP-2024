@@ -1,0 +1,43 @@
+struct Persona {}
+struct Persona2 {
+    campo:Persona;
+}
+
+main() {
+
+    var v10int:[10]int;
+    var v20int:[10]float;
+    var v10float:[10]float;
+    var v10x10int:[10][10]int;
+
+    var raul:Persona;
+    var raul2:Persona2;
+
+    // ERROR: el de la izquierda no es un tipo simple
+    // No da error de que sean tipo distintos
+    v10int = v10int;
+
+    // ERROR: el de la izquierda no es un tipo simple
+    // No da error de que sean tipo distintos
+    v10x10int[1] = v10int;
+
+    // ERROR: el de la izquierda no es un tipo simple
+    // ERROR: no son del mismo tipo
+    v10int = v20int;
+
+    // ERROR: el de la izquierda no es un tipo simple
+    // ERROR: no son del mismo tipo
+    v10int = v10float;
+
+    // ERROR: el de la izquierda no es un tipo simple
+    // No da error de que sean tipo distintos
+    raul = raul;
+
+    // ERROR: el de la izquierda no es un tipo simple
+    // ERROR: no son del mismo tipo
+    raul = raul2;
+
+    // ERROR: el de la izquierda no es un tipo simple
+    // No da error de que sean tipo distintos
+    raul2.campo = raul;
+}

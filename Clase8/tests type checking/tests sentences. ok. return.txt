@@ -1,0 +1,42 @@
+// En este fichero no hay NINGÚN error
+
+f() {
+    return;
+}
+
+f2() {
+    if (1) {
+        while(1) {
+            return;
+        }
+    }
+    else {
+        return;
+    }
+}
+
+f3():char {
+    return '\n';
+}
+
+f4():int {
+    if (1) {
+        while(1) {
+            return 1;
+        }
+    }
+    else {
+        return 2;
+    }
+}
+
+f5():float {
+    if (1) {
+        while(1) {
+            return 5.5 + 1.5;
+        }
+    }
+    else {
+        return <float>('a');
+    }
+}

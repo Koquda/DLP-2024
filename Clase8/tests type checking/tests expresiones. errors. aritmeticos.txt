@@ -1,0 +1,31 @@
+struct Persona {
+    edad:int;
+}
+
+main() {
+    var a:int;
+    var c:char;
+    var f:float;
+    var v:[10]int;
+    var raul:Persona;
+
+    // Aritméticos -----------------
+
+    // No se puede con Char
+
+    c = 'a' + 'b';    // ERROR: ambos operandos tienen que ser enteros
+    c = 'a' - 'b';    // ERROR: ambos operandos tienen que ser enteros
+    c = 'a' * 'b';    // ERROR: ambos operandos tienen que ser enteros
+    c = 'a' / 'b';    // ERROR: ambos operandos tienen que ser enteros
+    c = 'a' % 'b';    // ERROR: ambos operandos tienen que ser enteros
+
+    // Módulo sólo con enteros
+
+    f = 1.5 % 1.6;    // ERROR: ambos operandos tienen que ser enteros
+
+    f = 1.5 + 2;     // ERROR: ambos operandos tienen que ser del mismo tipo
+    a = 1 - 'a';    // ERROR: ambos operandos tienen que ser del mismo tipo
+    a = 2 / v;      // ERROR: ambos operandos tienen que ser del mismo tipo
+    a = 2 * raul;   // ERROR: ambos operandos tienen que ser del mismo tipo
+
+}
