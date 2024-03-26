@@ -1,0 +1,37 @@
+struct Persona {}
+struct Persona2 {
+    campo:Persona;
+}
+
+main() {
+
+    var v10int:[10]int;
+    var v10x10int:[10][10]int;
+
+    var raul:Persona;
+    var raul2:Persona2;
+
+    // ERROR: el primero no es un tipo simple
+    // ERROR: el segundo no es un tipo simple
+    print v10int, raul;
+
+    // ERROR: el primero no es un tipo simple
+    // ERROR: el segundo no es un tipo simple
+    print v10x10int[1], raul2.campo;
+
+    // ERROR: el primero no es un tipo simple
+    // ERROR: el segundo no es un tipo simple
+    printsp v10int, raul;
+
+    // ERROR: el primero no es un tipo simple
+    // ERROR: el segundo no es un tipo simple
+    printsp v10x10int[1], raul2.campo;
+
+    // ERROR: el primero no es un tipo simple
+    // ERROR: el segundo no es un tipo simple
+    println v10int, raul;
+
+    // ERROR: el primero no es un tipo simple
+    // ERROR: el segundo no es un tipo simple
+    println v10x10int[1], raul2.campo;
+}

@@ -1,0 +1,71 @@
+// Este test no debe producir NINGÚN error de compilacion
+
+struct Nombre {
+    letras:[10]char;
+}
+
+struct Persona {
+    edad:int;
+    nombre:Nombre;
+}
+
+fInt():int { return 1; }
+fFloat():float { return 1.0; }
+fChar():char { return 'a'; }
+
+
+main() {
+    var a:int;
+    var f:float;
+    var c:char;
+    var v:[10]int;
+    var w:[10][10]char;
+    var raul:Persona;
+
+    a = 1 + 1;
+    a = 1 - 1;
+    a = 1 * 1;
+    a = 1 / 1;
+    a = 1 % 1;
+
+    f = 1.0 + 1.0;
+    f = 1.0 - 1.0;
+    f = 1.0 * 1.0;
+    f = 1.0 / 1.0;
+
+    a = 1 && 1;
+    a = 1 || 1;
+
+    a = 1 < 1;
+    a = 1 <= 1;
+    a = 1 > 1;
+    a = 1 >= 1;
+    a = 1 == 1;
+    a = 1 != 1;
+
+    a = 1.0 < 1.0;
+    a = 1.0 <= 1.0;
+    a = 1.0 > 1.0;
+    a = 1.0 >= 1.0;
+    a = 1.0 == 1.0;
+    a = 1.0 != 1.0;
+
+    a = !1;
+
+    a = <int>(1.0);
+    a = <int>('a');
+    f = <float>(1);
+    f = <float>('a');
+    c = <char>(1);
+    c = <char>(1.0);
+
+    a = v[1];
+    c = w[1][1];
+
+    a = raul.edad;
+    c = raul.nombre.letras[1];
+
+    a = fInt();
+    f = fFloat();
+    c = fChar();
+}

@@ -1,0 +1,24 @@
+// En este fichero no hay NINGÚN error de compilación
+
+fToVoid() {}
+fToInt():int {}
+
+fIntInt(a:int, b:int) {}
+
+struct Persona {
+    edad:int;
+}
+
+main() {
+    var v:[10]int;
+    var raul:Persona;
+
+    fToVoid();
+
+    fToInt();   // Se puede llamar a una función sin usar su tipo de retorno
+
+    fIntInt(v[0] > 2, fToInt() * 2);
+
+    fIntInt(!raul.edad, <int>('\n'));
+
+}

@@ -1,0 +1,28 @@
+struct Persona {
+    edad:int;
+}
+
+main() {
+
+    var a:int;
+    var f:float;
+    var c:char;
+    var v:[10]int;
+    var p:Persona;
+
+    if(5.4) { }         // ERROR. La condición debe ser int
+    if(f) { }       // ERROR. La condición debe ser int
+    if('R') { }         // ERROR. La condición debe ser int
+    if(c) { }       // ERROR. La condición debe ser int
+    if(v) { }       // ERROR. La condición debe ser int
+    if(p) { }       // ERROR. La condición debe ser int
+
+    while(5.4) { }      // ERROR. La condición debe ser int
+    while(f) { }        // ERROR. La condición debe ser int
+    while('R') { }      // ERROR. La condición debe ser int
+    while(c) { }        // ERROR. La condición debe ser int
+    while(v) { }        // ERROR. La condición debe ser int
+    while(p) { }        // ERROR. La condición debe ser int
+
+
+}

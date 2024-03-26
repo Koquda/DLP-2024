@@ -2,6 +2,7 @@
 
 package ast.expression;
 
+import ast.type.*;
 import org.antlr.v4.runtime.Token;
 import visitor.Visitor;
 
@@ -14,6 +15,10 @@ import visitor.Visitor;
 /*
 	arithmetic: expression -> left:expression operator:string right:expression
 	expression -> 
+	
+	PHASE TypeChecking
+	expression -> type:type
+	expression -> lvalue:boolean
 */
 public class Arithmetic extends AbstractExpression  {
 

@@ -1,0 +1,40 @@
+struct Persona {
+    edad:int;
+}
+
+main() {
+    var a:int;
+    var f:float;
+    var c:char;
+    var v:[10]int;
+    var raul:Persona;
+
+
+    // Cada línea siguiente es un ERROR de que no son del mismo tipo
+
+    a = f;
+    a = c;
+    a = v;
+    a = raul;
+
+    f = a;
+    f = c;
+    f = v;
+    f = raul;
+
+    c = a;
+    c = f;
+    c = v;
+    c = raul;
+
+    v[0] = f;
+    v[0] = c;
+    v[0] = v;
+    v[0] = raul;
+
+    raul.edad = f;
+    raul.edad = c;
+    raul.edad = v;
+    raul.edad = raul;
+
+}

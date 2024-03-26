@@ -195,7 +195,9 @@ public class AstPrinter implements Visitor {
         printNodeChild(indent + 1, "right", "Expression", arithmetic.getRight());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-		printUnknownFields(indent + 1, arithmetic, "left", "operator", "right");
+        printToString(indent + 1, "vgen-attribute-phase-1", "type", "Type", arithmetic.getType());
+        printToString(indent + 1, "vgen-attribute-phase-1", "lvalue", "boolean", arithmetic.isLvalue());
+		printUnknownFields(indent + 1, arithmetic, "left", "operator", "right", "type", "lvalue");
 		return null;
 	}
 
@@ -209,7 +211,9 @@ public class AstPrinter implements Visitor {
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
         printToString(indent + 1, "vgen-attribute-phase-0", "varDefinition", "VarDefinition", variable.getVarDefinition());
-		printUnknownFields(indent + 1, variable, "name", "varDefinition");
+        printToString(indent + 1, "vgen-attribute-phase-1", "type", "Type", variable.getType());
+        printToString(indent + 1, "vgen-attribute-phase-1", "lvalue", "boolean", variable.isLvalue());
+		printUnknownFields(indent + 1, variable, "name", "type", "lvalue", "varDefinition");
 		return null;
 	}
 
@@ -222,7 +226,9 @@ public class AstPrinter implements Visitor {
         printNonNodeChild(indent + 1, "intValue", "int", intLiteral.getIntValue());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-		printUnknownFields(indent + 1, intLiteral, "intValue");
+        printToString(indent + 1, "vgen-attribute-phase-1", "type", "Type", intLiteral.getType());
+        printToString(indent + 1, "vgen-attribute-phase-1", "lvalue", "boolean", intLiteral.isLvalue());
+		printUnknownFields(indent + 1, intLiteral, "intValue", "type", "lvalue");
 		return null;
 	}
 
@@ -235,7 +241,9 @@ public class AstPrinter implements Visitor {
         printNonNodeChild(indent + 1, "floatValue", "float", floatLiteral.getFloatValue());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-		printUnknownFields(indent + 1, floatLiteral, "floatValue");
+        printToString(indent + 1, "vgen-attribute-phase-1", "type", "Type", floatLiteral.getType());
+        printToString(indent + 1, "vgen-attribute-phase-1", "lvalue", "boolean", floatLiteral.isLvalue());
+		printUnknownFields(indent + 1, floatLiteral, "floatValue", "type", "lvalue");
 		return null;
 	}
 

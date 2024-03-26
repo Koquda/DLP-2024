@@ -1,0 +1,26 @@
+struct Persona {}
+
+struct Persona2 {
+    campo:Persona;
+}
+
+main() {
+
+    var v10int:[10]int;
+    var v10x10int:[10][10]int;
+
+    var raul:Persona;
+    var raul2:Persona2;
+
+    // ERROR: no es un tipo simple
+    read v10int;
+
+    // ERROR: no es un tipo simple
+    read v10x10int[1];
+
+    // ERROR: no es un tipo simple
+    read raul;
+
+    // ERROR: no es un tipo simple
+    read raul2.campo;
+}

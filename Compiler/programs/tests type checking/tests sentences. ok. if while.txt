@@ -1,0 +1,13 @@
+main() {
+
+    var a:int;
+
+    if(1) {}
+    if(a) {}
+    if(a > 5) {}
+
+    while(1) {}
+    while(a) {}
+    while (a > 5) {}
+
+}

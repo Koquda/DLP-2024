@@ -1,7 +1,9 @@
 DATA
-	float price;
-	int price;	// Error: redefined variable
+	float f;
+	int i;
 
 CODE
-	print price;
-	print value;	// Error: undefined variable
+	i = 2.0;	// Error
+	f = 2;		// Error
+	print 1 + 2.5;	// Error
+	2 = i;			// Error (but not a type error)
