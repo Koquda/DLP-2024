@@ -188,7 +188,7 @@ public class DefaultVisitor implements Visitor {
 	@Override
 	public Object visit(Cast cast, Object param) {
 
-		cast.getType().accept(this, param);
+		cast.getCastType().accept(this, param);
 		cast.getExpression().accept(this, param);
 		return null;
 	}

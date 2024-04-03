@@ -3,6 +3,7 @@
 package ast.statement;
 
 import ast.expression.*;
+import ast.definition.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -17,6 +18,9 @@ import visitor.Visitor;
 /*
 	if: statement -> condition:expression ifBody:statement* elseBody:statement*
 	statement -> 
+	
+	PHASE TypeChecking
+	statement -> functionDefinition:functionDefinition
 */
 public class If extends AbstractStatement  {
 

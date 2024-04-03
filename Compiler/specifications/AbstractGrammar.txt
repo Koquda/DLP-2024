@@ -33,7 +33,7 @@ logicalComparison:expression -> left:expression operator:string right:expression
 negation:expression -> expression ;
 functionCallExpression:expression -> string expression* ;
 structAccess:expression -> expression field:string ;
-cast:expression -> type expression ;
+cast:expression -> castType:type expression ;
 arrayAccess:expression -> left:expression right:expression ;
 
 intType:type -> ;
@@ -51,4 +51,11 @@ ATTRIBUTE GRAMMAR Identification
 variable -> varDefinition;
 structType -> structDefinition;
 functionCallExpression -> functionDefinition;
-functionCallStatement -> functionDefinition;
+
+// -----------------------
+ATTRIBUTE GRAMMAR TypeChecking
+
+expression -> lvalue:boolean;
+expression -> type;
+statement -> functionDefinition;
+structAccess -> structField;

@@ -123,6 +123,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Assignment(Expression left, Expression right)
+	// phase TypeChecking { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(Assignment assignment, Object param) {
 
@@ -134,7 +135,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class FunctionCallStatement(String name, List<Expression> expressions)
-	// phase Identification { FunctionDefinition functionDefinition }
+	// phase TypeChecking { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
 
@@ -145,6 +146,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class If(Expression condition, List<Statement> ifBody, List<Statement> elseBody)
+	// phase TypeChecking { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(If ifValue, Object param) {
 
@@ -157,6 +159,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class While(Expression condition, List<Statement> statements)
+	// phase TypeChecking { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(While whileValue, Object param) {
 
@@ -168,6 +171,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Read(Expression expression)
+	// phase TypeChecking { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(Read read, Object param) {
 
@@ -178,6 +182,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Print(List<Expression> expressions, String lexema)
+	// phase TypeChecking { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(Print print, Object param) {
 
@@ -188,6 +193,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Return(Optional<Expression> expression)
+	// phase TypeChecking { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(Return returnValue, Object param) {
 
@@ -198,6 +204,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class IntLiteral(int value)
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(IntLiteral intLiteral, Object param) {
 
@@ -205,6 +212,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class FloatLiteral(float value)
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(FloatLiteral floatLiteral, Object param) {
 
@@ -212,6 +220,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class CharLiteral(String value)
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(CharLiteral charLiteral, Object param) {
 
@@ -220,6 +229,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 
 	// class Variable(String name)
 	// phase Identification { VarDefinition varDefinition }
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(Variable variable, Object param) {
 
@@ -227,6 +237,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Arithmetic(Expression left, String operator, Expression right)
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(Arithmetic arithmetic, Object param) {
 
@@ -238,6 +249,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class ArithmeticComparison(Expression left, String operator, Expression right)
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(ArithmeticComparison arithmeticComparison, Object param) {
 
@@ -249,6 +261,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class LogicalComparison(Expression left, String operator, Expression right)
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(LogicalComparison logicalComparison, Object param) {
 
@@ -260,6 +273,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Negation(Expression expression)
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(Negation negation, Object param) {
 
@@ -271,6 +285,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 
 	// class FunctionCallExpression(String name, List<Expression> expressions)
 	// phase Identification { FunctionDefinition functionDefinition }
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(FunctionCallExpression functionCallExpression, Object param) {
 
@@ -281,6 +296,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class StructAccess(Expression expression, String field)
+	// phase TypeChecking { boolean lvalue, Type type, StructField structField }
 	@Override
 	public Object visit(StructAccess structAccess, Object param) {
 
@@ -290,11 +306,12 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 		return null;
 	}
 
-	// class Cast(Type type, Expression expression)
+	// class Cast(Type castType, Expression expression)
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(Cast cast, Object param) {
 
-		// cast.getType().accept(this, param);
+		// cast.getCastType().accept(this, param);
 		// cast.getExpression().accept(this, param);
 		super.visit(cast, param);
 
@@ -302,6 +319,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class ArrayAccess(Expression left, Expression right)
+	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(ArrayAccess arrayAccess, Object param) {
 

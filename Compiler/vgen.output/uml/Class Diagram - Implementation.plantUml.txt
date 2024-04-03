@@ -20,11 +20,14 @@ AST *-[#404040,thickness=1]- Position : end >
 
 
 interface Expression {
+	..<color:#3366cc> TypeChecking </color>..
+	+<color:#3366cc>boolean lvalue</color>
 }
 AST <|-[#808080]- Expression
 abstract AbstractExpression
 Expression <|-[#808080]- AbstractExpression
 AbstractAST <|-[#808080]- AbstractExpression
+Expression -[#3366cc,thickness=3]-  Type #text:3366cc : type >
 
 interface Statement {
 }
@@ -32,6 +35,7 @@ AST <|-[#808080]- Statement
 abstract AbstractStatement
 Statement <|-[#808080]- AbstractStatement
 AbstractAST <|-[#808080]- AbstractStatement
+Statement -[#3366cc,thickness=3]-  FunctionDefinition #text:3366cc : functionDefinition >
 
 interface Definition {
 }
@@ -95,7 +99,6 @@ class FunctionCallStatement {
 }
 AbstractStatement <|-[#808080]- FunctionCallStatement
 FunctionCallStatement o-[#404040,thickness=2]- "✱" Expression : expressions >
-FunctionCallStatement -[#ff6600,thickness=3]-  FunctionDefinition #text:ff6600 : functionDefinition >
 
 class If {
 }
@@ -185,11 +188,12 @@ class StructAccess {
 }
 AbstractExpression <|-[#808080]- StructAccess
 StructAccess o-[#404040,thickness=2]-  Expression : expression >
+StructAccess -[#3366cc,thickness=3]-  StructField #text:3366cc : structField >
 
 class Cast {
 }
 AbstractExpression <|-[#808080]- Cast
-Cast o-[#404040,thickness=2]-  Type : type >
+Cast o-[#404040,thickness=2]-  Type : castType >
 Cast o-[#404040,thickness=2]-  Expression : expression >
 
 class ArrayAccess {

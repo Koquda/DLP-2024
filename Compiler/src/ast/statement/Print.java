@@ -3,6 +3,7 @@
 package ast.statement;
 
 import ast.expression.*;
+import ast.definition.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -18,6 +19,9 @@ import visitor.Visitor;
 /*
 	print: statement -> expressions:expression* lexema:string
 	statement -> 
+	
+	PHASE TypeChecking
+	statement -> functionDefinition:functionDefinition
 */
 public class Print extends AbstractStatement  {
 

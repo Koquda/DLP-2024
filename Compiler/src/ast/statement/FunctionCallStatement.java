@@ -20,8 +20,8 @@ import visitor.Visitor;
 	functionCallStatement: statement -> name:string expressions:expression*
 	statement -> 
 	
-	PHASE Identification
-	functionCallStatement -> functionDefinition:functionDefinition
+	PHASE TypeChecking
+	statement -> functionDefinition:functionDefinition
 */
 public class FunctionCallStatement extends AbstractStatement  {
 
@@ -31,9 +31,6 @@ public class FunctionCallStatement extends AbstractStatement  {
 	// functionCallStatement: statement -> string expression*
 	private String name;
 	private List<Expression> expressions;
-
-    // PHASE Identification
-	private FunctionDefinition functionDefinition;
 
     // ----------------------------------
     // Constructors
@@ -96,24 +93,6 @@ public class FunctionCallStatement extends AbstractStatement  {
 
     public Stream<Expression> expressions() {
         return expressions.stream();
-    }
-
-
-
-    // --------------------------------
-    // PHASE Identification
-
-	// Attribute 'functionDefinition' 
-
-	public void setFunctionDefinition(FunctionDefinition functionDefinition) {
-		if (functionDefinition == null)
-			throw new IllegalArgumentException("Parameter 'functionDefinition' can't be null. Pass a non-null value or use 'functionDefinition?' in the abstract grammar");
-		this.functionDefinition = functionDefinition;
-
-	}
-
-    public FunctionDefinition getFunctionDefinition() {
-        return functionDefinition;
     }
 
 

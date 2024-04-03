@@ -141,15 +141,12 @@ public class Identification extends DefaultVisitor {
 	}
 
 	// class FunctionCallStatement(String name, List<Expression> expressions)
-	// phase Identification { FunctionDefinition functionDefinition }
 	@Override
 	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
 
 		// functionCallStatement.getExpressions().forEach(expression -> expression.accept(this, param));
 		super.visit(functionCallStatement, param);
 
-		// TODO: Remember to initialize SYNTHESIZED attributes <-----
-		// functionCallStatement.setFunctionDefinition(?);
 		return null;
 	}
 
@@ -303,11 +300,11 @@ public class Identification extends DefaultVisitor {
 		return null;
 	}
 
-	// class Cast(Type type, Expression expression)
+	// class Cast(Type castType, Expression expression)
 	@Override
 	public Object visit(Cast cast, Object param) {
 
-		// cast.getType().accept(this, param);
+		// cast.getCastType().accept(this, param);
 		// cast.getExpression().accept(this, param);
 		super.visit(cast, param);
 

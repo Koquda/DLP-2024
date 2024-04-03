@@ -3,6 +3,7 @@
 package ast.statement;
 
 import ast.*;
+import ast.definition.*;
 
 // %% User Declarations -------------
 
@@ -12,10 +13,22 @@ import ast.*;
 
 /*
 	statement -> 
+	
+	PHASE TypeChecking
+	statement -> functionDefinition:functionDefinition
 */
 public interface Statement extends AST {
 
 
+
+
+    // --------------------------------
+    // PHASE TypeChecking
+
+	// Attribute 'functionDefinition' 
+
+	public void setFunctionDefinition(FunctionDefinition functionDefinition);
+	public FunctionDefinition getFunctionDefinition();
 
 
     // %% User Members -------------------------

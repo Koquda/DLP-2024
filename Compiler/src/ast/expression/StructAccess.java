@@ -2,6 +2,8 @@
 
 package ast.expression;
 
+import ast.type.*;
+import ast.*;
 import org.antlr.v4.runtime.Token;
 import visitor.Visitor;
 
@@ -14,6 +16,11 @@ import visitor.Visitor;
 /*
 	structAccess: expression -> expression:expression field:string
 	expression -> 
+	
+	PHASE TypeChecking
+	expression -> lvalue:boolean
+	expression -> type:type
+	structAccess -> structField:structField
 */
 public class StructAccess extends AbstractExpression  {
 
@@ -23,6 +30,9 @@ public class StructAccess extends AbstractExpression  {
 	// structAccess: expression -> expression field:string
 	private Expression expression;
 	private String field;
+
+    // PHASE TypeChecking
+	private StructField structField;
 
     // ----------------------------------
     // Constructors
@@ -84,6 +94,24 @@ public class StructAccess extends AbstractExpression  {
 
     public String getField() {
         return field;
+    }
+
+
+
+    // --------------------------------
+    // PHASE TypeChecking
+
+	// Attribute 'structField' 
+
+	public void setStructField(StructField structField) {
+		if (structField == null)
+			throw new IllegalArgumentException("Parameter 'structField' can't be null. Pass a non-null value or use 'structField?' in the abstract grammar");
+		this.structField = structField;
+
+	}
+
+    public StructField getStructField() {
+        return structField;
     }
 
 
