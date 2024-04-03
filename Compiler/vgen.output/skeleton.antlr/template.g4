@@ -45,7 +45,7 @@ statement returns[Statement ast]
     | expression ifBody+=statement* elseBody+=statement* { $ast = new If($expression.ast, $ifBody, $elseBody); }
     | expression statements+=statement*   { $ast = new While($expression.ast, $statements); }    
     | expression                          { $ast = new Read($expression.ast); }                  
-    | expression? lexema=IDENT            { $ast = new Print(($expression.ctx == null) ? null : $expression.ast, $lexema); }
+    | expressions+=expression* lexema=IDENT { $ast = new Print($expressions, $lexema); }           
     | expression?                         { $ast = new Return(($expression.ctx == null) ? null : $expression.ast); }
 	;
 

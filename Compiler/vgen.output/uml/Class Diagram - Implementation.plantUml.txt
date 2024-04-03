@@ -119,7 +119,7 @@ class Print {
 	+String lexema
 }
 AbstractStatement <|-[#808080]- Print
-Print o-[#404040,thickness=2]- "0..1" Expression : expression >
+Print o-[#404040,thickness=2]- "✱" Expression : expressions >
 
 class Return {
 }

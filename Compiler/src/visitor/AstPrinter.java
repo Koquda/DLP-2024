@@ -255,11 +255,11 @@ public class AstPrinter implements Visitor {
 		int indent = ((Integer)param);
 
 		// Imprimir los hijos (y recorrer si son nodos del AST)
-        printNodeChild(indent + 1, "expression", "Optional<Expression>", print.getExpression().orElse(null));
+        printListOfNodesChild(indent + 1, "expressions", "List<Expression>", print.getExpressions());
         printNonNodeChild(indent + 1, "lexema", "String", print.getLexema());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-		printUnknownFields(indent + 1, print, "expression", "lexema");
+		printUnknownFields(indent + 1, print, "expressions", "lexema");
 		return null;
 	}
 

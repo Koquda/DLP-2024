@@ -19,7 +19,7 @@ functionCallStatement:statement -> string expression* ;
 if:statement -> condition:expression ifBody:statement* elseBody:statement*;
 while:statement -> condition:expression statement* ;
 read:statement -> expression ;
-print:statement -> expression? lexema:string;
+print:statement -> expression* lexema:string;
 return:statement -> expression? ;
 
 

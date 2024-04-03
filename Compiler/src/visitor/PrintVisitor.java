@@ -146,7 +146,9 @@ public class PrintVisitor extends DefaultVisitor {
 	@Override
 	public Object visit(Print print, Object param) {
 
-		System.out.println("Print: " + print.getExpression() + ", lexema: " + print.getLexema());
+		for (var expression : print.getExpressions()) {
+			System.out.println("Expression: " + expression);
+		}
 		super.visit(print, param);
 
 		return null;

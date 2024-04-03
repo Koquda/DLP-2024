@@ -186,11 +186,11 @@ public class Identification extends DefaultVisitor {
 		return null;
 	}
 
-	// class Print(Optional<Expression> expression, String lexema)
+	// class Print(List<Expression> expressions, String lexema)
 	@Override
 	public Object visit(Print print, Object param) {
 
-		// print.getExpression().ifPresent(expression -> expression.accept(this, param));
+		// print.getExpressions().forEach(expression -> expression.accept(this, param));
 		super.visit(print, param);
 
 		return null;

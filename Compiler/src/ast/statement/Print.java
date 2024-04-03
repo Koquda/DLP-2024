@@ -3,7 +3,9 @@
 package ast.statement;
 
 import ast.expression.*;
-import java.util.Optional;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 import org.antlr.v4.runtime.Token;
 import visitor.Visitor;
 
@@ -14,7 +16,7 @@ import visitor.Visitor;
 // %% -------------------------------
 
 /*
-	print: statement -> expression:expression? lexema:string
+	print: statement -> expressions:expression* lexema:string
 	statement -> 
 */
 public class Print extends AbstractStatement  {
@@ -22,53 +24,57 @@ public class Print extends AbstractStatement  {
     // ----------------------------------
     // Instance Variables
 
-	// print: statement -> expression? lexema:string
-	private Optional<Expression> expression;
+	// print: statement -> expression* lexema:string
+	private List<Expression> expressions;
 	private String lexema;
 
     // ----------------------------------
     // Constructors
 
-	public Print(Optional<Expression> expression, String lexema) {
+	public Print(List<Expression> expressions, String lexema) {
 		super();
 
-		if (expression == null)
-			expression = Optional.empty();
-		this.expression = expression;
+		if (expressions == null)
+			expressions = new ArrayList<>();
+		this.expressions = expressions;
 
 		if (lexema == null)
 			throw new IllegalArgumentException("Parameter 'lexema' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
 		this.lexema = lexema;
 
-		updatePositions(expression, lexema);
+		updatePositions(expressions, lexema);
 	}
 
-	public Print(Object expression, Object lexema) {
+	public Print(Object expressions, Object lexema) {
 		super();
 
-        this.expression = castOptional(expression, Expression.class);
+        this.expressions = castList(expressions, unwrapIfContext.andThen(Expression.class::cast));
         if (lexema == null)
             throw new IllegalArgumentException("Parameter 'lexema' can't be null. Pass a non-null value or use 'string?' in the abstract grammar");
 		this.lexema = (lexema instanceof Token) ? ((Token) lexema).getText() : (String) lexema;
 
-		updatePositions(expression, lexema);
+		updatePositions(expressions, lexema);
 	}
 
 
     // ----------------------------------
-    // print: statement -> expression? lexema:string
+    // print: statement -> expression* lexema:string
 
-	// Child 'expression?' 
+	// Child 'expression*' 
 
-	public void setExpression(Optional<Expression> expression) {
-		if (expression == null)
-			expression = Optional.empty();
-		this.expression = expression;
+	public void setExpressions(List<Expression> expressions) {
+		if (expressions == null)
+			expressions = new ArrayList<>();
+		this.expressions = expressions;
 
 	}
 
-    public Optional<Expression> getExpression() {
-        return expression;
+    public List<Expression> getExpressions() {
+        return expressions;
+    }
+
+    public Stream<Expression> expressions() {
+        return expressions.stream();
     }
 
 
@@ -96,7 +102,7 @@ public class Print extends AbstractStatement  {
 
     @Override
     public String toString() {
-        return "Print{" + " expression=" + this.getExpression() + " lexema=" + this.getLexema() + "}";
+        return "Print{" + " expressions=" + this.getExpressions() + " lexema=" + this.getLexema() + "}";
     }
 
 

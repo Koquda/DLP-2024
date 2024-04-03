@@ -105,7 +105,7 @@ public class DefaultVisitor implements Visitor {
 	@Override
 	public Object visit(Print print, Object param) {
 
-		print.getExpression().ifPresent(expression -> expression.accept(this, param));
+		print.getExpressions().forEach(expression -> expression.accept(this, param));
 		return null;
 	}
 
