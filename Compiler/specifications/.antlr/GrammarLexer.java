@@ -1,4 +1,4 @@
-// Generated from /Users/koquda/dev/uni/DLP-2024/Compiler/specifications/Grammar.g4 by ANTLR 4.13.1
+// Generated from c:/Users/aleja/Desktop/DLP-2024/Compiler/specifications/Grammar.g4 by ANTLR 4.13.1
 
 	import ast.*;
 	import ast.expression.*;

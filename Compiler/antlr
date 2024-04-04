@@ -1,7 +1,0 @@
-cd specifications
-
-java -jar "../tools/antlr/antlr-4.11.1-complete.jar" -no-listener -package parser -o ../src/parser Grammar.g4
-
-cd ..
-rm -r src/parser/*.tokens
-rm -r src/parser/*.interp

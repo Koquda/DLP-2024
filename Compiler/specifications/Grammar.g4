@@ -15,7 +15,7 @@ program returns[Program ast]
 
 definition returns[Definition ast] locals [Type t]
 	: 'var' IDENT ':' type ';' { $ast = new VarDefinition($IDENT, $type.ast); }
-	| 'struct' IDENT  '{' fields+=structField+ '}' { $ast = new StructDefinition($IDENT, $fields); }
+	| 'struct' IDENT  '{' fields+=structField* '}' { $ast = new StructDefinition($IDENT, $fields); }
 	| IDENT '(' (paramList+=param (',' paramList+=param)*)? ')' { $t = new VoidType();} (':' type { $t = $type.ast;})? '{' definitions+=definition* statements+=statement* '}' {
 		 	$ast = new FunctionDefinition($IDENT, $paramList, $t, $definitions, $statements); 
 		}

@@ -59,7 +59,6 @@ recordatorios de que se deben inicializar dichos atributos.
 
 package semantic;
 
-import com.sun.jdi.DoubleType;
 import main.ErrorManager;
 import visitor.DefaultVisitor;
 import ast.*;
@@ -90,24 +89,26 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(FunctionDefinition functionDefinition, Object param) {
 
         // Predicates
-        functionDefinition.varDefinitions().forEach(funcParam -> isSimpleType(funcParam.getType()));
-        if (!(functionDefinition.getType() instanceof VoidType))
-            isSimpleType(functionDefinition.getType());
+        // Check if all the params are of type IntType, FloatType or CharType
+        functionDefinition.varDefinitions().forEach(funcParam -> {
+            funcParam.accept(this, param);
+            predicate(isSimpleType(funcParam.getType()), "Parameter type must be of type IntType, FloatType or CharType", funcParam.start());
+        });
+
+        // If the return type is not void, check if it is of type IntType, FloatType or CharType
+        if (!(functionDefinition.getType() instanceof VoidType)) {
+            if (isSimpleType(functionDefinition.getType()))
+                predicate(hasReturn(functionDefinition.getStatements()), "Function must have a return statement", functionDefinition.start());
+            else
+                predicate(isSimpleType(functionDefinition.getType()), "Return type must be of type IntType, FloatType or CharType", functionDefinition.start());
+        }
 
         // Semantic functions
         functionDefinition.statements().forEach(stmt -> stmt.setFunctionDefinition(functionDefinition));
 
-        super.visit(functionDefinition, param);
-
-        return null;
-    }
-
-    // class StructField(String name, Type type)
-    @Override
-    public Object visit(StructField structField, Object param) {
-
-        isSimpleType(structField.getType());
-        super.visit(structField, param);
+		functionDefinition.getType().accept(this, param);
+		functionDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
+		functionDefinition.getStatements().forEach(statement -> statement.accept(this, param));
 
         return null;
     }
@@ -118,8 +119,10 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Assignment assignment, Object param) {
         super.visit(assignment, param);
 
-        sameType(assignment.getLeft().getType(), assignment.getRight().getType());
-
+        predicate(sameType(assignment.getLeft().getType(), assignment.getRight().getType()), 
+        "Both sides of the assignment must be of the same type, left is " + assignment.getLeft().getType() + " and right is " + assignment.getRight().getType(),
+        assignment.getLeft().start());
+        predicate(isSimpleType(assignment.getLeft().getType()), "Both sides of the assignment must be of type IntType, FloatType or CharType", assignment.getLeft().start());
         return null;
     }
 
@@ -127,10 +130,16 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { FunctionDefinition functionDefinition }
     @Override
     public Object visit(FunctionCallStatement functionCallStatement, Object param) {
-
-        sameParams(functionCallStatement.getExpressions(), functionCallStatement.getFunctionDefinition().getVarDefinitions());
         super.visit(functionCallStatement, param);
 
+        var condition = functionCallStatement.getExpressions().size() == functionCallStatement.getFunctionDefinition().getVarDefinitions().size();
+        predicate(condition, "Function call parameters do not match the definition", functionCallStatement.start());
+
+        for (int i = 0; i < functionCallStatement.getExpressions().size(); i++) {
+            var expr = functionCallStatement.getExpressions().get(i);
+            var paramType = functionCallStatement.getFunctionDefinition().getVarDefinitions().get(i).getType();
+            predicate(sameType(expr.getType(), paramType), "Function call parameters do not match the definition", expr.start());
+        }
         return null;
     }
 
@@ -138,16 +147,17 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { FunctionDefinition functionDefinition }
     @Override
     public Object visit(If ifValue, Object param) {
+		ifValue.getCondition().accept(this, param);
 
         // Predicates
-        if (ifValue.getCondition().getType() instanceof IntType)
-            notifyError("Condition must be of type IntType");
+        predicate(ifValue.getCondition().getType() instanceof IntType, "Condition must be of type IntType", ifValue.getCondition().start());
 
         // Semantic functions
         ifValue.getIfBody().forEach(stmt -> stmt.setFunctionDefinition(ifValue.getFunctionDefinition()));
         ifValue.getElseBody().forEach(stmt -> stmt.setFunctionDefinition(ifValue.getFunctionDefinition()));
 
-        super.visit(ifValue, param);
+		ifValue.getIfBody().forEach(statement -> statement.accept(this, param));
+		ifValue.getElseBody().forEach(statement -> statement.accept(this, param));
 
         return null;
     }
@@ -156,15 +166,17 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { FunctionDefinition functionDefinition }
     @Override
     public Object visit(While whileValue, Object param) {
+		whileValue.getCondition().accept(this, param);
 
         // Predicates
-        if (whileValue.getCondition().getType() instanceof IntType)
-            notifyError("Condition must be of type IntType");
+        predicate(whileValue.getCondition().getType() instanceof IntType, "Condition must be of type IntType", whileValue.getCondition().start());
 
         // Semantic functions
-        whileValue.getStatements().forEach(stmt -> stmt.setFunctionDefinition(whileValue.getFunctionDefinition()));
+        if (whileValue.getFunctionDefinition() != null) {
+            whileValue.getStatements().forEach(stmt -> stmt.setFunctionDefinition(whileValue.getFunctionDefinition()));
+        }
 
-        super.visit(whileValue, param);
+		whileValue.getStatements().forEach(statement -> statement.accept(this, param));
 
         return null;
     }
@@ -173,9 +185,9 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { FunctionDefinition functionDefinition }
     @Override
     public Object visit(Read read, Object param) {
-        isSimpleType(read.getExpression().getType());
-
         super.visit(read, param);
+        
+        predicate(isSimpleType(read.getExpression().getType()), "Expression must be of type IntType, FloatType or CharType", read.getExpression().start());
 
         return null;
     }
@@ -186,7 +198,7 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Print print, Object param) {
         super.visit(print, param);
 
-        print.expressions().forEach(expr -> isSimpleType(expr.getType()));
+        print.expressions().forEach(expr -> predicate(isSimpleType(expr.getType()), "Expression must be of type IntType, FloatType or CharType", expr.start()));
 
         return null;
     }
@@ -197,8 +209,10 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Return returnValue, Object param) {
         super.visit(returnValue, param);
 
-        if (returnValue.getExpression().isPresent())
-            sameType(returnValue.getExpression().get().getType(), returnValue.getFunctionDefinition().getType());
+        if (returnValue.getExpression().isPresent()) 
+            predicate(sameType(returnValue.getExpression().get().getType(), returnValue.getFunctionDefinition().getType()), "Return type does not match the function definition", returnValue.getExpression().get().start() );
+
+        predicate(isSimpleType(returnValue.getFunctionDefinition().getType()), "Return type must be of type IntType, FloatType or CharType", returnValue.start());
 
         return null;
     }
@@ -250,10 +264,22 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Arithmetic arithmetic, Object param) {
         super.visit(arithmetic, param);
 
-        sameType(arithmetic.getLeft().getType(), arithmetic.getRight().getType());
+        var condition1 = sameType(arithmetic.getLeft().getType(), arithmetic.getRight().getType());
+        predicate(condition1, "Both sides of the operation must be of the same type", arithmetic.getLeft().start());
 
-        arithmetic.setType(arithmetic.getLeft().getType());
-        arithmetic.setLvalue(true);
+        boolean condition2;
+        if (arithmetic.getOperator().equals("%"))
+            condition2 = arithmetic.getLeft().getType() instanceof IntType;
+        else
+            condition2 = intOrFloat(arithmetic.getLeft().getType());
+        predicate(condition2, "Expected a number, found a " + arithmetic.getLeft().getType(), arithmetic.getLeft().start());
+
+        
+        if (!hasErrors(arithmetic, condition1, condition2)) {
+            arithmetic.setType(arithmetic.getLeft().getType());
+            arithmetic.setLvalue(true);
+        }
+
         return null;
     }
 
@@ -261,16 +287,15 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { boolean lvalue, Type type }
     @Override
     public Object visit(ArithmeticComparison arithmeticComparison, Object param) {
-        if (arithmeticComparison.getOperator().equals("%")) {
-            if (!(arithmeticComparison.getLeft().getType() instanceof IntType && arithmeticComparison.getRight().getType() instanceof IntType)) {
-                notifyError("Both sides of the operation must be of type IntType");
-            }
-        } else {
-            intOrDouble(arithmeticComparison.getLeft().getType());
-            intOrDouble(arithmeticComparison.getRight().getType());
-        }
-
         super.visit(arithmeticComparison, param);
+
+        var condition1 = sameType(arithmeticComparison.getLeft().getType(), arithmeticComparison.getLeft().getType());
+        predicate(condition1, "Both sides of the ArithmeticComparison must be the same type", arithmeticComparison.getLeft().start());
+        var condition2 = intOrFloat(arithmeticComparison.getLeft().getType());
+        predicate(condition2, "Expected a number, found a " + arithmeticComparison.getLeft().getType(), arithmeticComparison.getLeft().start());
+
+        if (hasErrors(arithmeticComparison, condition1, condition2))
+            return null;
 
         arithmeticComparison.setType(arithmeticComparison.getLeft().getType());
         arithmeticComparison.setLvalue(false);
@@ -281,14 +306,20 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { boolean lvalue, Type type }
     @Override
     public Object visit(LogicalComparison logicalComparison, Object param) {
-
-        if (!(logicalComparison.getLeft().getType() instanceof IntType && logicalComparison.getRight().getType() instanceof IntType))
-            notifyError("Both sides of the operation must be of type IntType");
-
         super.visit(logicalComparison, param);
 
-        logicalComparison.setType(logicalComparison.getLeft().getType());
-        logicalComparison.setLvalue(false);
+        var condition1 = sameType(logicalComparison.getLeft().getType(), logicalComparison.getLeft().getType());
+        predicate(condition1, "Both sides of the LogicalComparison must be the same type", logicalComparison.getLeft().start());
+        var condition2 = intOrFloat(logicalComparison.getLeft().getType());
+        predicate(condition2, "Expected a number, found a " + logicalComparison.getLeft().getType(), logicalComparison.getLeft().start());
+
+        if (!hasErrors(logicalComparison, condition1, condition2)) {
+            logicalComparison.setType(logicalComparison.getLeft().getType());
+            logicalComparison.setLvalue(false);
+        }
+            
+
+        
         return null;
     }
 
@@ -296,14 +327,15 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { boolean lvalue, Type type }
     @Override
     public Object visit(Negation negation, Object param) {
-
-        if (!(negation.getType() instanceof IntType))
-            notifyError("Both sides of the operation must be of type IntType");
-
         super.visit(negation, param);
 
-        negation.setType(negation.getExpression().getType());
-        negation.setLvalue(false);
+        predicate(negation.getType() instanceof IntType, "Expression must be of type IntType", negation.start());
+
+        if (!hasErrors(negation, negation.getType() instanceof IntType)) {
+            negation.setType(negation.getExpression().getType());
+            negation.setLvalue(false);
+        }
+
         return null;
     }
 
@@ -314,7 +346,16 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(FunctionCallExpression functionCallExpression, Object param) {
         super.visit(functionCallExpression, param);
 
-        sameParams(functionCallExpression.getExpressions(), functionCallExpression.getFunctionDefinition().getVarDefinitions());
+        var condition = functionCallExpression.getExpressions().size() == functionCallExpression.getFunctionDefinition().getVarDefinitions().size();
+        predicate(condition, "Function call parameters do not match the definition", functionCallExpression.start());
+        if (hasErrors(functionCallExpression, condition))
+            return null;
+
+        for (int i = 0; i < functionCallExpression.getExpressions().size(); i++) {
+            var expr = functionCallExpression.getExpressions().get(i);
+            var paramType = functionCallExpression.getFunctionDefinition().getVarDefinitions().get(i).getType();
+            predicate(sameType(expr.getType(), paramType), "Function call parameters do not match the definition", expr.start());
+        }
 
         functionCallExpression.setType(functionCallExpression.getFunctionDefinition().getType());
         functionCallExpression.setLvalue(false);
@@ -325,13 +366,23 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { boolean lvalue, Type type, StructField structField }
     @Override
     public Object visit(StructAccess structAccess, Object param) {
-
         super.visit(structAccess, param);
 
-        // TODO: Remember to initialize SYNTHESIZED attributes <-----
-        // structAccess.setLvalue(?);
-        // structAccess.setType(?);
-        // structAccess.setStructField(?);
+        var condition = structAccess.getExpression().getType() instanceof StructType;
+        predicate(condition, "Expression must be StructType", structAccess.getExpression().start());
+        if (hasErrors(structAccess, condition))
+            return null;
+
+        StructField field = ((StructType) structAccess.getExpression().getType()).getField(structAccess.getStructField());
+        condition = field != null;
+        predicate(condition, "Field not found in struct", structAccess.start());
+
+
+        if (!hasErrors(structAccess, condition)) {
+            structAccess.setLvalue(true);
+            structAccess.setType(structAccess.getStructField().getType());
+        }
+
         return null;
     }
 
@@ -339,12 +390,22 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { boolean lvalue, Type type }
     @Override
     public Object visit(Cast cast, Object param) {
-        isSimpleType(cast.getCastType());
-
         super.visit(cast, param);
 
-        cast.setType(cast.getExpression().getType());
-        cast.setLvalue(false);
+        var condition1 = sameType(cast.getExpression().getType(), cast.getCastType());
+        predicate(condition1, "Cannot cast to the same type " + cast.getCastType(), cast.start());
+
+        var condition2 = isSimpleType(cast.getCastType());
+        predicate(condition2, "Cannot cast to type " + cast.getCastType(), cast.start());
+
+        var condition3 = isSimpleType(cast.getExpression().getType());
+        predicate(condition3, "Cannot cast from type " + cast.getExpression().getType(), cast.start());
+
+        if (!hasErrors(cast, condition1, condition2, condition3)) {
+            cast.setType(cast.getExpression().getType());
+            cast.setLvalue(false);
+        }
+
         return null;
     }
 
@@ -352,45 +413,73 @@ public class TypeChecking extends DefaultVisitor {
     // phase TypeChecking { boolean lvalue, Type type }
     @Override
     public Object visit(ArrayAccess arrayAccess, Object param) {
-        if (!(arrayAccess.getRight().getType() instanceof IntType))
-            notifyError("Index must be of type IntType");
-
         super.visit(arrayAccess, param);
+
+        var condition1 = sameType(arrayAccess.getRight().getType(), new IntType());
+        predicate(condition1, "Array index must be of type IntType", arrayAccess.getRight().start());
+
+        var condition2 = arrayAccess.getLeft().getType() instanceof ArrayType;
+        predicate(condition2, "Trying to access an array, found " + arrayAccess.getLeft().getType(), arrayAccess.getLeft().start());
+    
+        if (!hasErrors(arrayAccess, condition1, condition2)) {
+            arrayAccess.setType(arrayAccess.getLeft().getType());
+            arrayAccess.setLvalue(true);
+        }
+
+
+        predicate(arrayAccess.getLeft().getType().getClass().equals(ArrayAccess.class), "Not accessing an array", arrayAccess.getLeft().start());
+        predicate(arrayAccess.getRight().getType() instanceof IntType, "Array index must be of type IntType", arrayAccess.getRight().start());
 
         arrayAccess.setType(arrayAccess.getLeft().getType());
         arrayAccess.setLvalue(true);
         return null;
     }
 
-    private void isSimpleType(Type type) {
-        if (type instanceof IntType || type instanceof DoubleType || type instanceof CharType)
-            return;
+    private void predicate(boolean condition, String messageError, Position positionError) {
+		if(!condition)
+			errorManager.notify("Comprobación de tipos", messageError, positionError);
+	}
 
-        notifyError("Type " + type.getClass() + " is not a simple type");
+    private boolean isSimpleType(Type type) {
+        return type instanceof IntType || type instanceof FloatType || type instanceof CharType;
     }
 
-    private void sameType(Type type1, Type type2) {
-        if (!type1.getClass().equals(type2.getClass()))
-            notifyError("Types are not the same");
+    private boolean sameType(Type type1, Type type2) {
+        return type1.getClass().equals(type2.getClass());
     }
 
-    private void sameParams(List<Expression> callParams, List<VarDefinition> defParams) {
-        if (callParams.size() != defParams.size())
-            notifyError("Number of parameters is not the same");
+    private boolean intOrFloat(Type type) {
+        return type instanceof IntType || type instanceof FloatType;
+    }
 
-        for (int i = 0; i < callParams.size(); i++) {
-            if (!callParams.get(i).getType().getClass().equals(defParams.get(i).getType().getClass()))
-                notifyError("Parameter types are not the same");
+    // TODO: refactor
+    private boolean hasReturn(List<Statement> statements) {
+        for (Statement stmt : statements) {
+            if (stmt instanceof Return)
+                return true;
+            if (stmt instanceof If) {
+                If ifStmt = (If) stmt;
+                if (hasReturn(ifStmt.getIfBody()) && hasReturn(ifStmt.getElseBody()))
+                    return true;
+            }
+            if (stmt instanceof While) {
+                While whileStmt = (While) stmt;
+                if (hasReturn(whileStmt.getStatements()))
+                    return true;
+            }
         }
+
+        return false;
     }
 
-    private void intOrDouble(Type type) {
-        if (!(type instanceof IntType || type instanceof DoubleType))
-            notifyError("Type must be IntType or DoubleType");
-    }
-
-    private void notifyError(String msg) {
-        errorManager.notify("Identification", msg);
+    private boolean hasErrors(Expression expr, boolean... conditions) {
+        for (boolean condition : conditions) {
+            if (!condition) {
+                expr.setType(ErrorType.getInstance());
+                return true;
+            }
+        }
+        return false;
     }
 
 }

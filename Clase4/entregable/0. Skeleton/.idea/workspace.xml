@@ -1,8 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="93840700-08f5-4f5e-8349-fa1a14a66888" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/antlr_4_11_1_complete.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/vgen_jar_with_dependencies.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Compiler/Compiler.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Compiler/specifications/specifications.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeleton.antlr/skeleton.antlr.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/vgen.output.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Clase2/Solucion ANTLR. vsc/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clase2/Solucion ANTLR. vsc/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Clase2/Solución Manual. vsc/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clase2/Solución Manual. vsc/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Clase3/Entregable/inicio.vsc/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clase3/Entregable/inicio.vsc/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Clase3/Entregable/solucion/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clase3/Entregable/solucion/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Clase6/Ejemplo Visitor. vsc/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clase6/Ejemplo Visitor. vsc/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/AST.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/AST.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/antlr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/Grammar.interp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/Grammar.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/GrammarBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/GrammarBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/GrammarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/GrammarLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/GrammarListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/GrammarListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/GrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/GrammarParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/.antlr/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/Grammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/Grammar.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/definition/StructDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/definition/StructDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/AbstractExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/AbstractExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Arithmetic.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Arithmetic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/ArithmeticComparison.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/ArithmeticComparison.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/ArrayAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/ArrayAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Cast.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Cast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/CharLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/CharLiteral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Expression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/FloatLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/FloatLiteral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/FunctionCallExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/FunctionCallExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/IntLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/IntLiteral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/LogicalComparison.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/LogicalComparison.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Negation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Negation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/StructAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/StructAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/expression/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/AbstractStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/AbstractStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Assignment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/FunctionCallStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/FunctionCallStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/If.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Print.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Print.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Read.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Read.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Return.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Return.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/Statement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/While.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/statement/While.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/type/ErrorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/type/ErrorType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/type/StructType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/type/StructType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/parser/GrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/parser/GrammarParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/semantic/TypeChecking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/semantic/TypeChecking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/visitor/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/visitor/AstPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/visitor/DefaultVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/visitor/DefaultVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeleton.antlr/template.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeleton.antlr/template.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeleton.visitor/SkeletonForNewVisitors.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeleton.visitor/SkeletonForNewVisitors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeletons.attgrammars/Identification.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeletons.attgrammars/Identification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeletons.specifications/Attribute Grammar.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeletons.specifications/Attribute Grammar.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeletons.specifications/Code Specification.template.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeletons.specifications/Code Specification.template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/uml/Class Diagram - Design.plantUml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/uml/Class Diagram - Design.plantUml.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/uml/Class Diagram - Implementation.plantUml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/uml/Class Diagram - Implementation.plantUml.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,17 +86,43 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/aleja/Desktop/DLP-2024/Compiler",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <module name="Compiler" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -51,10 +141,28 @@
       <workItem from="1709127544383" duration="29000" />
       <workItem from="1709804955957" duration="47000" />
       <workItem from="1709805029228" duration="129000" />
+      <workItem from="1712182555409" duration="117000" />
+      <workItem from="1712182862491" duration="1641000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../../../Compiler/src/semantic/TypeChecking.java</url>
+          <line>368</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../../../Compiler/src/semantic/Identification.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
