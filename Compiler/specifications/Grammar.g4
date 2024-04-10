@@ -35,7 +35,7 @@ statement returns[Statement ast]
 	| 'if' '(' expression ')' '{' ifBody+=statement* '}' ( 'else' '{' elseBody+=statement* '}' )? { $ast = new If($expression.ast, $ifBody, $elseBody); }
 	| 'while' '(' expression ')' '{' statements+=statement* '}' { $ast = new While($expression.ast, $statements); }
 	| 'read' expression ';' { $ast = new Read($expression.ast); }
-	| 'print' expressions+=expression (',' expressions+=expression)* ';' { $ast = new Print($expressions, ""); }
+	| 'print' (expressions+=expression (',' expressions+=expression)*)? ';' { $ast = new Print($expressions, ""); }
 	| 'printsp' (expressions+=expression (',' expressions+=expression)*)? ';' { $ast = new Print($expressions, "sp"); }
 	| 'println' (expressions+=expression (',' expressions+=expression)*)? ';' { $ast = new Print($expressions, "ln"); }
 	| 'return' expression? ';' { $ast = new Return($expression.ctx != null ? $expression.ast : null); }

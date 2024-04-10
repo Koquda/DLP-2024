@@ -120,6 +120,12 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Assignment assignment, Object param) {
         super.visit(assignment, param);
 
+        if (assignment.getRight().getType() instanceof ErrorType)
+            return null;
+
+        var condition = assignment.getLeft().isLvalue();
+        predicate(condition, "Left part of the assignment is not LValue", assignment.getLeft().start());
+
         predicate(sameType(assignment.getLeft().getType(), assignment.getRight().getType()), 
         "Both sides of the assignment must be of the same type, left is " + assignment.getLeft().getType() + " and right is " + assignment.getRight().getType(),
         assignment.getLeft().start());
@@ -135,6 +141,8 @@ public class TypeChecking extends DefaultVisitor {
 
         var condition = functionCallStatement.getExpressions().size() == functionCallStatement.getFunctionDefinition().getVarDefinitions().size();
         predicate(condition, "Function call parameters do not match the definition", functionCallStatement.start());
+        if (!condition)
+            return null;
 
         for (int i = 0; i < functionCallStatement.getExpressions().size(); i++) {
             var expr = functionCallStatement.getExpressions().get(i);
@@ -188,7 +196,7 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Read read, Object param) {
         super.visit(read, param);
         
-        predicate(isSimpleType(read.getExpression().getType()), "Expression must be of type IntType, FloatType or CharType", read.getExpression().start());
+        predicate(isSimpleType(read.getExpression().getType()), "Expression must be of a simple type", read.getExpression().start());
 
         return null;
     }
@@ -199,7 +207,13 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Print print, Object param) {
         super.visit(print, param);
 
-        print.expressions().forEach(expr -> predicate(isSimpleType(expr.getType()), "Expression must be of type IntType, FloatType or CharType", expr.start()));
+
+        print.expressions().forEach(expr -> {
+            if (expr.getType() instanceof ErrorType) {
+                return;
+            }
+            predicate(isSimpleType(expr.getType()), "Expression must be of a simple type", expr.start());
+        });
 
         return null;
     }
@@ -210,10 +224,11 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Return returnValue, Object param) {
         super.visit(returnValue, param);
 
-        if (returnValue.getExpression().isPresent()) 
+        if (returnValue.getExpression().isPresent()) {
             predicate(sameType(returnValue.getExpression().get().getType(), returnValue.getFunctionDefinition().getType()), "Return type does not match the function definition", returnValue.getExpression().get().start() );
+            predicate(isSimpleType(returnValue.getExpression().get().getType()), "Return type must be of type IntType, FloatType, CharType or VoidTyp or VoidType", returnValue.start());
+        }
 
-        predicate(isSimpleType(returnValue.getFunctionDefinition().getType()), "Return type must be of type IntType, FloatType or CharType", returnValue.start());
 
         return null;
     }
@@ -267,18 +282,26 @@ public class TypeChecking extends DefaultVisitor {
 
         var condition1 = sameType(arithmetic.getLeft().getType(), arithmetic.getRight().getType());
         predicate(condition1, "Both sides of the operation must be of the same type", arithmetic.getLeft().start());
+        if (hasErrors(arithmetic, condition1)) {
+            arithmetic.setLvalue(false);
+            return null;
+        }
 
         boolean condition2;
-        if (arithmetic.getOperator().equals("%"))
+        if (arithmetic.getOperator().equals("%")) {
             condition2 = arithmetic.getLeft().getType() instanceof IntType;
-        else
+            predicate(condition2, "Both operands have to be Int", arithmetic.getLeft().start());
+        } else {
             condition2 = intOrFloat(arithmetic.getLeft().getType());
-        predicate(condition2, "Expected a number, found a " + arithmetic.getLeft().getType(), arithmetic.getLeft().start());
+            predicate(condition2, "Both operands have to be Int or Float", arithmetic.getLeft().start());
+        }
 
         
-        if (!hasErrors(arithmetic, condition1, condition2)) {
+        if (hasErrors(arithmetic, condition1, condition2)) {
+            arithmetic.setLvalue(false);
+        } else {
             arithmetic.setType(arithmetic.getLeft().getType());
-            arithmetic.setLvalue(true);
+            arithmetic.setLvalue(false);
         }
 
         return null;
@@ -290,17 +313,22 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(ArithmeticComparison arithmeticComparison, Object param) {
         super.visit(arithmeticComparison, param);
 
-        var condition1 = sameType(arithmeticComparison.getLeft().getType(), arithmeticComparison.getLeft().getType());
+        var condition1 = sameType(arithmeticComparison.getLeft().getType(), arithmeticComparison.getRight().getType());
         predicate(condition1, "Both sides of the ArithmeticComparison must be the same type", arithmeticComparison.getLeft().start());
-        var condition2 = intOrFloat(arithmeticComparison.getLeft().getType());
-        predicate(condition2, "Expected a number, found a " + arithmeticComparison.getLeft().getType(), arithmeticComparison.getLeft().start());
-
-        if (!hasErrors(arithmeticComparison, condition1, condition2)) {
-            arithmeticComparison.setType(new ErrorType());
+        if (hasErrors(arithmeticComparison, condition1)) {
+            arithmeticComparison.setLvalue(false);
+            return null;
         }
 
-        arithmeticComparison.setType(new IntType());
-        arithmeticComparison.setLvalue(false);
+        condition1 = arithmeticComparison.getLeft().getType() instanceof IntType && arithmeticComparison.getRight().getType() instanceof IntType;
+        predicate(condition1, "Both operands expected to be ints", arithmeticComparison.getLeft().start());
+        if (hasErrors(arithmeticComparison, condition1)) {
+            arithmeticComparison.setLvalue(false);
+        } else {
+            arithmeticComparison.setType(new IntType());
+            arithmeticComparison.setLvalue(false);
+        }
+
         return null;
     }
 
@@ -310,18 +338,18 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(LogicalComparison logicalComparison, Object param) {
         super.visit(logicalComparison, param);
 
-        var condition1 = sameType(logicalComparison.getLeft().getType(), logicalComparison.getLeft().getType());
-        predicate(condition1, "Both sides of the LogicalComparison must be the same type", logicalComparison.getLeft().start());
-        var condition2 = intOrFloat(logicalComparison.getLeft().getType());
-        predicate(condition2, "Expected a number, found a " + logicalComparison.getLeft().getType(), logicalComparison.getLeft().start());
+        var condition1 = logicalComparison.getLeft().getType() instanceof IntType;
+        predicate(condition1, "First operand expected to be an integer, found a " + logicalComparison.getLeft().getType(), logicalComparison.getLeft().start());
+        var condition2 = logicalComparison.getRight().getType() instanceof IntType;
+        predicate(condition2, "Second operand expected to be an integer, found a " + logicalComparison.getRight().getType(), logicalComparison.getRight().start());
 
-        if (!hasErrors(logicalComparison, condition1, condition2)) {
+        if (hasErrors(logicalComparison, condition1, condition2)) {
+            logicalComparison.setLvalue(false);
+        } else {
             logicalComparison.setType(logicalComparison.getLeft().getType());
             logicalComparison.setLvalue(false);
         }
-            
 
-        
         return null;
     }
 
@@ -357,7 +385,7 @@ public class TypeChecking extends DefaultVisitor {
         for (int i = 0; i < functionCallExpression.getExpressions().size(); i++) {
             var expr = functionCallExpression.getExpressions().get(i);
             var paramType = functionCallExpression.getFunctionDefinition().getVarDefinitions().get(i).getType();
-            predicate(sameType(expr.getType(), paramType), "Function call parameters do not match the definition", expr.start());
+            predicate(sameType(expr.getType(), paramType), "Param with index " + i + " has wrong type", expr.start());
         }
 
         functionCallExpression.setType(functionCallExpression.getFunctionDefinition().getType());
@@ -371,10 +399,18 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(StructAccess structAccess, Object param) {
         super.visit(structAccess, param);
 
+        if (structAccess.getExpression().getType() instanceof ErrorType) {
+            structAccess.setLvalue(true);
+            structAccess.setType(structAccess.getExpression().getType());
+            return null;
+        }
+
         var condition = structAccess.getExpression().getType() instanceof StructType;
         predicate(condition, "Expression must be StructType", structAccess.getExpression().start());
-        if (hasErrors(structAccess, condition))
+        if (hasErrors(structAccess, condition)) {
+            structAccess.setLvalue(true);
             return null;
+        }
 
         StructField field = ((StructType) structAccess.getExpression().getType()).getField(structAccess.getField());
         condition = field != null;
@@ -418,23 +454,43 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(ArrayAccess arrayAccess, Object param) {
         super.visit(arrayAccess, param);
 
-        var condition1 = sameType(arrayAccess.getRight().getType(), new IntType());
-        predicate(condition1, "Array index must be of type IntType", arrayAccess.getRight().start());
+        if (arrayAccess.getLeft().getType() instanceof ErrorType) {
+            arrayAccess.setLvalue(false);
+            return null;
+        }
 
-        var condition2 = arrayAccess.getLeft().getType() instanceof ArrayType;
-        predicate(condition2, "Trying to access an array, found " + arrayAccess.getLeft().getType(), arrayAccess.getLeft().start());
-    
-        if (!hasErrors(arrayAccess, condition1, condition2)) {
-            arrayAccess.setType(arrayAccess.getLeft().getType());
+        var condition = sameType(arrayAccess.getRight().getType(), new IntType());
+        predicate(condition, "Array index must be of type IntType", arrayAccess.getRight().start());
+        if (hasErrors(arrayAccess, condition)) {
+            arrayAccess.setLvalue(false);
+            return null;
+        }
+
+        condition = arrayAccess.getLeft().getType() instanceof ArrayType;
+        predicate(condition, "Trying to access an array, found " + arrayAccess.getLeft().getType(), arrayAccess.getLeft().start());
+        if (hasErrors(arrayAccess, condition)) {
+            arrayAccess.setLvalue(false);
+            return null;
+        }
+
+        condition = arrayAccess.getLeft().getType() instanceof ArrayType;
+        predicate(condition, "Not accessing an array", arrayAccess.getLeft().start());
+        if (hasErrors(arrayAccess, condition)) {
+            arrayAccess.setLvalue(false);
+            return null;
+        }
+
+        condition = arrayAccess.getRight().getType() instanceof IntType;
+        predicate(condition, "Array index must be of type IntType", arrayAccess.getRight().start());
+
+        if (hasErrors(arrayAccess, condition)) {
+            arrayAccess.setLvalue(false);
+        } else {
+            var arrayType = (ArrayType) arrayAccess.getLeft().getType();
+            arrayAccess.setType(arrayType.getType());
             arrayAccess.setLvalue(true);
         }
 
-        predicate(arrayAccess.getLeft().getType() instanceof ArrayType, "Not accessing an array", arrayAccess.getLeft().start());
-        predicate(arrayAccess.getRight().getType() instanceof IntType, "Array index must be of type IntType", arrayAccess.getRight().start());
-
-        var arrayType = (ArrayType) arrayAccess.getLeft().getType();
-        arrayAccess.setType(arrayType.getType());
-        arrayAccess.setLvalue(true);
         return null;
     }
 
