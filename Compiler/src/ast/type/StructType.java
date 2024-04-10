@@ -107,8 +107,8 @@ public class StructType extends AbstractType  {
     // %% User Members -------------------------
 
         // Methods/attributes in this section will be preserved. Delete if not needed
-        public StructField getField(StructField structField) {
-            return structDefinition.getField(structField);
+        public StructField getField(String field) {
+            return structDefinition.getField(field);
         }
     
     

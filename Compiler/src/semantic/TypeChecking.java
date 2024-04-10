@@ -376,12 +376,12 @@ public class TypeChecking extends DefaultVisitor {
         if (hasErrors(structAccess, condition))
             return null;
 
-        StructField field = ((StructType) structAccess.getExpression().getType()).getField(structAccess.getStructField());
+        StructField field = ((StructType) structAccess.getExpression().getType()).getField(structAccess.getField());
         condition = field != null;
         predicate(condition, "Field not found in struct", structAccess.start());
 
-
         if (!hasErrors(structAccess, condition)) {
+            structAccess.setStructField(field);
             structAccess.setLvalue(true);
             structAccess.setType(structAccess.getStructField().getType());
         }

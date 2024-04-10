@@ -110,9 +110,9 @@ public class StructDefinition extends AbstractDefinition  {
 
         // Methods/attributes in this section will be preserved. Delete if not needed
 
-        public StructField getField(StructField structField) {
+        public StructField getField(String field) {
             return structFields.stream()
-                .filter(f -> f.getName().equals(structField.getName()))
+                .filter(f -> f.getName().equals(field))
                 .findFirst()
                 .orElse(null);
         }

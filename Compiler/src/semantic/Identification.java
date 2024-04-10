@@ -45,6 +45,9 @@ public class Identification extends DefaultVisitor {
             notifyError("Variable already defined: " + varDefinition.getName(), varDefinition);
         else
             variables.put(varDefinition.getName(), varDefinition);
+
+        super.visit(varDefinition, param);
+
         return null;
     }
 
@@ -134,6 +137,7 @@ public class Identification extends DefaultVisitor {
 		return null;
 	}
 
+    // TODO: hay que hacer este visit???
 	// class StructType(String name)
 	// phase Identification { StructDefinition structDefinition }
 	@Override
