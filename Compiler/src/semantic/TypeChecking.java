@@ -97,9 +97,10 @@ public class TypeChecking extends DefaultVisitor {
 
         // If the return type is not void, check if it is of type IntType, FloatType or CharType
         if (!(functionDefinition.getType() instanceof VoidType)) {
-            if (isSimpleType(functionDefinition.getType()))
-                predicate(hasReturn(functionDefinition.getStatements()), "Function must have a return statement", functionDefinition.start());
-            else
+            // TODO: mirar si tiene que estar o no
+            //if (isSimpleType(functionDefinition.getType()))
+                //predicate(hasReturn(functionDefinition.getStatements()), "Function must have a return statement", functionDefinition.start());
+            //else
                 predicate(isSimpleType(functionDefinition.getType()), "Return type must be of type IntType, FloatType or CharType", functionDefinition.start());
         }
 
@@ -294,10 +295,11 @@ public class TypeChecking extends DefaultVisitor {
         var condition2 = intOrFloat(arithmeticComparison.getLeft().getType());
         predicate(condition2, "Expected a number, found a " + arithmeticComparison.getLeft().getType(), arithmeticComparison.getLeft().start());
 
-        if (hasErrors(arithmeticComparison, condition1, condition2))
-            return null;
+        if (!hasErrors(arithmeticComparison, condition1, condition2)) {
+            arithmeticComparison.setType(new ErrorType());
+        }
 
-        arithmeticComparison.setType(arithmeticComparison.getLeft().getType());
+        arithmeticComparison.setType(new IntType());
         arithmeticComparison.setLvalue(false);
         return null;
     }
@@ -329,9 +331,10 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Negation negation, Object param) {
         super.visit(negation, param);
 
-        predicate(negation.getType() instanceof IntType, "Expression must be of type IntType", negation.start());
+        var condition = negation.getExpression().getType() instanceof IntType;
+        predicate(condition, "Expression must be of type IntType", negation.start());
 
-        if (!hasErrors(negation, negation.getType() instanceof IntType)) {
+        if (!hasErrors(negation, condition)) {
             negation.setType(negation.getExpression().getType());
             negation.setLvalue(false);
         }
@@ -392,7 +395,7 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Cast cast, Object param) {
         super.visit(cast, param);
 
-        var condition1 = sameType(cast.getExpression().getType(), cast.getCastType());
+        var condition1 = !sameType(cast.getExpression().getType(), cast.getCastType());
         predicate(condition1, "Cannot cast to the same type " + cast.getCastType(), cast.start());
 
         var condition2 = isSimpleType(cast.getCastType());
@@ -402,7 +405,7 @@ public class TypeChecking extends DefaultVisitor {
         predicate(condition3, "Cannot cast from type " + cast.getExpression().getType(), cast.start());
 
         if (!hasErrors(cast, condition1, condition2, condition3)) {
-            cast.setType(cast.getExpression().getType());
+            cast.setType(cast.getCastType());
             cast.setLvalue(false);
         }
 
@@ -426,11 +429,11 @@ public class TypeChecking extends DefaultVisitor {
             arrayAccess.setLvalue(true);
         }
 
-
-        predicate(arrayAccess.getLeft().getType().getClass().equals(ArrayAccess.class), "Not accessing an array", arrayAccess.getLeft().start());
+        predicate(arrayAccess.getLeft().getType() instanceof ArrayType, "Not accessing an array", arrayAccess.getLeft().start());
         predicate(arrayAccess.getRight().getType() instanceof IntType, "Array index must be of type IntType", arrayAccess.getRight().start());
 
-        arrayAccess.setType(arrayAccess.getLeft().getType());
+        var arrayType = (ArrayType) arrayAccess.getLeft().getType();
+        arrayAccess.setType(arrayType.getType());
         arrayAccess.setLvalue(true);
         return null;
     }

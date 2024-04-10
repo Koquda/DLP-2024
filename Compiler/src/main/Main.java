@@ -28,7 +28,7 @@ import codegeneration.*;
  */
 
 public class Main {
-    public static final String TEST_FILE = "C:\\Users\\aleja\\Desktop\\DLP-2024\\Compiler\\programs/tests type checking/tests expresiones. ok. operators.txt"; // Used in development and testing
+    public static final String TEST_FILE = "programs/tests type checking/tests expresiones. ok. operators.txt"; // Used in development and testing
     public static final String OUTPUT_FILE = "output.txt";
 
     public static void main(String[] args) throws Exception {

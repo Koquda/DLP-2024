@@ -11,7 +11,4 @@
     <orderEntry type="library" name="antlr-4.11.1-complete" level="project" />
     <orderEntry type="module" module-name="Compiler" />
   </component>
-  <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="b33bee95-588d-43b7-bc1b-cdc358b30c13" />
-  </component>
 </module>

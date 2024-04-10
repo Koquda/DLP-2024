@@ -10,7 +10,4 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Compiler" />
   </component>
-  <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="512ab322-06c7-45b4-943f-113034efd710" />
-  </component>
 </module>
