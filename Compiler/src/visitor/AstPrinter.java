@@ -129,7 +129,9 @@ public class AstPrinter implements Visitor {
         printNodeChild(indent + 1, "type", "Type", varDefinition.getType());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-		printUnknownFields(indent + 1, varDefinition, "name", "type");
+        printToString(indent + 1, "vgen-attribute-phase-0", "scope", "int", varDefinition.getScope());
+        printToString(indent + 1, "vgen-attribute-phase-2", "offset", "int", varDefinition.getOffset());
+		printUnknownFields(indent + 1, varDefinition, "name", "type", "scope", "offset");
 		return null;
 	}
 
@@ -160,7 +162,8 @@ public class AstPrinter implements Visitor {
         printListOfNodesChild(indent + 1, "statements", "List<Statement>", functionDefinition.getStatements());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-		printUnknownFields(indent + 1, functionDefinition, "name", "varDefinitions", "type", "definitions", "statements");
+        printToString(indent + 1, "vgen-attribute-phase-2", "bytesLocals", "int", functionDefinition.getBytesLocals());
+		printUnknownFields(indent + 1, functionDefinition, "name", "varDefinitions", "type", "definitions", "statements", "bytesLocals");
 		return null;
 	}
 
@@ -174,7 +177,8 @@ public class AstPrinter implements Visitor {
         printNodeChild(indent + 1, "type", "Type", structField.getType());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-		printUnknownFields(indent + 1, structField, "name", "type");
+        printToString(indent + 1, "vgen-attribute-phase-2", "offset", "int", structField.getOffset());
+		printUnknownFields(indent + 1, structField, "name", "type", "offset");
 		return null;
 	}
 

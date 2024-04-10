@@ -19,6 +19,9 @@ import visitor.Visitor;
 /*
 	functionDefinition: definition -> name:string varDefinitions:varDefinition* type:type definitions:definition* statements:statement*
 	definition -> 
+	
+	PHASE MemoryAllocation
+	functionDefinition -> bytesLocals:int
 */
 public class FunctionDefinition extends AbstractDefinition  {
 
@@ -31,6 +34,9 @@ public class FunctionDefinition extends AbstractDefinition  {
 	private Type type;
 	private List<Definition> definitions;
 	private List<Statement> statements;
+
+    // PHASE MemoryAllocation
+	private int bytesLocals;
 
     // ----------------------------------
     // Constructors
@@ -161,6 +167,22 @@ public class FunctionDefinition extends AbstractDefinition  {
 
     public Stream<Statement> statements() {
         return statements.stream();
+    }
+
+
+
+    // --------------------------------
+    // PHASE MemoryAllocation
+
+	// Attribute 'bytesLocals:int' 
+
+	public void setBytesLocals(int bytesLocals) {
+		this.bytesLocals = bytesLocals;
+
+	}
+
+    public int getBytesLocals() {
+        return bytesLocals;
     }
 
 

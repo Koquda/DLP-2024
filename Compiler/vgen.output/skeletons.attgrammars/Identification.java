@@ -87,12 +87,15 @@ public class Identification extends DefaultVisitor {
 	}
 
 	// class VarDefinition(String name, Type type)
+	// phase Identification { int scope }
 	@Override
 	public Object visit(VarDefinition varDefinition, Object param) {
 
 		// varDefinition.getType().accept(this, param);
 		super.visit(varDefinition, param);
 
+		// TODO: Remember to initialize SYNTHESIZED attributes <-----
+		// varDefinition.setScope(?);
 		return null;
 	}
 

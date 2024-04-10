@@ -35,6 +35,9 @@ public class FloatType extends AbstractType  {
     // %% User Members -------------------------
 
         // Methods/attributes in this section will be preserved. Delete if not needed
+        public int getSize() {
+            return 4;
+        }
 
     // %% --------------------------------------
 }

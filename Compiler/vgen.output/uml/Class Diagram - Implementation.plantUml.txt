@@ -63,6 +63,10 @@ Program o-[#404040,thickness=2]- "✱" Definition : definitions >
 
 class VarDefinition {
 	+String name
+	..<color:#ff6600> Identification </color>..
+	+<color:#ff6600>int scope</color>
+	..<color:#669900> MemoryAllocation </color>..
+	+<color:#669900>int offset</color>
 }
 AbstractDefinition <|-[#808080]- VarDefinition
 VarDefinition o-[#404040,thickness=2]-  Type : type >
@@ -75,6 +79,8 @@ StructDefinition o-[#404040,thickness=2]- "✱" StructField : structFields >
 
 class FunctionDefinition {
 	+String name
+	..<color:#669900> MemoryAllocation </color>..
+	+<color:#669900>int bytesLocals</color>
 }
 AbstractDefinition <|-[#808080]- FunctionDefinition
 FunctionDefinition o-[#404040,thickness=2]- "✱" VarDefinition : varDefinitions >
@@ -84,6 +90,8 @@ FunctionDefinition o-[#404040,thickness=2]- "✱" Statement : statements >
 
 class StructField {
 	+String name
+	..<color:#669900> MemoryAllocation </color>..
+	+<color:#669900>int offset</color>
 }
 AbstractAST <|-[#808080]- StructField
 StructField o-[#404040,thickness=2]-  Type : type >

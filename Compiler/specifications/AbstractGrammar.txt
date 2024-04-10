@@ -49,6 +49,7 @@ errorType:type -> ;
 ATTRIBUTE GRAMMAR Identification
 
 variable -> varDefinition;
+varDefinition -> scope:int;
 structType -> structDefinition;
 functionCallExpression -> functionDefinition;
 
@@ -59,3 +60,10 @@ expression -> lvalue:boolean;
 expression -> type;
 statement -> functionDefinition;
 structAccess -> structField;
+
+// -----------------------
+ATTRIBUTE GRAMMAR MemoryAllocation
+
+varDefinition -> offset:int;
+structField -> offset:int;
+functionDefinition -> bytesLocals:int;

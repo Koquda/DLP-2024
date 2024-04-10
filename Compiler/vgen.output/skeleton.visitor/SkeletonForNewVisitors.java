@@ -80,6 +80,8 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class VarDefinition(String name, Type type)
+	// phase Identification { int scope }
+	// phase MemoryAllocation { int offset }
 	@Override
 	public Object visit(VarDefinition varDefinition, Object param) {
 
@@ -100,6 +102,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class FunctionDefinition(String name, List<VarDefinition> varDefinitions, Type type, List<Definition> definitions, List<Statement> statements)
+	// phase MemoryAllocation { int bytesLocals }
 	@Override
 	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
@@ -113,6 +116,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class StructField(String name, Type type)
+	// phase MemoryAllocation { int offset }
 	@Override
 	public Object visit(StructField structField, Object param) {
 
