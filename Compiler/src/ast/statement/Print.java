@@ -21,7 +21,7 @@ import visitor.Visitor;
 	statement -> 
 	
 	PHASE TypeChecking
-	statement -> functionDefinition:functionDefinition
+	statement -> functionWhereDefined:functionDefinition
 */
 public class Print extends AbstractStatement  {
 

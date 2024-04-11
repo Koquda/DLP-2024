@@ -21,7 +21,7 @@ import visitor.Visitor;
 	expression -> 
 	
 	PHASE Identification
-	functionCallExpression -> functionDefinition:functionDefinition
+	functionCallExpression -> definition:functionDefinition
 	
 	PHASE TypeChecking
 	expression -> lvalue:boolean
@@ -37,7 +37,7 @@ public class FunctionCallExpression extends AbstractExpression  {
 	private List<Expression> expressions;
 
     // PHASE Identification
-	private FunctionDefinition functionDefinition;
+	private FunctionDefinition definition;
 
     // ----------------------------------
     // Constructors
@@ -107,17 +107,17 @@ public class FunctionCallExpression extends AbstractExpression  {
     // --------------------------------
     // PHASE Identification
 
-	// Attribute 'functionDefinition' 
+	// Attribute 'definition:functionDefinition' 
 
-	public void setFunctionDefinition(FunctionDefinition functionDefinition) {
-		if (functionDefinition == null)
-			throw new IllegalArgumentException("Parameter 'functionDefinition' can't be null. Pass a non-null value or use 'functionDefinition?' in the abstract grammar");
-		this.functionDefinition = functionDefinition;
+	public void setDefinition(FunctionDefinition definition) {
+		if (definition == null)
+			throw new IllegalArgumentException("Parameter 'definition' can't be null. Pass a non-null value or use 'functionDefinition?' in the abstract grammar");
+		this.definition = definition;
 
 	}
 
-    public FunctionDefinition getFunctionDefinition() {
-        return functionDefinition;
+    public FunctionDefinition getDefinition() {
+        return definition;
     }
 
 

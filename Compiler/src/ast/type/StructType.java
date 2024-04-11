@@ -2,6 +2,7 @@
 
 package ast.type;
 
+import ast.StructField;
 import ast.definition.*;
 import org.antlr.v4.runtime.Token;
 import visitor.Visitor;

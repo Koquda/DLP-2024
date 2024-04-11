@@ -103,7 +103,7 @@ public class Identification extends DefaultVisitor {
         if (definition == null)
             notifyError("Undefined function: " + functionCallStatement.getName(), functionCallStatement);
         else
-            functionCallStatement.setFunctionDefinition(definition);
+            functionCallStatement.setDefinition(definition);
 
 		super.visit(functionCallStatement, param);
 
@@ -131,7 +131,7 @@ public class Identification extends DefaultVisitor {
         if (definition == null)
             notifyError("Undefined function: " + functionCallExpression.getName(), functionCallExpression);
         else
-            functionCallExpression.setFunctionDefinition(definition);
+            functionCallExpression.setDefinition(definition);
 
 		super.visit(functionCallExpression, param);
 

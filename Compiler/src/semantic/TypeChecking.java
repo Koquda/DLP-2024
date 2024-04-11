@@ -92,7 +92,7 @@ public class TypeChecking extends DefaultVisitor {
         // Check if all the params are of type IntType, FloatType or CharType
         functionDefinition.varDefinitions().forEach(funcParam -> {
             funcParam.accept(this, param);
-            predicate(isSimpleType(funcParam.getType()), "Parameter type must be of type IntType, FloatType or CharType", funcParam.start());
+            predicate(isSimpleType(funcParam.getType()), "Parameter type must be a simple type", funcParam.start());
         });
 
         // If the return type is not void, check if it is of type IntType, FloatType or CharType
@@ -101,11 +101,11 @@ public class TypeChecking extends DefaultVisitor {
             //if (isSimpleType(functionDefinition.getType()))
                 //predicate(hasReturn(functionDefinition.getStatements()), "Function must have a return statement", functionDefinition.start());
             //else
-                predicate(isSimpleType(functionDefinition.getType()), "Return type must be of type IntType, FloatType or CharType", functionDefinition.start());
+                predicate(isSimpleType(functionDefinition.getType()), "Return type must be a simple type", functionDefinition.start());
         }
 
         // Semantic functions
-        functionDefinition.statements().forEach(stmt -> stmt.setFunctionDefinition(functionDefinition));
+        functionDefinition.statements().forEach(stmt -> stmt.setFunctionWhereDefined(functionDefinition));
 
 		functionDefinition.getType().accept(this, param);
 		functionDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
@@ -126,10 +126,10 @@ public class TypeChecking extends DefaultVisitor {
         var condition = assignment.getLeft().isLvalue();
         predicate(condition, "Left part of the assignment is not LValue", assignment.getLeft().start());
 
-        predicate(sameType(assignment.getLeft().getType(), assignment.getRight().getType()), 
-        "Both sides of the assignment must be of the same type, left is " + assignment.getLeft().getType() + " and right is " + assignment.getRight().getType(),
-        assignment.getLeft().start());
-        predicate(isSimpleType(assignment.getLeft().getType()), "Both sides of the assignment must be of type IntType, FloatType or CharType", assignment.getLeft().start());
+        predicate(isSimpleType(assignment.getLeft().getType()), "Left side of the assignment must be a simple type", assignment.getLeft().start());
+        predicate(sameType(assignment.getLeft().getType(), assignment.getRight().getType()),
+                "Both sides of the assignment must be of the same type, left is " + assignment.getLeft().getType() + " and right is " + assignment.getRight().getType(),
+                assignment.getLeft().start());
         return null;
     }
 
@@ -139,14 +139,14 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(FunctionCallStatement functionCallStatement, Object param) {
         super.visit(functionCallStatement, param);
 
-        var condition = functionCallStatement.getExpressions().size() == functionCallStatement.getFunctionDefinition().getVarDefinitions().size();
-        predicate(condition, "Function call parameters do not match the definition", functionCallStatement.start());
+        var condition = functionCallStatement.getExpressions().size() == functionCallStatement.getDefinition().getVarDefinitions().size();
+        predicate(condition, "Number of params in the function do not match the definition", functionCallStatement.start());
         if (!condition)
             return null;
 
         for (int i = 0; i < functionCallStatement.getExpressions().size(); i++) {
             var expr = functionCallStatement.getExpressions().get(i);
-            var paramType = functionCallStatement.getFunctionDefinition().getVarDefinitions().get(i).getType();
+            var paramType = functionCallStatement.getDefinition().getVarDefinitions().get(i).getType();
             predicate(sameType(expr.getType(), paramType), "Function call parameters do not match the definition", expr.start());
         }
         return null;
@@ -162,8 +162,8 @@ public class TypeChecking extends DefaultVisitor {
         predicate(ifValue.getCondition().getType() instanceof IntType, "Condition must be of type IntType", ifValue.getCondition().start());
 
         // Semantic functions
-        ifValue.getIfBody().forEach(stmt -> stmt.setFunctionDefinition(ifValue.getFunctionDefinition()));
-        ifValue.getElseBody().forEach(stmt -> stmt.setFunctionDefinition(ifValue.getFunctionDefinition()));
+        ifValue.getIfBody().forEach(stmt -> stmt.setFunctionWhereDefined(ifValue.getFunctionWhereDefined()));
+        ifValue.getElseBody().forEach(stmt -> stmt.setFunctionWhereDefined(ifValue.getFunctionWhereDefined()));
 
 		ifValue.getIfBody().forEach(statement -> statement.accept(this, param));
 		ifValue.getElseBody().forEach(statement -> statement.accept(this, param));
@@ -181,8 +181,8 @@ public class TypeChecking extends DefaultVisitor {
         predicate(whileValue.getCondition().getType() instanceof IntType, "Condition must be of type IntType", whileValue.getCondition().start());
 
         // Semantic functions
-        if (whileValue.getFunctionDefinition() != null) {
-            whileValue.getStatements().forEach(stmt -> stmt.setFunctionDefinition(whileValue.getFunctionDefinition()));
+        if (whileValue.getFunctionWhereDefined() != null) {
+            whileValue.getStatements().forEach(stmt -> stmt.setFunctionWhereDefined(whileValue.getFunctionWhereDefined()));
         }
 
 		whileValue.getStatements().forEach(statement -> statement.accept(this, param));
@@ -195,7 +195,8 @@ public class TypeChecking extends DefaultVisitor {
     @Override
     public Object visit(Read read, Object param) {
         super.visit(read, param);
-        
+
+        predicate(read.getExpression().isLvalue(), "Expression is not LValue", read.getExpression().start());
         predicate(isSimpleType(read.getExpression().getType()), "Expression must be of a simple type", read.getExpression().start());
 
         return null;
@@ -225,7 +226,7 @@ public class TypeChecking extends DefaultVisitor {
         super.visit(returnValue, param);
 
         if (returnValue.getExpression().isPresent()) {
-            predicate(sameType(returnValue.getExpression().get().getType(), returnValue.getFunctionDefinition().getType()), "Return type does not match the function definition", returnValue.getExpression().get().start() );
+            predicate(sameType(returnValue.getExpression().get().getType(), returnValue.getFunctionWhereDefined().getType()), "Return type does not match the function definition", returnValue.getExpression().get().start() );
             predicate(isSimpleType(returnValue.getExpression().get().getType()), "Return type must be of type IntType, FloatType, CharType or VoidTyp or VoidType", returnValue.start());
         }
 
@@ -320,8 +321,8 @@ public class TypeChecking extends DefaultVisitor {
             return null;
         }
 
-        condition1 = arithmeticComparison.getLeft().getType() instanceof IntType && arithmeticComparison.getRight().getType() instanceof IntType;
-        predicate(condition1, "Both operands expected to be ints", arithmeticComparison.getLeft().start());
+        condition1 = intOrFloat(arithmeticComparison.getLeft().getType()) && intOrFloat(arithmeticComparison.getRight().getType());
+        predicate(condition1, "Both operands expected to be ints or floats", arithmeticComparison.getLeft().start());
         if (hasErrors(arithmeticComparison, condition1)) {
             arithmeticComparison.setLvalue(false);
         } else {
@@ -377,18 +378,18 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(FunctionCallExpression functionCallExpression, Object param) {
         super.visit(functionCallExpression, param);
 
-        var condition = functionCallExpression.getExpressions().size() == functionCallExpression.getFunctionDefinition().getVarDefinitions().size();
+        var condition = functionCallExpression.getExpressions().size() == functionCallExpression.getDefinition().getVarDefinitions().size();
         predicate(condition, "Function call parameters do not match the definition", functionCallExpression.start());
         if (hasErrors(functionCallExpression, condition))
             return null;
 
         for (int i = 0; i < functionCallExpression.getExpressions().size(); i++) {
             var expr = functionCallExpression.getExpressions().get(i);
-            var paramType = functionCallExpression.getFunctionDefinition().getVarDefinitions().get(i).getType();
+            var paramType = functionCallExpression.getDefinition().getVarDefinitions().get(i).getType();
             predicate(sameType(expr.getType(), paramType), "Param with index " + i + " has wrong type", expr.start());
         }
 
-        functionCallExpression.setType(functionCallExpression.getFunctionDefinition().getType());
+        functionCallExpression.setType(functionCallExpression.getDefinition().getType());
         functionCallExpression.setLvalue(false);
         return null;
     }
@@ -504,6 +505,9 @@ public class TypeChecking extends DefaultVisitor {
     }
 
     private boolean sameType(Type type1, Type type2) {
+        if (type1 instanceof ArrayType t1 && type2 instanceof ArrayType t2) {
+            return t1.getType().getClass().equals(t2.getType().getClass());
+        }
         return type1.getClass().equals(type2.getClass());
     }
 

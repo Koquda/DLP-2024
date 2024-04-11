@@ -21,6 +21,7 @@ public interface Type extends AST {
     // %% User Members -------------------------
 
         // Methods/attributes in this section will be preserved. Delete if not needed
+    public int getSize();
 
     // %% --------------------------------------
 }

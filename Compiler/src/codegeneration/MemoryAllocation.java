@@ -30,12 +30,12 @@ public class MemoryAllocation extends DefaultVisitor {
 
         super.visit(varDefinition, param);
 
-        if(varDefinition.getScope()==0) {
-            varDefinition.setOffset(globalOffset);
-            globalOffset+=varDefinition.getType().getSize();
-        }else if(varDefinition.getScope()==1) {
-            localOffset -= varDefinition.getType().getSize(); //Ojo que es en negativo
-            varDefinition.setOffset(localOffset);
+        if(param instanceof FunctionDefinition) {
+            varDefinition.setAddress(globalOffset);
+            globalOffset += varDefinition.getType().getSize();
+        } else {
+            localOffset -= varDefinition.getType().getSize();
+            varDefinition.setAddress(localOffset);
         }
         return null;    }
     // class FunctionDefinition(String name, List<VarDefinition> varDefinitions, Type type, List<Definition> definitions, List<Statement> statements)
@@ -43,34 +43,31 @@ public class MemoryAllocation extends DefaultVisitor {
     @Override
     public Object visit(FunctionDefinition functionDefinition, Object param) {
         localOffset=0;
-        super.visit(functionDefinition, param);
+
+        functionDefinition.getVarDefinitions().forEach(varDefinition -> varDefinition.accept(this, functionDefinition));
+        functionDefinition.getType().accept(this, param);
+        functionDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
+        functionDefinition.getStatements().forEach(statement -> statement.accept(this, param));
 
         int paramBytesSum = 0;
         for (int i = functionDefinition.getVarDefinitions().size() - 1; i >= 0; i--) {
             VarDefinition varDef = functionDefinition.getVarDefinitions().get(i);
-            varDef.setOffset(4 + paramBytesSum);
-            paramBytesSum += varDef.type.numberOfBytes();
+            varDef.setAddress(4 + paramBytesSum);
+            paramBytesSum += varDef.getType().getSize();
         }
         return null;
     }
 
-    // class StructField(String name, Type type)
-    // phase MemoryAllocation { int offset }
+    // class StructDefinition(String name, List<StructField> structFields)
     @Override
-    public Object visit(StructField structField, Object param) {
+    public Object visit(StructDefinition structDefinition, Object param) {
+        super.visit(structDefinition, param);
 
-        // structField.getType().accept(this, param);
-        super.visit(structField, param);
-
-        // TODO: Remember to initialize SYNTHESIZED attributes <-----
-        // structField.setOffset(?);
-        return null;
-    }
-
-    // class StructType(String name)
-    // phase Identification { StructDefinition structDefinition }
-    @Override
-    public Object visit(StructType structType, Object param) {
+        int structOffset = 0; // in this case we don't have to control BP and ret addr
+        for (var structField : structDefinition.getStructFields()) {
+            structField.setAddress( structOffset);
+            structOffset += structField.getType().getSize();
+        }
 
         return null;
     }

@@ -49,21 +49,21 @@ errorType:type -> ;
 ATTRIBUTE GRAMMAR Identification
 
 variable -> varDefinition;
-varDefinition -> scope:int;
 structType -> structDefinition;
-functionCallExpression -> functionDefinition;
+functionCallExpression -> definition:functionDefinition;
+functionCallStatement -> definition:functionDefinition;
 
 // -----------------------
 ATTRIBUTE GRAMMAR TypeChecking
 
 expression -> lvalue:boolean;
 expression -> type;
-statement -> functionDefinition;
+statement -> functionWhereDefined:functionDefinition;
 structAccess -> structField;
 
 // -----------------------
 ATTRIBUTE GRAMMAR MemoryAllocation
 
-varDefinition -> offset:int;
-structField -> offset:int;
+varDefinition -> [inh] address:int;
+structField -> [inh] address:int;
 functionDefinition -> bytesLocals:int;

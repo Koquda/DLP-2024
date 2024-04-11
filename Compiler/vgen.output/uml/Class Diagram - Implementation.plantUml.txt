@@ -35,7 +35,7 @@ AST <|-[#808080]- Statement
 abstract AbstractStatement
 Statement <|-[#808080]- AbstractStatement
 AbstractAST <|-[#808080]- AbstractStatement
-Statement -[#3366cc,thickness=3]-  FunctionDefinition #text:3366cc : functionDefinition >
+Statement -[#3366cc,thickness=3]-  FunctionDefinition #text:3366cc : functionWhereDefined >
 
 interface Definition {
 }
@@ -63,10 +63,8 @@ Program o-[#404040,thickness=2]- "✱" Definition : definitions >
 
 class VarDefinition {
 	+String name
-	..<color:#ff6600> Identification </color>..
-	+<color:#ff6600>int scope</color>
 	..<color:#669900> MemoryAllocation </color>..
-	+<color:#669900>int offset</color>
+	+<color:#669900>int address</color>
 }
 AbstractDefinition <|-[#808080]- VarDefinition
 VarDefinition o-[#404040,thickness=2]-  Type : type >
@@ -91,7 +89,7 @@ FunctionDefinition o-[#404040,thickness=2]- "✱" Statement : statements >
 class StructField {
 	+String name
 	..<color:#669900> MemoryAllocation </color>..
-	+<color:#669900>int offset</color>
+	+<color:#669900>int address</color>
 }
 AbstractAST <|-[#808080]- StructField
 StructField o-[#404040,thickness=2]-  Type : type >
@@ -107,6 +105,7 @@ class FunctionCallStatement {
 }
 AbstractStatement <|-[#808080]- FunctionCallStatement
 FunctionCallStatement o-[#404040,thickness=2]- "✱" Expression : expressions >
+FunctionCallStatement -[#ff6600,thickness=3]-  FunctionDefinition #text:ff6600 : definition >
 
 class If {
 }
@@ -189,7 +188,7 @@ class FunctionCallExpression {
 }
 AbstractExpression <|-[#808080]- FunctionCallExpression
 FunctionCallExpression o-[#404040,thickness=2]- "✱" Expression : expressions >
-FunctionCallExpression -[#ff6600,thickness=3]-  FunctionDefinition #text:ff6600 : functionDefinition >
+FunctionCallExpression -[#ff6600,thickness=3]-  FunctionDefinition #text:ff6600 : definition >
 
 class StructAccess {
 	+String field

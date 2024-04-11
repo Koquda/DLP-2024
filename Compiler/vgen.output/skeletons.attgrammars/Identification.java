@@ -87,15 +87,12 @@ public class Identification extends DefaultVisitor {
 	}
 
 	// class VarDefinition(String name, Type type)
-	// phase Identification { int scope }
 	@Override
 	public Object visit(VarDefinition varDefinition, Object param) {
 
 		// varDefinition.getType().accept(this, param);
 		super.visit(varDefinition, param);
 
-		// TODO: Remember to initialize SYNTHESIZED attributes <-----
-		// varDefinition.setScope(?);
 		return null;
 	}
 
@@ -144,12 +141,15 @@ public class Identification extends DefaultVisitor {
 	}
 
 	// class FunctionCallStatement(String name, List<Expression> expressions)
+	// phase Identification { FunctionDefinition definition }
 	@Override
 	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
 
 		// functionCallStatement.getExpressions().forEach(expression -> expression.accept(this, param));
 		super.visit(functionCallStatement, param);
 
+		// TODO: Remember to initialize SYNTHESIZED attributes <-----
+		// functionCallStatement.setDefinition(?);
 		return null;
 	}
 
@@ -281,7 +281,7 @@ public class Identification extends DefaultVisitor {
 	}
 
 	// class FunctionCallExpression(String name, List<Expression> expressions)
-	// phase Identification { FunctionDefinition functionDefinition }
+	// phase Identification { FunctionDefinition definition }
 	@Override
 	public Object visit(FunctionCallExpression functionCallExpression, Object param) {
 
@@ -289,7 +289,7 @@ public class Identification extends DefaultVisitor {
 		super.visit(functionCallExpression, param);
 
 		// TODO: Remember to initialize SYNTHESIZED attributes <-----
-		// functionCallExpression.setFunctionDefinition(?);
+		// functionCallExpression.setDefinition(?);
 		return null;
 	}
 

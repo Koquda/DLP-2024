@@ -129,9 +129,8 @@ public class AstPrinter implements Visitor {
         printNodeChild(indent + 1, "type", "Type", varDefinition.getType());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-0", "scope", "int", varDefinition.getScope());
-        printToString(indent + 1, "vgen-attribute-phase-2", "offset", "int", varDefinition.getOffset());
-		printUnknownFields(indent + 1, varDefinition, "name", "type", "scope", "offset");
+        printToString(indent + 1, "vgen-attribute-phase-2", "address", "int", varDefinition.getAddress());
+		printUnknownFields(indent + 1, varDefinition, "name", "type", "address");
 		return null;
 	}
 
@@ -177,8 +176,8 @@ public class AstPrinter implements Visitor {
         printNodeChild(indent + 1, "type", "Type", structField.getType());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-2", "offset", "int", structField.getOffset());
-		printUnknownFields(indent + 1, structField, "name", "type", "offset");
+        printToString(indent + 1, "vgen-attribute-phase-2", "address", "int", structField.getAddress());
+		printUnknownFields(indent + 1, structField, "name", "type", "address");
 		return null;
 	}
 
@@ -192,8 +191,8 @@ public class AstPrinter implements Visitor {
         printNodeChild(indent + 1, "right", "Expression", assignment.getRight());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-1", "functionDefinition", "FunctionDefinition", assignment.getFunctionDefinition());
-		printUnknownFields(indent + 1, assignment, "left", "right", "functionDefinition");
+        printToString(indent + 1, "vgen-attribute-phase-1", "functionWhereDefined", "FunctionDefinition", assignment.getFunctionWhereDefined());
+		printUnknownFields(indent + 1, assignment, "left", "right", "functionWhereDefined");
 		return null;
 	}
 
@@ -207,8 +206,9 @@ public class AstPrinter implements Visitor {
         printListOfNodesChild(indent + 1, "expressions", "List<Expression>", functionCallStatement.getExpressions());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-1", "functionDefinition", "FunctionDefinition", functionCallStatement.getFunctionDefinition());
-		printUnknownFields(indent + 1, functionCallStatement, "name", "expressions", "functionDefinition");
+        printToString(indent + 1, "vgen-attribute-phase-0", "definition", "FunctionDefinition", functionCallStatement.getDefinition());
+        printToString(indent + 1, "vgen-attribute-phase-1", "functionWhereDefined", "FunctionDefinition", functionCallStatement.getFunctionWhereDefined());
+		printUnknownFields(indent + 1, functionCallStatement, "name", "expressions", "functionWhereDefined", "definition");
 		return null;
 	}
 
@@ -223,8 +223,8 @@ public class AstPrinter implements Visitor {
         printListOfNodesChild(indent + 1, "elseBody", "List<Statement>", ifValue.getElseBody());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-1", "functionDefinition", "FunctionDefinition", ifValue.getFunctionDefinition());
-		printUnknownFields(indent + 1, ifValue, "condition", "ifBody", "elseBody", "functionDefinition");
+        printToString(indent + 1, "vgen-attribute-phase-1", "functionWhereDefined", "FunctionDefinition", ifValue.getFunctionWhereDefined());
+		printUnknownFields(indent + 1, ifValue, "condition", "ifBody", "elseBody", "functionWhereDefined");
 		return null;
 	}
 
@@ -238,8 +238,8 @@ public class AstPrinter implements Visitor {
         printListOfNodesChild(indent + 1, "statements", "List<Statement>", whileValue.getStatements());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-1", "functionDefinition", "FunctionDefinition", whileValue.getFunctionDefinition());
-		printUnknownFields(indent + 1, whileValue, "condition", "statements", "functionDefinition");
+        printToString(indent + 1, "vgen-attribute-phase-1", "functionWhereDefined", "FunctionDefinition", whileValue.getFunctionWhereDefined());
+		printUnknownFields(indent + 1, whileValue, "condition", "statements", "functionWhereDefined");
 		return null;
 	}
 
@@ -252,8 +252,8 @@ public class AstPrinter implements Visitor {
         printNodeChild(indent + 1, "expression", "Expression", read.getExpression());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-1", "functionDefinition", "FunctionDefinition", read.getFunctionDefinition());
-		printUnknownFields(indent + 1, read, "expression", "functionDefinition");
+        printToString(indent + 1, "vgen-attribute-phase-1", "functionWhereDefined", "FunctionDefinition", read.getFunctionWhereDefined());
+		printUnknownFields(indent + 1, read, "expression", "functionWhereDefined");
 		return null;
 	}
 
@@ -267,8 +267,8 @@ public class AstPrinter implements Visitor {
         printNonNodeChild(indent + 1, "lexema", "String", print.getLexema());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-1", "functionDefinition", "FunctionDefinition", print.getFunctionDefinition());
-		printUnknownFields(indent + 1, print, "expressions", "lexema", "functionDefinition");
+        printToString(indent + 1, "vgen-attribute-phase-1", "functionWhereDefined", "FunctionDefinition", print.getFunctionWhereDefined());
+		printUnknownFields(indent + 1, print, "expressions", "lexema", "functionWhereDefined");
 		return null;
 	}
 
@@ -281,8 +281,8 @@ public class AstPrinter implements Visitor {
         printNodeChild(indent + 1, "expression", "Optional<Expression>", returnValue.getExpression().orElse(null));
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-1", "functionDefinition", "FunctionDefinition", returnValue.getFunctionDefinition());
-		printUnknownFields(indent + 1, returnValue, "expression", "functionDefinition");
+        printToString(indent + 1, "vgen-attribute-phase-1", "functionWhereDefined", "FunctionDefinition", returnValue.getFunctionWhereDefined());
+		printUnknownFields(indent + 1, returnValue, "expression", "functionWhereDefined");
 		return null;
 	}
 
@@ -423,10 +423,10 @@ public class AstPrinter implements Visitor {
         printListOfNodesChild(indent + 1, "expressions", "List<Expression>", functionCallExpression.getExpressions());
 
 		// Imprimir el 'toString()' de los atributos (pero no recorrer)
-        printToString(indent + 1, "vgen-attribute-phase-0", "functionDefinition", "FunctionDefinition", functionCallExpression.getFunctionDefinition());
+        printToString(indent + 1, "vgen-attribute-phase-0", "definition", "FunctionDefinition", functionCallExpression.getDefinition());
         printToString(indent + 1, "vgen-attribute-phase-1", "lvalue", "boolean", functionCallExpression.isLvalue());
         printToString(indent + 1, "vgen-attribute-phase-1", "type", "Type", functionCallExpression.getType());
-		printUnknownFields(indent + 1, functionCallExpression, "name", "expressions", "lvalue", "type", "functionDefinition");
+		printUnknownFields(indent + 1, functionCallExpression, "name", "expressions", "lvalue", "type", "definition");
 		return null;
 	}
 

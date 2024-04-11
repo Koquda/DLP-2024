@@ -80,8 +80,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class VarDefinition(String name, Type type)
-	// phase Identification { int scope }
-	// phase MemoryAllocation { int offset }
+	// phase MemoryAllocation { int address }
 	@Override
 	public Object visit(VarDefinition varDefinition, Object param) {
 
@@ -116,7 +115,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class StructField(String name, Type type)
-	// phase MemoryAllocation { int offset }
+	// phase MemoryAllocation { int address }
 	@Override
 	public Object visit(StructField structField, Object param) {
 
@@ -127,7 +126,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Assignment(Expression left, Expression right)
-	// phase TypeChecking { FunctionDefinition functionDefinition }
+	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(Assignment assignment, Object param) {
 
@@ -139,7 +138,8 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class FunctionCallStatement(String name, List<Expression> expressions)
-	// phase TypeChecking { FunctionDefinition functionDefinition }
+	// phase Identification { FunctionDefinition definition }
+	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
 
@@ -150,7 +150,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class If(Expression condition, List<Statement> ifBody, List<Statement> elseBody)
-	// phase TypeChecking { FunctionDefinition functionDefinition }
+	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(If ifValue, Object param) {
 
@@ -163,7 +163,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class While(Expression condition, List<Statement> statements)
-	// phase TypeChecking { FunctionDefinition functionDefinition }
+	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(While whileValue, Object param) {
 
@@ -175,7 +175,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Read(Expression expression)
-	// phase TypeChecking { FunctionDefinition functionDefinition }
+	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(Read read, Object param) {
 
@@ -186,7 +186,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Print(List<Expression> expressions, String lexema)
-	// phase TypeChecking { FunctionDefinition functionDefinition }
+	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(Print print, Object param) {
 
@@ -197,7 +197,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class Return(Optional<Expression> expression)
-	// phase TypeChecking { FunctionDefinition functionDefinition }
+	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(Return returnValue, Object param) {
 
@@ -288,7 +288,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class FunctionCallExpression(String name, List<Expression> expressions)
-	// phase Identification { FunctionDefinition functionDefinition }
+	// phase Identification { FunctionDefinition definition }
 	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(FunctionCallExpression functionCallExpression, Object param) {

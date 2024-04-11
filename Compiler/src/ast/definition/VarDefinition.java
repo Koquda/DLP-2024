@@ -16,11 +16,8 @@ import visitor.Visitor;
 	varDefinition: definition -> name:string type:type
 	definition -> 
 	
-	PHASE Identification
-	varDefinition -> scope:int
-	
 	PHASE MemoryAllocation
-	varDefinition -> offset:int
+	varDefinition -> address:int
 */
 public class VarDefinition extends AbstractDefinition  {
 
@@ -31,11 +28,8 @@ public class VarDefinition extends AbstractDefinition  {
 	private String name;
 	private Type type;
 
-    // PHASE Identification
-	private int scope;
-
     // PHASE MemoryAllocation
-	private int offset;
+	private int address;
 
     // ----------------------------------
     // Constructors
@@ -102,33 +96,17 @@ public class VarDefinition extends AbstractDefinition  {
 
 
     // --------------------------------
-    // PHASE Identification
-
-	// Attribute 'scope:int' 
-
-	public void setScope(int scope) {
-		this.scope = scope;
-
-	}
-
-    public int getScope() {
-        return scope;
-    }
-
-
-
-    // --------------------------------
     // PHASE MemoryAllocation
 
-	// Attribute 'offset:int' 
+	// Attribute 'address:int' 
 
-	public void setOffset(int offset) {
-		this.offset = offset;
+	public void setAddress(int address) {
+		this.address = address;
 
 	}
 
-    public int getOffset() {
-        return offset;
+    public int getAddress() {
+        return address;
     }
 
 

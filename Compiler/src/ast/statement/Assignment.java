@@ -17,7 +17,7 @@ import visitor.Visitor;
 	statement -> 
 	
 	PHASE TypeChecking
-	statement -> functionDefinition:functionDefinition
+	statement -> functionWhereDefined:functionDefinition
 */
 public class Assignment extends AbstractStatement  {
 

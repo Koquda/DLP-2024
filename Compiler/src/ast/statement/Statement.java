@@ -15,7 +15,7 @@ import ast.definition.*;
 	statement -> 
 	
 	PHASE TypeChecking
-	statement -> functionDefinition:functionDefinition
+	statement -> functionWhereDefined:functionDefinition
 */
 public interface Statement extends AST {
 
@@ -25,10 +25,10 @@ public interface Statement extends AST {
     // --------------------------------
     // PHASE TypeChecking
 
-	// Attribute 'functionDefinition' 
+	// Attribute 'functionWhereDefined:functionDefinition' 
 
-	public void setFunctionDefinition(FunctionDefinition functionDefinition);
-	public FunctionDefinition getFunctionDefinition();
+	public void setFunctionWhereDefined(FunctionDefinition functionWhereDefined);
+	public FunctionDefinition getFunctionWhereDefined();
 
 
     // %% User Members -------------------------

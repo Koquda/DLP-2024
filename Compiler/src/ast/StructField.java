@@ -16,7 +16,7 @@ import visitor.Visitor;
 	structField -> name:string type:type
 	
 	PHASE MemoryAllocation
-	structField -> offset:int
+	structField -> address:int
 */
 public class StructField extends AbstractAST  {
 
@@ -28,7 +28,7 @@ public class StructField extends AbstractAST  {
 	private Type type;
 
     // PHASE MemoryAllocation
-	private int offset;
+	private int address;
 
     // ----------------------------------
     // Constructors
@@ -97,15 +97,15 @@ public class StructField extends AbstractAST  {
     // --------------------------------
     // PHASE MemoryAllocation
 
-	// Attribute 'offset:int' 
+	// Attribute 'address:int' 
 
-	public void setOffset(int offset) {
-		this.offset = offset;
+	public void setAddress(int address) {
+		this.address = address;
 
 	}
 
-    public int getOffset() {
-        return offset;
+    public int getAddress() {
+        return address;
     }
 
 

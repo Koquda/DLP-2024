@@ -15,7 +15,7 @@ import ast.definition.*;
 	statement -> 
 	
 	PHASE TypeChecking
-	statement -> functionDefinition:functionDefinition
+	statement -> functionWhereDefined:functionDefinition
 */
 public abstract class AbstractStatement extends AbstractAST implements Statement {
 
@@ -24,24 +24,24 @@ public abstract class AbstractStatement extends AbstractAST implements Statement
 
 
     // PHASE TypeChecking
-	private FunctionDefinition functionDefinition;
+	private FunctionDefinition functionWhereDefined;
 
 
 
     // --------------------------------
     // PHASE TypeChecking
 
-	// Attribute 'functionDefinition' 
+	// Attribute 'functionWhereDefined:functionDefinition' 
 
-	public void setFunctionDefinition(FunctionDefinition functionDefinition) {
-		if (functionDefinition == null)
-			throw new IllegalArgumentException("Parameter 'functionDefinition' can't be null. Pass a non-null value or use 'functionDefinition?' in the abstract grammar");
-		this.functionDefinition = functionDefinition;
+	public void setFunctionWhereDefined(FunctionDefinition functionWhereDefined) {
+		if (functionWhereDefined == null)
+			throw new IllegalArgumentException("Parameter 'functionWhereDefined' can't be null. Pass a non-null value or use 'functionDefinition?' in the abstract grammar");
+		this.functionWhereDefined = functionWhereDefined;
 
 	}
 
-    public FunctionDefinition getFunctionDefinition() {
-        return functionDefinition;
+    public FunctionDefinition getFunctionWhereDefined() {
+        return functionWhereDefined;
     }
 
 
