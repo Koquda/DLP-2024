@@ -208,11 +208,7 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Print print, Object param) {
         super.visit(print, param);
 
-
         print.expressions().forEach(expr -> {
-            if (expr.getType() instanceof ErrorType) {
-                return;
-            }
             predicate(isSimpleType(expr.getType()), "Expression must be of a simple type", expr.start());
         });
 
@@ -225,11 +221,27 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(Return returnValue, Object param) {
         super.visit(returnValue, param);
 
-        if (returnValue.getExpression().isPresent()) {
-            predicate(sameType(returnValue.getExpression().get().getType(), returnValue.getFunctionWhereDefined().getType()), "Return type does not match the function definition", returnValue.getExpression().get().start() );
-            predicate(isSimpleType(returnValue.getExpression().get().getType()), "Return type must be of type IntType, FloatType, CharType or VoidTyp or VoidType", returnValue.start());
-        }
+        // Si la defFunc no tiene return y el return no tiene expr
+        // Si la defFunc tiene return y el return tiene expr y son del mismo tipo
 
+        var functionReturnType = returnValue.getFunctionWhereDefined().getType();
+        if (functionReturnType instanceof VoidType) {
+            predicate(returnValue.getExpression().isEmpty(),
+                    "Return value should be VoidType", returnValue.start());
+        } else {
+            var condition = returnValue.getExpression().isPresent();
+            predicate(condition,
+                    "Return value is not present in a non void function", returnValue.start());
+            if (!condition) {
+                // TODO: hay que poner el ErrorType
+                return null;
+            }
+
+            var exprType = returnValue.getExpression().get().getType();
+            predicate(sameType(functionReturnType, exprType), "Function return type is not the same type of return value", returnValue.start());
+            predicate(isSimpleType(exprType), "Return must be of a simple type", returnValue.start());
+
+        }
 
         return null;
     }
@@ -507,6 +519,9 @@ public class TypeChecking extends DefaultVisitor {
     private boolean sameType(Type type1, Type type2) {
         if (type1 instanceof ArrayType t1 && type2 instanceof ArrayType t2) {
             return t1.getType().getClass().equals(t2.getType().getClass());
+        }
+        if (type1 instanceof StructType t1 && type2 instanceof StructType t2) {
+            return t1.getStructDefinition().getName().equals(t2.getStructDefinition().getName());
         }
         return type1.getClass().equals(type2.getClass());
     }

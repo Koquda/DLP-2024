@@ -47,8 +47,8 @@ public class GrammarParser extends Parser {
 			null, "'var'", "':'", "';'", "'struct'", "'{'", "'}'", "'('", "','", 
 			"')'", "'='", "'if'", "'else'", "'while'", "'read'", "'print'", "'printsp'", 
 			"'println'", "'return'", "'*'", "'/'", "'+'", "'-'", "'%'", "'<'", "'>'", 
-			"'<='", "'>='", "'=='", "'!='", "'&&'", "'||'", "'!'", "'['", "']'", 
-			"'.'", "'int'", "'float'", "'char'"
+			"'<='", "'>='", "'=='", "'!='", "'&&'", "'||'", "'.'", "'!'", "'['", 
+			"']'", "'int'", "'float'", "'char'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -343,7 +343,7 @@ public class GrammarParser extends Parser {
 				setState(71);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250649471104L) != 0) {
+				while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254944438400L) != 0) {
 					{
 					{
 					setState(68);
@@ -524,7 +524,7 @@ public class GrammarParser extends Parser {
 				setState(105);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250648952960L) != 0) {
+				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254943920256L) != 0) {
 					{
 					setState(97);
 					((StatementContext)_localctx).expression = expression(0);
@@ -572,7 +572,7 @@ public class GrammarParser extends Parser {
 				setState(118);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250649471104L) != 0) {
+				while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254944438400L) != 0) {
 					{
 					{
 					setState(115);
@@ -598,7 +598,7 @@ public class GrammarParser extends Parser {
 					setState(127);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-					while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250649471104L) != 0) {
+					while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254944438400L) != 0) {
 						{
 						{
 						setState(124);
@@ -634,7 +634,7 @@ public class GrammarParser extends Parser {
 				setState(143);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250649471104L) != 0) {
+				while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254944438400L) != 0) {
 					{
 					{
 					setState(140);
@@ -671,7 +671,7 @@ public class GrammarParser extends Parser {
 				setState(163);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250648952960L) != 0) {
+				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254943920256L) != 0) {
 					{
 					setState(155);
 					((StatementContext)_localctx).expression = expression(0);
@@ -709,7 +709,7 @@ public class GrammarParser extends Parser {
 				setState(176);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250648952960L) != 0) {
+				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254943920256L) != 0) {
 					{
 					setState(168);
 					((StatementContext)_localctx).expression = expression(0);
@@ -747,7 +747,7 @@ public class GrammarParser extends Parser {
 				setState(189);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250648952960L) != 0) {
+				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254943920256L) != 0) {
 					{
 					setState(181);
 					((StatementContext)_localctx).expression = expression(0);
@@ -785,7 +785,7 @@ public class GrammarParser extends Parser {
 				setState(195);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250648952960L) != 0) {
+				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254943920256L) != 0) {
 					{
 					setState(194);
 					((StatementContext)_localctx).expression = expression(0);
@@ -903,9 +903,9 @@ public class GrammarParser extends Parser {
 			case 6:
 				{
 				setState(215);
-				match(T__31);
+				match(T__32);
 				setState(216);
-				((ExpressionContext)_localctx).expression = expression(5);
+				((ExpressionContext)_localctx).expression = expression(4);
 				 ((ExpressionContext)_localctx).ast =  new Negation(((ExpressionContext)_localctx).expression.ast); 
 				}
 				break;
@@ -918,7 +918,7 @@ public class GrammarParser extends Parser {
 				setState(229);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8250648952960L) != 0) {
+				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 8254943920256L) != 0) {
 					{
 					setState(221);
 					((ExpressionContext)_localctx).expression = ((ExpressionContext)_localctx).expression = expression(0);
@@ -1090,14 +1090,12 @@ public class GrammarParser extends Parser {
 						_localctx.left = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(268);
-						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 						setState(269);
-						match(T__32);
+						match(T__31);
 						setState(270);
-						((ExpressionContext)_localctx).right = ((ExpressionContext)_localctx).expression = expression(0);
-						setState(271);
-						match(T__33);
-						 ((ExpressionContext)_localctx).ast =  new ArrayAccess(((ExpressionContext)_localctx).left.ast, ((ExpressionContext)_localctx).right.ast); 
+						((ExpressionContext)_localctx).IDENT = match(IDENT);
+						 ((ExpressionContext)_localctx).ast =  new StructAccess(((ExpressionContext)_localctx).left.ast, ((ExpressionContext)_localctx).IDENT); 
 						}
 						break;
 					case 7:
@@ -1105,13 +1103,15 @@ public class GrammarParser extends Parser {
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						_localctx.left = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(274);
+						setState(272);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
+						setState(273);
+						match(T__33);
+						setState(274);
+						((ExpressionContext)_localctx).right = ((ExpressionContext)_localctx).expression = expression(0);
 						setState(275);
 						match(T__34);
-						setState(276);
-						((ExpressionContext)_localctx).IDENT = match(IDENT);
-						 ((ExpressionContext)_localctx).ast =  new StructAccess(((ExpressionContext)_localctx).left.ast, ((ExpressionContext)_localctx).IDENT); 
+						 ((ExpressionContext)_localctx).ast =  new ArrayAccess(((ExpressionContext)_localctx).left.ast, ((ExpressionContext)_localctx).right.ast); 
 						}
 						break;
 					}
@@ -1182,15 +1182,15 @@ public class GrammarParser extends Parser {
 				 ((TypeContext)_localctx).ast =  new CharType(); 
 				}
 				break;
-			case T__32:
+			case T__33:
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(289);
-				match(T__32);
+				match(T__33);
 				setState(290);
 				((TypeContext)_localctx).INT_LITERAL = match(INT_LITERAL);
 				setState(291);
-				match(T__33);
+				match(T__34);
 				setState(292);
 				((TypeContext)_localctx).type = type();
 				 ((TypeContext)_localctx).ast =  new ArrayType(((TypeContext)_localctx).INT_LITERAL, ((TypeContext)_localctx).type.ast); 
@@ -1239,7 +1239,7 @@ public class GrammarParser extends Parser {
 		case 4:
 			return precpred(_ctx, 6);
 		case 5:
-			return precpred(_ctx, 3);
+			return precpred(_ctx, 5);
 		case 6:
 			return precpred(_ctx, 2);
 		}
@@ -1401,8 +1401,8 @@ public class GrammarParser extends Parser {
 		"\u00d1\u0005\'\u0000\u0000\u00d1\u00f2\u0006\u0005\uffff\uffff\u0000\u00d2"+
 		"\u00d3\u0005\u0007\u0000\u0000\u00d3\u00d4\u0003\n\u0005\u0000\u00d4\u00d5"+
 		"\u0005\t\u0000\u0000\u00d5\u00d6\u0006\u0005\uffff\uffff\u0000\u00d6\u00f2"+
-		"\u0001\u0000\u0000\u0000\u00d7\u00d8\u0005 \u0000\u0000\u00d8\u00d9\u0003"+
-		"\n\u0005\u0005\u00d9\u00da\u0006\u0005\uffff\uffff\u0000\u00da\u00f2\u0001"+
+		"\u0001\u0000\u0000\u0000\u00d7\u00d8\u0005!\u0000\u0000\u00d8\u00d9\u0003"+
+		"\n\u0005\u0004\u00d9\u00da\u0006\u0005\uffff\uffff\u0000\u00da\u00f2\u0001"+
 		"\u0000\u0000\u0000\u00db\u00dc\u0005\'\u0000\u0000\u00dc\u00e5\u0005\u0007"+
 		"\u0000\u0000\u00dd\u00e2\u0003\n\u0005\u0000\u00de\u00df\u0005\b\u0000"+
 		"\u0000\u00df\u00e1\u0003\n\u0005\u0000\u00e0\u00de\u0001\u0000\u0000\u0000"+
@@ -1431,29 +1431,29 @@ public class GrammarParser extends Parser {
 		"\u0105\u0106\u0006\u0005\uffff\uffff\u0000\u0106\u0117\u0001\u0000\u0000"+
 		"\u0000\u0107\u0108\n\u0006\u0000\u0000\u0108\u0109\u0007\u0003\u0000\u0000"+
 		"\u0109\u010a\u0003\n\u0005\u0007\u010a\u010b\u0006\u0005\uffff\uffff\u0000"+
-		"\u010b\u0117\u0001\u0000\u0000\u0000\u010c\u010d\n\u0003\u0000\u0000\u010d"+
-		"\u010e\u0005!\u0000\u0000\u010e\u010f\u0003\n\u0005\u0000\u010f\u0110"+
-		"\u0005\"\u0000\u0000\u0110\u0111\u0006\u0005\uffff\uffff\u0000\u0111\u0117"+
-		"\u0001\u0000\u0000\u0000\u0112\u0113\n\u0002\u0000\u0000\u0113\u0114\u0005"+
-		"#\u0000\u0000\u0114\u0115\u0005\'\u0000\u0000\u0115\u0117\u0006\u0005"+
-		"\uffff\uffff\u0000\u0116\u00f3\u0001\u0000\u0000\u0000\u0116\u00f8\u0001"+
+		"\u010b\u0117\u0001\u0000\u0000\u0000\u010c\u010d\n\u0005\u0000\u0000\u010d"+
+		"\u010e\u0005 \u0000\u0000\u010e\u010f\u0005\'\u0000\u0000\u010f\u0117"+
+		"\u0006\u0005\uffff\uffff\u0000\u0110\u0111\n\u0002\u0000\u0000\u0111\u0112"+
+		"\u0005\"\u0000\u0000\u0112\u0113\u0003\n\u0005\u0000\u0113\u0114\u0005"+
+		"#\u0000\u0000\u0114\u0115\u0006\u0005\uffff\uffff\u0000\u0115\u0117\u0001"+
+		"\u0000\u0000\u0000\u0116\u00f3\u0001\u0000\u0000\u0000\u0116\u00f8\u0001"+
 		"\u0000\u0000\u0000\u0116\u00fd\u0001\u0000\u0000\u0000\u0116\u0102\u0001"+
 		"\u0000\u0000\u0000\u0116\u0107\u0001\u0000\u0000\u0000\u0116\u010c\u0001"+
-		"\u0000\u0000\u0000\u0116\u0112\u0001\u0000\u0000\u0000\u0117\u011a\u0001"+
+		"\u0000\u0000\u0000\u0116\u0110\u0001\u0000\u0000\u0000\u0117\u011a\u0001"+
 		"\u0000\u0000\u0000\u0118\u0116\u0001\u0000\u0000\u0000\u0118\u0119\u0001"+
 		"\u0000\u0000\u0000\u0119\u000b\u0001\u0000\u0000\u0000\u011a\u0118\u0001"+
 		"\u0000\u0000\u0000\u011b\u011c\u0005$\u0000\u0000\u011c\u012a\u0006\u0006"+
 		"\uffff\uffff\u0000\u011d\u011e\u0005%\u0000\u0000\u011e\u012a\u0006\u0006"+
 		"\uffff\uffff\u0000\u011f\u0120\u0005&\u0000\u0000\u0120\u012a\u0006\u0006"+
-		"\uffff\uffff\u0000\u0121\u0122\u0005!\u0000\u0000\u0122\u0123\u0005(\u0000"+
-		"\u0000\u0123\u0124\u0005\"\u0000\u0000\u0124\u0125\u0003\f\u0006\u0000"+
-		"\u0125\u0126\u0006\u0006\uffff\uffff\u0000\u0126\u012a\u0001\u0000\u0000"+
-		"\u0000\u0127\u0128\u0005\'\u0000\u0000\u0128\u012a\u0006\u0006\uffff\uffff"+
-		"\u0000\u0129\u011b\u0001\u0000\u0000\u0000\u0129\u011d\u0001\u0000\u0000"+
-		"\u0000\u0129\u011f\u0001\u0000\u0000\u0000\u0129\u0121\u0001\u0000\u0000"+
-		"\u0000\u0129\u0127\u0001\u0000\u0000\u0000\u012a\r\u0001\u0000\u0000\u0000"+
-		"\u001c\u0011$03;AGLfiv\u007f\u0083\u008f\u00a0\u00a3\u00ad\u00b0\u00ba"+
-		"\u00bd\u00c3\u00c7\u00e2\u00e5\u00f1\u0116\u0118\u0129";
+		"\uffff\uffff\u0000\u0121\u0122\u0005\"\u0000\u0000\u0122\u0123\u0005("+
+		"\u0000\u0000\u0123\u0124\u0005#\u0000\u0000\u0124\u0125\u0003\f\u0006"+
+		"\u0000\u0125\u0126\u0006\u0006\uffff\uffff\u0000\u0126\u012a\u0001\u0000"+
+		"\u0000\u0000\u0127\u0128\u0005\'\u0000\u0000\u0128\u012a\u0006\u0006\uffff"+
+		"\uffff\u0000\u0129\u011b\u0001\u0000\u0000\u0000\u0129\u011d\u0001\u0000"+
+		"\u0000\u0000\u0129\u011f\u0001\u0000\u0000\u0000\u0129\u0121\u0001\u0000"+
+		"\u0000\u0000\u0129\u0127\u0001\u0000\u0000\u0000\u012a\r\u0001\u0000\u0000"+
+		"\u0000\u001c\u0011$03;AGLfiv\u007f\u0083\u008f\u00a0\u00a3\u00ad\u00b0"+
+		"\u00ba\u00bd\u00c3\u00c7\u00e2\u00e5\u00f1\u0116\u0118\u0129";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

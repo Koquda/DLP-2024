@@ -52,10 +52,10 @@ expression returns[Expression ast]
 	| left=expression op='%' right=expression { $ast = new Arithmetic($left.ast, $op.text, $right.ast); }
 	| left=expression op=('<' | '>' | '<=' | '>=' | '==' | '!=') right=expression { $ast = new ArithmeticComparison($left.ast, $op.text, $right.ast); }
 	| left=expression op=('&&' | '||') right=expression { $ast = new LogicalComparison($left.ast, $op.text, $right.ast); }
+	| left=expression '.' IDENT { $ast = new StructAccess($left.ast, $IDENT); }
 	| '!' expression { $ast = new Negation($expression.ast); }
 	| IDENT '(' (expressions+=expression (',' expressions+=expression)*)? ')' { $ast = new FunctionCallExpression($IDENT, $expressions); }
 	| left=expression '[' right=expression ']' { $ast = new ArrayAccess($left.ast, $right.ast); }
-	| left=expression '.' IDENT { $ast = new StructAccess($left.ast, $IDENT); }
 	| '<' type '>' '(' expression ')' { $ast = new Cast($type.ast, $expression.ast); }
 	;
 
