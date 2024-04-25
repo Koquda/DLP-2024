@@ -1,0 +1,53 @@
+
+n
+java:S1192¡"PDefine a constant instead of duplicating this literal "List<Statement>" 4 times.(ÑÙó÷8Ü¤‚ï1
+k
+java:S1192€"HDefine a constant instead of duplicating this literal "String" 16 times.(³÷­şÿÿÿÿ8Ü¤‚ï1
+l
+java:S1192å"IDefine a constant instead of duplicating this literal "operator" 6 times.(Ù…¿Åùÿÿÿÿ8Ü¤‚ï1
+q
+java:S1192Â"SDefine a constant instead of duplicating this literal "FunctionDefinition" 9 times.(÷±“ê8Ü¤‚ï1
+i
+java:S1192s"LDefine a constant instead of duplicating this literal "definitions" 4 times.(›”¯ß8Ü¤‚ï1
+o
+java:S1192Î"LDefine a constant instead of duplicating this literal "expressions" 6 times.(±íòíüÿÿÿÿ8Ü¤‚ï1
+m
+java:S1192İ"JDefine a constant instead of duplicating this literal "condition" 4 times.(å¤ïÄûÿÿÿÿ8Ü¤‚ï1
+t
+java:S1192Â"VDefine a constant instead of duplicating this literal "functionWhereDefined" 14 times.(÷±“ê8Ü¤‚ï1
+i
+java:S1192¡"KDefine a constant instead of duplicating this literal "statements" 4 times.(ÑÙó÷8Ü¤‚ï1
+t
+java:S1192Î"QDefine a constant instead of duplicating this literal "List<Expression>" 3 times.(±íòíüÿÿÿÿ8Ü¤‚ï1
+n
+java:S1192Ñ"KDefine a constant instead of duplicating this literal "definition" 4 times.(„õÉğıÿÿÿÿ8Ü¤‚ï1
+z
+java:S1192„"WDefine a constant instead of duplicating this literal "vgen-attribute-phase-2" 3 times.(Ãˆñœúÿÿÿÿ8Ü¤‚ï1
+v
+java:S1192Â"XDefine a constant instead of duplicating this literal "vgen-attribute-phase-1" 32 times.(÷±“ê8Ü¤‚ï1
+d
+java:S1192§"FDefine a constant instead of duplicating this literal "value" 6 times.(æñ8Ü¤‚ï1
+z
+java:S1192Ñ"WDefine a constant instead of duplicating this literal "vgen-attribute-phase-0" 4 times.(„õÉğıÿÿÿÿ8Ü¤‚ï1
+j
+java:S1192ü"LDefine a constant instead of duplicating this literal "expression" 10 times.(«èŒ8Ü¤‚ï1
+k
+java:S1192„"HDefine a constant instead of duplicating this literal "address" 4 times.(Ãˆñœúÿÿÿÿ8Ü¤‚ï1
+j
+java:S1192¿"GDefine a constant instead of duplicating this literal "right" 10 times.(ß£èùÿÿÿÿ8Ü¤‚ï1
+k
+java:S1192ª"HDefine a constant instead of duplicating this literal "lvalue" 24 times.(Âš“şÿÿÿÿ8Ü¤‚ï1
+l
+java:S1192ª"IDefine a constant instead of duplicating this literal "boolean" 12 times.(Âš“şÿÿÿÿ8Ü¤‚ï1
+j
+java:S1192¾"LDefine a constant instead of duplicating this literal "Expression" 16 times.(µ½»í8Ü¤‚ï1
+G	java:S106G"+Replace this use of System.err by a logger.(ç¢¹‹8êİ¤‚ï1
+G	java:S106J"+Replace this use of System.err by a logger.(ÎĞ°œ8êİ¤‚ï1
+P
+java:S1135"2Complete the task associated to this TODO comment.(ı«Í˜8ŠŞ¤‚ï1
+P
+java:S1135‚"2Complete the task associated to this TODO comment.(˜µíƒ8ŠŞ¤‚ï1
+J
+java:S3011˜",This accessibility update should be removed.(˜ÂÓ˜8ŠŞ¤‚ï1
+H	java:S106¾"+Replace this use of System.out by a logger.(§ìşô8™Ş¤‚ï1
+H	java:S106Á"+Replace this use of System.out by a logger.(¹î²ù8™Ş¤‚ï1

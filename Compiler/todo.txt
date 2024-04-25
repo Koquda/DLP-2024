@@ -1,4 +1,2 @@
-Cambiar los textos de error en functionCallStatement
-Comprobar lo del print
-Comprobar errores en el return
-Orden de accepts en Structs??
+TypeChecking:
+    Comprobar lo del print

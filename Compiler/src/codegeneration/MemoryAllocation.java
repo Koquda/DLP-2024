@@ -24,36 +24,38 @@ public class MemoryAllocation extends DefaultVisitor {
     // Visit Methods --------------------------------------------------------------
 
     // class VarDefinition(String name, Type type)
-    // phase MemoryAllocation { int offset }
+    // phase MemoryAllocation { int address }
     @Override
     public Object visit(VarDefinition varDefinition, Object param) {
 
         super.visit(varDefinition, param);
 
         if(param instanceof FunctionDefinition) {
-            varDefinition.setAddress(globalOffset);
-            globalOffset += varDefinition.getType().getSize();
-        } else {
-            localOffset -= varDefinition.getType().getSize();
+            localOffset -= varDefinition.getType().numberOfBytes();
             varDefinition.setAddress(localOffset);
+        } else {
+            varDefinition.setAddress(globalOffset);
+            globalOffset += varDefinition.getType().numberOfBytes();
         }
         return null;    }
     // class FunctionDefinition(String name, List<VarDefinition> varDefinitions, Type type, List<Definition> definitions, List<Statement> statements)
     // phase MemoryAllocation { int bytesLocals }
     @Override
     public Object visit(FunctionDefinition functionDefinition, Object param) {
-        localOffset=0;
 
+        localOffset=0;
         functionDefinition.getVarDefinitions().forEach(varDefinition -> varDefinition.accept(this, functionDefinition));
         functionDefinition.getType().accept(this, param);
-        functionDefinition.getDefinitions().forEach(definition -> definition.accept(this, param));
+
+        localOffset=0;
+        functionDefinition.getDefinitions().forEach(definition -> definition.accept(this, functionDefinition));
         functionDefinition.getStatements().forEach(statement -> statement.accept(this, param));
 
         int paramBytesSum = 0;
         for (int i = functionDefinition.getVarDefinitions().size() - 1; i >= 0; i--) {
             VarDefinition varDef = functionDefinition.getVarDefinitions().get(i);
             varDef.setAddress(4 + paramBytesSum);
-            paramBytesSum += varDef.getType().getSize();
+            paramBytesSum += varDef.getType().numberOfBytes();
         }
         return null;
     }
@@ -65,8 +67,8 @@ public class MemoryAllocation extends DefaultVisitor {
 
         int structOffset = 0; // in this case we don't have to control BP and ret addr
         for (var structField : structDefinition.getStructFields()) {
-            structField.setAddress( structOffset);
-            structOffset += structField.getType().getSize();
+            structField.setAddress(structOffset);
+            structOffset += structField.getType().numberOfBytes();
         }
 
         return null;

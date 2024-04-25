@@ -1,0 +1,53 @@
+
+n
+java:S3655ğ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(Ú®Éª8Òºÿåî1
+‚
+java:S3516‹"9Refactor this method to not always return the same value.(ÈÁ’óúÿÿÿÿ8‡èºâì1J$76e1c16e-834e-49f2-b5ba-05c03a7eeb56
+‚
+java:S3516†"9Refactor this method to not always return the same value.(¨œœÑûÿÿÿÿ8‡èºâì1J$03688b5c-dc40-47dc-a5de-7ae0a3cf3610
+W
+java:S3516Ó"9Refactor this method to not always return the same value.(Åº‰8Ôºÿåî1
+[
+java:S3516x"9Refactor this method to not always return the same value.(ü‡°äøÿÿÿÿ8Ôºÿåî1
+W
+java:S3516İ"9Refactor this method to not always return the same value.(ÕàË‰8Ôºÿåî1
+W
+java:S3516¥"9Refactor this method to not always return the same value.(ğŠ ´8Ôºÿåî1
+W
+java:S3516œ"9Refactor this method to not always return the same value.(‡ÔğÈ8Õºÿåî1
+\
+java:S3516Æ"9Refactor this method to not always return the same value.(ÿçà˜ıÿÿÿÿ8Õºÿåî1
+z
+java:S1135"2Complete the task associated to this TODO comment.(à…ĞŠıÿÿÿÿ8Šèºâì1J$400a3506-487b-45a5-8732-99e26ec196e9
+~	java:S125e"<This block of commented-out lines of code should be removed.(×¶êŠ8¥èºâì1J$b32b4b5a-500c-4143-9f06-11c5cbdb7393
+z
+java:S1135d"2Complete the task associated to this TODO comment.(²ÂÇæùÿÿÿÿ8¥èºâì1J$885f7665-eb20-413e-985e-f78544f14dd0
+~	java:S125v"<This block of commented-out lines of code should be removed.(¡“•â8ªèºâì1J$fe04f350-740a-4e9e-b69e-c2a87777e636
+	java:S125‰"<This block of commented-out lines of code should be removed.(¡“•â8´èºâì1J$9c8b7d57-2496-4f18-9e19-112e599ed369
+	java:S125œ"<This block of commented-out lines of code should be removed.(¡“•â8Äèºâì1J$c9a9758f-f340-4ca6-a321-2aa325f09a9a
+	java:S125¯"<This block of commented-out lines of code should be removed.(¡“•â8Éèºâì1J$950dbed2-1b09-4237-a2c0-7da4d6ecd16a
+	java:S125Â"<This block of commented-out lines of code should be removed.(¡“•â8Ôèºâì1J$582adee6-8e45-4d5e-a6a1-8ad90aec09cc
+	java:S125Î"<This block of commented-out lines of code should be removed.(¡“•â8Öèºâì1J$7f66c256-e999-4515-a35d-6f1aad3cdfc2
+J
+java:S1602Ó",Remove useless curly braces around statement(ûÓÉœ8ıºÿåî1
+Y	java:S125Û"<This block of commented-out lines of code should be removed.(¡“•â8ÿºÿåî1
+P
+java:S1135ì"2Complete the task associated to this TODO comment.(ŠÑš·8‚»ÿåî1
+^	java:S125ú"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8„»ÿåî1
+^	java:S125„"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8†»ÿåî1
+^	java:S125"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8‡»ÿåî1
+X	java:S125˜"<This block of commented-out lines of code should be removed.(åñ™{8ˆ»ÿåî1
+^	java:S125£"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8Š»ÿåî1
+^	java:S125Ä"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8‘»ÿåî1
+^	java:S125İ"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8—»ÿåî1
+^	java:S125ò"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8›»ÿåî1
+X	java:S125ƒ"<This block of commented-out lines of code should be removed.(¤ÔšU8»ÿåî1
+^	java:S125š"<This block of commented-out lines of code should be removed.(á›¶„üÿÿÿÿ8¥»ÿåî1
+^	java:S125º"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8ª»ÿåî1
+^	java:S125Ñ"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8°»ÿåî1
+{
+java:S1135•"2Complete the task associated to this TODO comment.(ØÀ‘ãşÿÿÿÿ8±éºâì1J$dca7c263-b782-4c37-adf3-8e3de2b67fdb
+†
+java:S6201š"BReplace this instanceof check and cast with 'instanceof If ifStmt'(Î€ƒè8Ğéºâì1J$3f1780a2-c2d7-4fa9-8279-228b17af9c5f
+‘
+java:S6201Ÿ"HReplace this instanceof check and cast with 'instanceof While whileStmt'(´¸ßÈüÿÿÿÿ8ïéºâì1J$1ed8e2ad-9315-48ea-8cd9-8a0b30743469

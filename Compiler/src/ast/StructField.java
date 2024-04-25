@@ -125,7 +125,10 @@ public class StructField extends AbstractAST  {
 
     // %% User Members -------------------------
 
-        // Methods/attributes in this section will be preserved. Delete if not needed
+	// Methods/attributes in this section will be preserved. Delete if not needed
+	public int numberOfBytes() {
+		return type.numberOfBytes();
+	}
 
     // %% --------------------------------------
 }

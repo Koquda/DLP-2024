@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../Compiler/Compiler.iml" filepath="$PROJECT_DIR$/../../../Compiler/Compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../Compiler/vgen.output/skeleton.antlr/skeleton.antlr.iml" filepath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeleton.antlr/skeleton.antlr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../Compiler/specifications/specifications.iml" filepath="$PROJECT_DIR$/../../../Compiler/specifications/specifications.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../Compiler/vgen.output/vgen.output.iml" filepath="$PROJECT_DIR$/../../../Compiler/vgen.output/vgen.output.iml" />
+    </modules>
+  </component>
+</project>

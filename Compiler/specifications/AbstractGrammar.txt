@@ -67,3 +67,16 @@ ATTRIBUTE GRAMMAR MemoryAllocation
 varDefinition -> [inh] address:int;
 structField -> [inh] address:int;
 functionDefinition -> bytesLocals:int;
+
+// -----------------------
+CODE SPECIFICATION Mapl
+
+run[program]
+execute[statement]
+execute[definition]
+value[expression]
+address[expression]
+
+// Directivas de fusion
+metadata[program]
+metadata[definition] // Declaracion global

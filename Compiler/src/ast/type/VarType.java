@@ -78,7 +78,7 @@ public class VarType extends AbstractType  {
     }
 
 
-    // %% User Members -------------------------
+	// %% User Members -------------------------
 
         // Methods/attributes in this section will be preserved. Delete if not needed
 
