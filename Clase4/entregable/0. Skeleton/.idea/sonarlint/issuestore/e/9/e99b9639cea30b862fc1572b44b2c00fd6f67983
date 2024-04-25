@@ -1,0 +1,8 @@
+
+¹
+java:S1192$"Define a constant instead of duplicating this literal "Parameter 'type' can't be null. Pass a non-null value or use 'type?' in the abstract grammar" 3 times.(ğÊÑıÿÿÿÿ
+f	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âê›ò
+_
+java:S62010"DReplace this instanceof check and cast with 'instanceof Token token'(û›±¸şÿÿÿÿ
+a
+java:S62012"FReplace this instanceof check and cast with 'instanceof String string'(Óµ©Óùÿÿÿÿ

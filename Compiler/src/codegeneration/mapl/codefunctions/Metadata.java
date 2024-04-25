@@ -19,8 +19,7 @@ public class Metadata extends AbstractCodeFunction {
 	@Override
 	public Object visit(Program program, Object param) {
 
-		out("#SOURCE \"" + getSpecification().getSourceFile() + "\"");
-		metadata(program.definitions());
+		out("#SOURCE \"" + getSpecification().getSourceFile() + "\"\n");
 
 		return null;
 	}
@@ -30,8 +29,7 @@ public class Metadata extends AbstractCodeFunction {
 	@Override
 	public Object visit(VarDefinition varDefinition, Object param) {
 
-		out("#GLOBAL " + varDefinition.getName() + ":" + getTypeName(varDefinition.getType()));
-		metadata(varDefinition.getType());
+		out("#GLOBAL " + varDefinition.getName() + ":" + getTypeName(varDefinition.getType()) + "\n");
 
 		return null;
 	}
@@ -41,7 +39,6 @@ public class Metadata extends AbstractCodeFunction {
 	@Override
 	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
-		out(functionDefinition.getName() + ":");
 		out("# FUNC " + functionDefinition.getName());
 		if (functionDefinition.getType() instanceof VoidType)
 			out("# RET VOID");
@@ -59,7 +56,7 @@ public class Metadata extends AbstractCodeFunction {
 
 		out("# TYPE " + structDefinition.getName() + "{");
 		structDefinition.structFields().forEach(field -> out("\t" + field.getName() + ":" + getTypeName(field.getType())));
-		out("}");
+		out("}\n");
 
 		return null;
 	}

@@ -4,32 +4,31 @@ package codegeneration.mapl.codefunctions;
 
 import ast.AST;
 import ast.Position;
+import ast.definition.FunctionDefinition;
+import ast.definition.StructDefinition;
+import ast.definition.VarDefinition;
 import ast.statement.*;
 import codegeneration.mapl.*;
 
 
 public class Execute extends AbstractCodeFunction {
 
+	private int elseLabelCount = 0;
+	private int endIfLabelCount = 0;
+
     public Execute(MaplCodeSpecification specification) {
         super(specification);
     }
-
 
 	// class Assignment(Expression left, Expression right)
 	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(Assignment assignment, Object param) {
 
-		// value(assignment.getLeft());
-		// address(assignment.getLeft());
-
-		// value(assignment.getRight());
-		// address(assignment.getRight());
-
 		line(assignment);
 		address(assignment.getLeft());
 		value(assignment.getRight());
-		out("store" + assignment.getRight().getType());
+		out("store" + suffixFor(assignment.getRight().getType()));
 
 		return null;
 	}
@@ -53,15 +52,17 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(If ifValue, Object param) {
 
-		// value(ifValue.getCondition());
-		// address(ifValue.getCondition());
+		line(ifValue);
+		value(ifValue.getCondition());
+		out("jz elseLabel" + elseLabelCount);
+		execute(ifValue.ifBody());
+		out("jmp endIfLabel" + endIfLabelCount);
+		out("elseLabel" + elseLabelCount + ":");
+		execute(ifValue.elseBody());
+		out("endIfLabel" + endIfLabelCount + ":");
 
-		// execute(ifValue.ifBody());
-
-		// execute(ifValue.elseBody());
-
-		out("<instruction>");
-
+		elseLabelCount++;
+		endIfLabelCount++;
 		return null;
 	}
 
@@ -85,10 +86,10 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(Read read, Object param) {
 
-		// value(read.getExpression());
-		// address(read.getExpression());
-
-		out("<instruction>");
+		line(read);
+		address(read.getExpression());
+		out("in" + suffixFor(read.getExpression().getType()));
+		out("store" + suffixFor(read.getExpression().getType()));
 
 		return null;
 	}
@@ -98,10 +99,6 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(Print print, Object param) {
 
-		// value(print.expressions());
-		// address(print.expressions());
-
-		// TODO revisar
 		line(print);
 		print.expressions().forEach(expression -> {
 			value(expression);
@@ -123,6 +120,41 @@ public class Execute extends AbstractCodeFunction {
 
 		return null;
 	}
+
+	// class VarDefinition(String name, Type type)
+	// phase MemoryAllocation { int address }
+	@Override
+	public Object visit(VarDefinition varDefinition, Object param) {
+
+		metadata(varDefinition);
+		return null;
+
+	}
+
+	// class StructDefinition(String name, List<StructField> structFields)
+	@Override
+	public Object visit(StructDefinition structDefinition, Object param) {
+
+		metadata(structDefinition);
+		return null;
+
+	}
+
+	// class FunctionDefinition(String name, List<VarDefinition> varDefinitions, Type type, List<Definition> definitions, List<Statement> statements)
+	// phase MemoryAllocation { int bytesLocals }
+	@Override
+	public Object visit(FunctionDefinition functionDefinition, Object param) {
+
+		out(functionDefinition.getName() + ":");
+//		metadata(functionDefinition);
+		execute(functionDefinition.varDefinitions());
+		execute(functionDefinition.definitions());
+		execute(functionDefinition.statements());
+		out("ret");
+
+		return null;
+	}
+
 
 	// Auxiliary methods for the generation of code
 

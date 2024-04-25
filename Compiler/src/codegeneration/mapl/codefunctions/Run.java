@@ -17,10 +17,11 @@ public class Run extends AbstractCodeFunction {
 	@Override
 	public Object visit(Program program, Object param) {
 
-		// TODO: revisar
 		metadata(program);
-//		execute(program.definitions());
+		out("call main");
 		out("halt");
+		out("");
+		execute(program.definitions());
 
 		return null;
 	}

@@ -97,3 +97,25 @@ H
 src/ast/StructField.java,3\7\37ad0a2c5665e0012558a3409c03a46222a1ace5
 K
 src/ast/type/FloatType.java,4\c\4c6b310bc1e47aeffd716f449a80ed76455ff7c9
+Q
+!src/ast/statement/Assignment.java,a\6\a6c0606bcfbd3ed4bedce543465782b2755af4f3
+|
+LMAPL/Tutorial/1 Juego de Instrucciones/1 Pila Aritmeticas y Conversiones.txt,a\1\a1578a1a6d358bee1e7c995173e4a5dd70d66bac
+k
+;MAPL/Tutorial/1 Juego de Instrucciones/2 Entrada Salida.txt,7\6\7699729b2abd85d25bc7c6d915065267aebe2479
+z
+JMAPL/Tutorial/1 Juego de Instrucciones/3 Relacionales Logicas y Saltos.txt,c\4\c4850580f221779c763207ad652448076595f451
+i
+9MAPL/Tutorial/1 Juego de Instrucciones/4 Load y Store.txt,4\d\4d1feaf6ef853a166adc6273bd2ed57d9275f403
+p
+@MAPL/Tutorial/1 Juego de Instrucciones/5 Llamada a Funciones.txt,d\5\d54940626827c3d5528652526261b84dc84eda31
+u
+EMAPL/Tutorial/1 Juego de Instrucciones/Llamada a Funciones.Source.txt,e\a\eab64d690eec01f1be9d0d3362390fd2e6f295e3
+@
+MAPL/ejemplo.txt,0\4\040477458f2cef3c7b9b7ae91f90a98c3fc2c7d2
+C
+programs/output.txt,e\3\e333dfd6aaa19b0606a54bedaaefe68b44c30c2f
+B
+programs/prog2.txt,f\7\f7a4e24e3336715c592175821e234521949f9d1c
+j
+:programs/tests type checking/tests sentences. ok. read.txt,d\5\d512d4fd50107c5b975829835741fb7131272e31

@@ -50,7 +50,7 @@ public class Address extends AbstractCodeFunction {
 	public Object visit(Variable variable, Object param) {
 
 		// TODO revisar
-		out("pusha " + variable.getVarDefinition().getAddress());
+		out("pusha BP" + variable.getVarDefinition().getAddress());
 
 		return null;
 	}

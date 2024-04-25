@@ -1,5 +1,18 @@
+var a:int;
+
 main() {
+    var b:int;
 
+    a = 2;
+    if (a != 2) {
+        b = 2;
+        if (a == b) {
+            print 4;
+        } else {
+            read a;
+            print a;
+        }
+    } else {
+        print 0;
+    }
 }
-
-//var a:int;

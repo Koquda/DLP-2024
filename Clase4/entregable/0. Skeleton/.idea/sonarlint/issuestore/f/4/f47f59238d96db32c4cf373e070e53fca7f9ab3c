@@ -1,24 +1,18 @@
 
-Š
-java:S1192."NDefine a constant instead of duplicating this literal "<instruction>" 5 times.(‡…ÓJ$285bc22c-e811-4143-a847-55ad60b2d9d2
-w	java:S125"<This block of commented-out lines of code should be removed.(÷õàÃJ$87f0dc98-bfdb-4bc2-8229-704f9bc86ed3
-|	java:S125"<This block of commented-out lines of code should be removed.(»âšÚüÿÿÿÿJ$919bc0cc-33a6-456b-8351-1d229a895a13
-|	java:S125"<This block of commented-out lines of code should be removed.(ù¿¥ğıÿÿÿÿJ$4d2fb892-6aac-483d-adab-6da974d1aa22
-|	java:S125&"<This block of commented-out lines of code should be removed.(ñ²“şÿÿÿÿÿJ$76c0dd76-72b1-4787-b910-29a2d6903a29
-w	java:S125+"<This block of commented-out lines of code should be removed.(›Ÿ÷¾J$1057f96a-5947-4469-9a28-28c0800e7e81
-w	java:S1254"<This block of commented-out lines of code should be removed.(÷õàÃJ$b77c68f2-4d12-4c91-8ffd-0ef446495dd9
-|	java:S1258"<This block of commented-out lines of code should be removed.(›™ÀÕùÿÿÿÿJ$6b0ed012-8814-4a3d-ae8e-d2fa7f4df5b6
-w	java:S125;"<This block of commented-out lines of code should be removed.(†íÅïJ$4c722186-446f-4b54-97a6-2f3e466d8174
-w	java:S125="<This block of commented-out lines of code should be removed.(×ö³ûJ$d8a856ac-532f-4ff0-85da-25932f50282a
-w	java:S125E"<This block of commented-out lines of code should be removed.(÷õàÃJ$f61adc70-03ad-4edd-92fd-14c012dd4967
-w	java:S125I"<This block of commented-out lines of code should be removed.(ûëÃìJ$069654ab-1fd5-4a54-9c1b-627e9837c40c
-|	java:S125L"<This block of commented-out lines of code should be removed.(ËÎ¤åıÿÿÿÿJ$d474fbc0-c94d-4c61-8b6c-36b6d5809783
-w	java:S125T"<This block of commented-out lines of code should be removed.(÷õàÃJ$e8f123ab-72ce-430c-a407-e578317e9311
-|	java:S125X"<This block of commented-out lines of code should be removed.(“µøûÿÿÿÿJ$66c7a5ef-1f55-4c51-aad3-c1668a15e19f
-w	java:S125a"<This block of commented-out lines of code should be removed.(÷õàÃJ$deca1615-4081-47d9-b49b-390d51a7e7c7
-w	java:S125e"<This block of commented-out lines of code should be removed.(Áå¯™J$d4418ee6-c407-44e0-9188-8f7289242d59
-n
-java:S1135h"2Complete the task associated to this TODO comment.(Ãë¸ÓJ$f5d322af-8b25-4190-b7d8-ceebbc565fcd
-w	java:S125s"<This block of commented-out lines of code should be removed.(÷õàÃJ$d7c8e6fe-11cd-4ec8-9136-a1186419e231
-w	java:S125w"<This block of commented-out lines of code should be removed.(ïÓ‚—J$0e083785-baa0-4aea-9234-82115d336bc6
-l	java:S106ˆ"+Replace this use of System.out by a logger.(ºüÏ­ùÿÿÿÿJ$35675513-1659-4aaa-a9f1-5f1b32845929
+‘
+java:S1192-"NDefine a constant instead of duplicating this literal "<instruction>" 3 times.(‡…Ó8˜ˆ£ñ1J$93bfb41d-afbe-4bff-b845-5db40727239d
+~	java:S125"<This block of commented-out lines of code should be removed.(÷õàÃ8¥ˆ£ñ1J$090b555a-7fac-4e7c-9a33-451e2d9cf3f6
+ƒ	java:S125%"<This block of commented-out lines of code should be removed.(ñ²“şÿÿÿÿÿ8¨ˆ£ñ1J$e25cda7d-e95d-4d67-a99d-7bc65b2ce1d6
+~	java:S125*"<This block of commented-out lines of code should be removed.(›Ÿ÷¾8¨ˆ£ñ1J$e73166d2-19ca-44e7-afd5-a12300f8cce6
+~	java:S1253"<This block of commented-out lines of code should be removed.(÷õàÃ8¨ˆ£ñ1J$641c1ce4-ba86-4337-852f-b610438116b5
+~	java:S125F"<This block of commented-out lines of code should be removed.(÷õàÃ8ªˆ£ñ1J$a12b808f-1e07-48e9-a0ae-ae0f623969cf
+~	java:S125J"<This block of commented-out lines of code should be removed.(ûëÃì8«ˆ£ñ1J$b8fc0d31-2fa2-4c66-9fa4-23e371eac4e2
+ƒ	java:S125M"<This block of commented-out lines of code should be removed.(ËÎ¤åıÿÿÿÿ8«ˆ£ñ1J$ddccce68-bfa2-4f83-93ab-c21dd6a6946c
+~	java:S125U"<This block of commented-out lines of code should be removed.(÷õàÃ8«ˆ£ñ1J$fbba3ac2-2e72-48a1-9369-e2e8c6a4759e
+~	java:S125b"<This block of commented-out lines of code should be removed.(÷õàÃ8¬ˆ£ñ1J$67690a7d-c72d-47e7-bd70-73b83f9693aa
+~	java:S125p"<This block of commented-out lines of code should be removed.(÷õàÃ8­ˆ£ñ1J$290009c3-6bb7-470f-b89d-356d65188abb
+~	java:S125t"<This block of commented-out lines of code should be removed.(ïÓ‚—8­ˆ£ñ1J$5f9c13d6-7fe5-4195-8ff8-a9b5147e99a3
+~	java:S125}"<This block of commented-out lines of code should be removed.(Ç‚Ù¸8­ˆ£ñ1J$107945b4-cda3-4331-96c8-f807d78e9d5d
+„	java:S125"<This block of commented-out lines of code should be removed.(¢»Ôüüÿÿÿÿ8¯ˆ£ñ1J$61de91c4-7bee-4d9a-9625-4721c0ad7225
+	java:S125•"<This block of commented-out lines of code should be removed.(¾œú8¯ˆ£ñ1J$f10dddc7-bccd-4b0f-bca1-99fadcb11723
+s	java:S106¨"+Replace this use of System.out by a logger.(ºüÏ­ùÿÿÿÿ8°ˆ£ñ1J$b56165fc-a610-49ee-9137-3b92c7eeb7d7
