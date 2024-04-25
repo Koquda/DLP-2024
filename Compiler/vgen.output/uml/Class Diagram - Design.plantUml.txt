@@ -63,8 +63,6 @@ StructDefinition o-[#404040,thickness=2]- "✱" StructField : structFields >
 
 class FunctionDefinition {
 	+String name
-	..<color:#669900> MemoryAllocation </color>..
-	+<color:#669900>int bytesLocals</color>
 }
 Definition <|-[#808080]- FunctionDefinition
 FunctionDefinition o-[#404040,thickness=2]- "✱" VarDefinition : varDefinitions >

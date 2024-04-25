@@ -101,7 +101,6 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class FunctionDefinition(String name, List<VarDefinition> varDefinitions, Type type, List<Definition> definitions, List<Statement> statements)
-	// phase MemoryAllocation { int bytesLocals }
 	@Override
 	public Object visit(FunctionDefinition functionDefinition, Object param) {
 

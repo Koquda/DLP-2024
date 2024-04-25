@@ -1,18 +1,18 @@
 
-‘
-java:S1192-"NDefine a constant instead of duplicating this literal "<instruction>" 3 times.(‡…Ó8˜ˆ£ñ1J$93bfb41d-afbe-4bff-b845-5db40727239d
-~	java:S125"<This block of commented-out lines of code should be removed.(÷õàÃ8¥ˆ£ñ1J$090b555a-7fac-4e7c-9a33-451e2d9cf3f6
-ƒ	java:S125%"<This block of commented-out lines of code should be removed.(ñ²“şÿÿÿÿÿ8¨ˆ£ñ1J$e25cda7d-e95d-4d67-a99d-7bc65b2ce1d6
-~	java:S125*"<This block of commented-out lines of code should be removed.(›Ÿ÷¾8¨ˆ£ñ1J$e73166d2-19ca-44e7-afd5-a12300f8cce6
-~	java:S1253"<This block of commented-out lines of code should be removed.(÷õàÃ8¨ˆ£ñ1J$641c1ce4-ba86-4337-852f-b610438116b5
-~	java:S125F"<This block of commented-out lines of code should be removed.(÷õàÃ8ªˆ£ñ1J$a12b808f-1e07-48e9-a0ae-ae0f623969cf
-~	java:S125J"<This block of commented-out lines of code should be removed.(ûëÃì8«ˆ£ñ1J$b8fc0d31-2fa2-4c66-9fa4-23e371eac4e2
-ƒ	java:S125M"<This block of commented-out lines of code should be removed.(ËÎ¤åıÿÿÿÿ8«ˆ£ñ1J$ddccce68-bfa2-4f83-93ab-c21dd6a6946c
-~	java:S125U"<This block of commented-out lines of code should be removed.(÷õàÃ8«ˆ£ñ1J$fbba3ac2-2e72-48a1-9369-e2e8c6a4759e
-~	java:S125b"<This block of commented-out lines of code should be removed.(÷õàÃ8¬ˆ£ñ1J$67690a7d-c72d-47e7-bd70-73b83f9693aa
-~	java:S125p"<This block of commented-out lines of code should be removed.(÷õàÃ8­ˆ£ñ1J$290009c3-6bb7-470f-b89d-356d65188abb
-~	java:S125t"<This block of commented-out lines of code should be removed.(ïÓ‚—8­ˆ£ñ1J$5f9c13d6-7fe5-4195-8ff8-a9b5147e99a3
-~	java:S125}"<This block of commented-out lines of code should be removed.(Ç‚Ù¸8­ˆ£ñ1J$107945b4-cda3-4331-96c8-f807d78e9d5d
-„	java:S125"<This block of commented-out lines of code should be removed.(¢»Ôüüÿÿÿÿ8¯ˆ£ñ1J$61de91c4-7bee-4d9a-9625-4721c0ad7225
-	java:S125•"<This block of commented-out lines of code should be removed.(¾œú8¯ˆ£ñ1J$f10dddc7-bccd-4b0f-bca1-99fadcb11723
-s	java:S106¨"+Replace this use of System.out by a logger.(ºüÏ­ùÿÿÿÿ8°ˆ£ñ1J$b56165fc-a610-49ee-9137-3b92c7eeb7d7
+d
+java:S1192-"NDefine a constant instead of duplicating this literal "<instruction>" 3 times.(‡…Ó
+Q	java:S125"<This block of commented-out lines of code should be removed.(÷õàÃ
+V	java:S125%"<This block of commented-out lines of code should be removed.(ñ²“şÿÿÿÿÿ
+Q	java:S125*"<This block of commented-out lines of code should be removed.(›Ÿ÷¾
+Q	java:S1253"<This block of commented-out lines of code should be removed.(÷õàÃ
+Q	java:S125F"<This block of commented-out lines of code should be removed.(÷õàÃ
+Q	java:S125J"<This block of commented-out lines of code should be removed.(ûëÃì
+V	java:S125M"<This block of commented-out lines of code should be removed.(ËÎ¤åıÿÿÿÿ
+Q	java:S125U"<This block of commented-out lines of code should be removed.(÷õàÃ
+Q	java:S125b"<This block of commented-out lines of code should be removed.(÷õàÃ
+Q	java:S125p"<This block of commented-out lines of code should be removed.(÷õàÃ
+Q	java:S125t"<This block of commented-out lines of code should be removed.(ïÓ‚—
+Q	java:S125}"<This block of commented-out lines of code should be removed.(Ç‚Ù¸
+W	java:S125"<This block of commented-out lines of code should be removed.(¢»Ôüüÿÿÿÿ
+R	java:S125•"<This block of commented-out lines of code should be removed.(¾œú
+F	java:S106¨"+Replace this use of System.out by a logger.(ºüÏ­ùÿÿÿÿ

@@ -37,7 +37,9 @@ public class MemoryAllocation extends DefaultVisitor {
             varDefinition.setAddress(globalOffset);
             globalOffset += varDefinition.getType().numberOfBytes();
         }
-        return null;    }
+        return null;
+    }
+
     // class FunctionDefinition(String name, List<VarDefinition> varDefinitions, Type type, List<Definition> definitions, List<Statement> statements)
     // phase MemoryAllocation { int bytesLocals }
     @Override
