@@ -18,6 +18,7 @@ import visitor.Visitor;
 	
 	PHASE MemoryAllocation
 	varDefinition -> address:int
+	varDefinition -> global:boolean
 */
 public class VarDefinition extends AbstractDefinition  {
 
@@ -30,6 +31,7 @@ public class VarDefinition extends AbstractDefinition  {
 
     // PHASE MemoryAllocation
 	private int address;
+	private boolean global;
 
     // ----------------------------------
     // Constructors
@@ -107,6 +109,18 @@ public class VarDefinition extends AbstractDefinition  {
 
     public int getAddress() {
         return address;
+    }
+
+
+	// Attribute 'global:boolean' 
+
+	public void setGlobal(boolean global) {
+		this.global = global;
+
+	}
+
+    public boolean isGlobal() {
+        return global;
     }
 
 

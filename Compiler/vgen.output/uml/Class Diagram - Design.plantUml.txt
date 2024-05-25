@@ -51,6 +51,7 @@ class VarDefinition {
 	+String name
 	..<color:#669900> MemoryAllocation </color>..
 	+<color:#669900>int address</color>
+	+<color:#669900>boolean global</color>
 }
 Definition <|-[#808080]- VarDefinition
 VarDefinition o-[#404040,thickness=2]-  Type : type >

@@ -1,18 +1,11 @@
-var a:int;
+f(p1:char, p2:float): int {
+	var loc1:float;
+	var loc2:char;
+
+	return <int>(p1);
+}
 
 main() {
-    var b:int;
-
-    a = 2;
-    if (a != 2) {
-        b = 2;
-        if (a == b) {
-            print 4;
-        } else {
-            read a;
-            print a;
-        }
-    } else {
-        print 0;
-    }
+    print f('a', 3.2);
 }
+

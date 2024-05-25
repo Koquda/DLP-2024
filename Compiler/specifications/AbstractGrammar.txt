@@ -65,6 +65,7 @@ structAccess -> structField;
 ATTRIBUTE GRAMMAR MemoryAllocation
 
 varDefinition -> [inh] address:int;
+varDefinition -> [inh] global:boolean;
 structField -> [inh] address:int;
 
 // -----------------------
@@ -74,7 +75,10 @@ run[program]
 execute[statement]
 execute[definition]
 value[expression]
-address[expression]
+value[functionCallStatement]
+address[variable]
+address[structAccess]
+address[arrayAccess]
 
 // Directivas de fusion
 metadata[program]

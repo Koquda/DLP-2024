@@ -2,9 +2,14 @@
 
 package codegeneration.mapl.codefunctions;
 
+import ast.definition.FunctionDefinition;
 import ast.expression.*;
+import ast.statement.FunctionCallStatement;
 import ast.type.CharType;
+import ast.type.IntType;
+import ast.type.Type;
 import codegeneration.mapl.*;
+import com.sun.jdi.DoubleType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,8 +62,7 @@ public class Value extends AbstractCodeFunction {
 	@Override
 	public Object visit(CharLiteral charLiteral, Object param) {
 
-		// TODO revisar
-		out("pushb " + charLiteral.getValue());
+		out("pushb " + (int) charLiteral.getCharacter());
 
 		return null;
 	}
@@ -80,12 +84,6 @@ public class Value extends AbstractCodeFunction {
 	@Override
 	public Object visit(Arithmetic arithmetic, Object param) {
 
-		// value(arithmetic.getLeft());
-		// address(arithmetic.getLeft());
-
-		// value(arithmetic.getRight());
-		// address(arithmetic.getRight());
-
 		value(arithmetic.getLeft());
 		value(arithmetic.getRight());
 		out(instruction.get(arithmetic.getOperator()), arithmetic.getLeft().getType());
@@ -98,11 +96,6 @@ public class Value extends AbstractCodeFunction {
 	@Override
 	public Object visit(ArithmeticComparison arithmeticComparison, Object param) {
 
-		// value(arithmeticComparison.getLeft());
-		// address(arithmeticComparison.getLeft());
-
-		// value(arithmeticComparison.getRight());
-		// address(arithmeticComparison.getRight());
 
 		value(arithmeticComparison.getLeft());
 		value(arithmeticComparison.getRight());
@@ -119,15 +112,9 @@ public class Value extends AbstractCodeFunction {
 	@Override
 	public Object visit(LogicalComparison logicalComparison, Object param) {
 
-		// value(logicalComparison.getLeft());
-		// address(logicalComparison.getLeft());
-
-		// value(logicalComparison.getRight());
-		// address(logicalComparison.getRight());
-
 		value(logicalComparison.getLeft());
 		value(logicalComparison.getRight());
-		out(instruction.get(logicalComparison.getOperator()), logicalComparison.getLeft().getType());
+		out(instruction.get(logicalComparison.getOperator()));
 
 		return null;
 	}
@@ -136,9 +123,6 @@ public class Value extends AbstractCodeFunction {
 	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(Negation negation, Object param) {
-
-		// value(negation.getExpression());
-		// address(negation.getExpression());
 
 		value(negation.getExpression());
 		out("not");
@@ -155,7 +139,16 @@ public class Value extends AbstractCodeFunction {
 		// value(functionCallExpression.expressions());
 		// address(functionCallExpression.expressions());
 
-		out("<instruction>");
+		int i = 0;
+		for (Expression expr : functionCallExpression.getExpressions()) {
+			value(expr);
+			promoteTo(
+					functionCallExpression.getExpressions().get(i).getType(),
+					functionCallExpression.getDefinition().getVarDefinitions().get(i).getType()
+			);
+			i++;
+		}
+		out("call\t" + functionCallExpression.getName());
 
 		return null;
 	}
@@ -165,11 +158,9 @@ public class Value extends AbstractCodeFunction {
 	@Override
 	public Object visit(StructAccess structAccess, Object param) {
 
-		// value(structAccess.getExpression());
-		// address(structAccess.getExpression());
-
 		address(structAccess);
-		out("load ", structAccess.getExpression().getType());
+		promoteTo(structAccess.getExpression().getType(), structAccess.getType());
+		out("load", structAccess.getType());
 
 		return null;
 	}
@@ -179,12 +170,8 @@ public class Value extends AbstractCodeFunction {
 	@Override
 	public Object visit(Cast cast, Object param) {
 
-		// value(cast.getExpression());
-		// address(cast.getExpression());
-
 		value(cast.getExpression());
-		// TODO convertTo
-		out("");
+		promoteTo(cast.getExpression().getType(), cast.getCastType());
 
 		return null;
 	}
@@ -194,16 +181,32 @@ public class Value extends AbstractCodeFunction {
 	@Override
 	public Object visit(ArrayAccess arrayAccess, Object param) {
 
-		// value(arrayAccess.getLeft());
-		// address(arrayAccess.getLeft());
-
-		// value(arrayAccess.getRight());
-		// address(arrayAccess.getRight());
-
 		address(arrayAccess);
-		out("load ", arrayAccess.getLeft().getType());
+		out("load", arrayAccess.getLeft().getType());
 
 		return null;
 	}
 
+
+	// class FunctionCallStatement(String name, List<Expression> expressions)
+	// phase Identification { FunctionDefinition definition }
+	// phase TypeChecking { FunctionDefinition functionWhereDefined }
+	@Override
+	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
+
+		// value(functionCallStatement.expressions());
+
+		int i = 0;
+		for (Expression expr : functionCallStatement.getExpressions()) {
+			value(expr);
+			promoteTo(
+					functionCallStatement.getExpressions().get(i).getType(),
+					functionCallStatement.getDefinition().getVarDefinitions().get(i).getType()
+			);
+			i++;
+		}
+		out("call\t" + functionCallStatement.getName());
+
+		return null;
+	}
 }

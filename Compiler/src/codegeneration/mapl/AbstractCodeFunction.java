@@ -26,6 +26,7 @@ import ast.type.CharType;
 import ast.type.FloatType;
 import ast.type.IntType;
 import ast.type.Type;
+import com.sun.jdi.DoubleType;
 import visitor.ExceptionThrowerVisitor;
 
 /**
@@ -63,8 +64,6 @@ public abstract class AbstractCodeFunction extends ExceptionThrowerVisitor {
         if (type instanceof CharType)
             return "b";
 
-        // Sealed classes + pattern matching would avoid this situation. Those features were not
-        // finished when this code was implemented
         throw new IllegalArgumentException("Unknown Type: " + type);
     }
 
@@ -213,4 +212,25 @@ public abstract class AbstractCodeFunction extends ExceptionThrowerVisitor {
     }
 
 
+    protected void promoteTo(Type from, Type to) {
+        //    System.out.println("FROM:" + from + " | TO:" + to);
+        if (from instanceof IntType) {
+            if (to instanceof DoubleType) out("i2f");
+            if (to instanceof CharType) out("i2b");
+        }
+        if (from instanceof DoubleType) {
+            if (to instanceof IntType) out("f2b");
+            if (to instanceof CharType) {
+                out("f2i");
+                out("i2b");
+            }
+        }
+        if (from instanceof CharType) {
+            if (to instanceof DoubleType) {
+                out("b2i");
+                out("i2f");
+            }
+            if (to instanceof IntType) out("b2i");
+        }
+    }
 }

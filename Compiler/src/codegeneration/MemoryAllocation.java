@@ -33,9 +33,11 @@ public class MemoryAllocation extends DefaultVisitor {
         if(param instanceof FunctionDefinition) {
             localOffset -= varDefinition.getType().numberOfBytes();
             varDefinition.setAddress(localOffset);
+            varDefinition.setGlobal(false);
         } else {
             varDefinition.setAddress(globalOffset);
             globalOffset += varDefinition.getType().numberOfBytes();
+            varDefinition.setGlobal(true);
         }
         return null;
     }

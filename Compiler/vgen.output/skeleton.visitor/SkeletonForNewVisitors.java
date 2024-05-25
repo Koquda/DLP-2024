@@ -80,7 +80,7 @@ public class SkeletonForNewVisitors extends DefaultVisitor {
 	}
 
 	// class VarDefinition(String name, Type type)
-	// phase MemoryAllocation { int address }
+	// phase MemoryAllocation { int address, boolean global }
 	@Override
 	public Object visit(VarDefinition varDefinition, Object param) {
 

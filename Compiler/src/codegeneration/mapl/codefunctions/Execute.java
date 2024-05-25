@@ -7,7 +7,9 @@ import ast.Position;
 import ast.definition.FunctionDefinition;
 import ast.definition.StructDefinition;
 import ast.definition.VarDefinition;
+import ast.expression.Expression;
 import ast.statement.*;
+import ast.type.VoidType;
 import codegeneration.mapl.*;
 
 
@@ -15,6 +17,8 @@ public class Execute extends AbstractCodeFunction {
 
 	private int elseLabelCount = 0;
 	private int endIfLabelCount = 0;
+	private int whileLabel = 0;
+	private int whileEndLabel = 0;
 
     public Execute(MaplCodeSpecification specification) {
         super(specification);
@@ -42,7 +46,11 @@ public class Execute extends AbstractCodeFunction {
 		// value(functionCallStatement.expressions());
 		// address(functionCallStatement.expressions());
 
-		out("<instruction>");
+		line(functionCallStatement);
+		value(functionCallStatement);
+		if (!(functionCallStatement.getDefinition().getType() instanceof VoidType)) {
+			out("pop" + suffixFor(functionCallStatement.getDefinition().getType()));
+		}
 
 		return null;
 	}
@@ -71,13 +79,21 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(While whileValue, Object param) {
 
-		// value(whileValue.getCondition());
-		// address(whileValue.getCondition());
+		String wLabel = "whileLabel" + whileLabel;
+		String wEndLabel = "whileEndLabel" + whileEndLabel;
 
-		// execute(whileValue.statements());
+		line(whileValue);
+		out( wLabel + ":");
+		out("\n ' While Condition");
+		value(whileValue.getCondition());
+		out("jz " + wEndLabel);
+		out("\n ' While Body");
+		execute(whileValue.statements());
+		out("jmp " + wLabel);
+		out("\n" + wEndLabel + ":");
 
-		out("<instruction>");
-
+		whileLabel++;
+		whileEndLabel++;
 		return null;
 	}
 
@@ -103,6 +119,13 @@ public class Execute extends AbstractCodeFunction {
 		print.expressions().forEach(expression -> {
 			value(expression);
 			out("out", expression.getType());
+			if (print.getLexema().equalsIgnoreCase("ln")) {
+				out("pushb 10");
+				out("outb");
+			} else if (print.getLexema().equalsIgnoreCase("sp")) {
+				out("pushb 32");
+				out("outb");
+			}
 		});
 
 		return null;
@@ -116,7 +139,13 @@ public class Execute extends AbstractCodeFunction {
 		// value(returnValue.getExpression());
 		// address(returnValue.getExpression());
 
-		out("<instruction>");
+		line(returnValue);
+		var funcDef = (FunctionDefinition) param;
+		if (returnValue.getExpression().isPresent()) {
+			Expression expr = returnValue.getExpression().get();
+			value(expr);
+			promoteTo(expr.getType(), funcDef.getType());
+		}
 
 		return null;
 	}
@@ -145,12 +174,28 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
+		// TODO: ver que hacer con el metadata
+		// metadata(functionDefinition);
+
+		line(functionDefinition);
 		out(functionDefinition.getName() + ":");
-//		metadata(functionDefinition);
-		execute(functionDefinition.varDefinitions());
-		execute(functionDefinition.definitions());
-		execute(functionDefinition.statements());
-		out("ret");
+
+		out("' Parameters");
+		execute(functionDefinition.varDefinitions(), param);
+		int paramSize = functionDefinition.varDefinitions()
+				.map(funcParam -> funcParam.getType().numberOfBytes())
+				.reduce(0, Integer::sum);
+
+		out("' Local variables");
+		execute(functionDefinition.varDefinitions(), param);
+		int localVariablesSize = functionDefinition.definitions()
+				.map(local -> ((VarDefinition) local).getType().numberOfBytes())
+				.reduce(0, Integer::sum);
+
+		out("enter\t" + localVariablesSize);
+		execute(functionDefinition.statements(), functionDefinition);
+		out("ret\t" + functionDefinition.getType().numberOfBytes() + ", " + localVariablesSize + ", " + paramSize);
+
 
 		return null;
 	}

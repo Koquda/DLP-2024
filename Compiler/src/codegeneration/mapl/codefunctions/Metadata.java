@@ -28,8 +28,12 @@ public class Metadata extends AbstractCodeFunction {
 	// phase MemoryAllocation { int address }
 	@Override
 	public Object visit(VarDefinition varDefinition, Object param) {
+		if (varDefinition.getType() instanceof ArrayType) {
+			return null;
+		}
 
-		out("#GLOBAL " + varDefinition.getName() + ":" + getTypeName(varDefinition.getType()) + "\n");
+		if (varDefinition.isGlobal())
+			out("#GLOBAL " + varDefinition.getName() + ":" + getTypeName(varDefinition.getType()) + "\n");
 
 		return null;
 	}
@@ -54,7 +58,7 @@ public class Metadata extends AbstractCodeFunction {
 	@Override
 	public Object visit(StructDefinition structDefinition, Object param) {
 
-		out("# TYPE " + structDefinition.getName() + "{");
+		out("#TYPE " + structDefinition.getName() + ":{");
 		structDefinition.structFields().forEach(field -> out("\t" + field.getName() + ":" + getTypeName(field.getType())));
 		out("}\n");
 

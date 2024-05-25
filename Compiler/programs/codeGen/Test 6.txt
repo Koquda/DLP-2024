@@ -1,0 +1,65 @@
+/*
+Test para probar la Fase de Generación de Código
+
+COMPROBACION.
+
+Si se teclea:
+>Escriba una cadena: x
+>Escriba un real: 98,5
+>Escriba un entero: 99
+
+Deberá salir:
+x
+b
+c
+
+98,5
+99
+99
+
+99
+99
+99
+
+
+CONSEJO: No limitarse a comprobar el resultado de la ejecución. Se recomienda además abrir el fichero generado usando el depurador GVM y comprobar sus instrucciones.
+
+Para facilitar esta tarea es de gran utilidad que el alumno haya generado directivas '#line' en el fichero de salida.
+Para información sobre la función de dicha directiva se debe abrir con GVM el siguiente tutorial:
+Tutorial\3 Uso básico del depurador\4 Fusión Alto Nivel.txt
+
+NOTA: Es posible que el alumno deba adaptar ligeramente la sintaxis de este ejemplo si no coincide
+con la del lenguaje que le corresponde.
+*/
+
+main() {
+    var a:int;
+    var f:float;
+    var c:char;
+
+    read c;
+    read f;
+    read a;
+
+
+    println c;
+    c = <char>(f);
+    println c;
+    c = <char>(a);
+    println c;
+    println;
+
+    println f;
+    f = <float>(a);
+    println f;
+    f = <float>(c);
+    println f;
+    println;
+
+    println a;
+    a = <int>(f);
+    println a;
+    a = <int>(c);
+    println a;
+
+}

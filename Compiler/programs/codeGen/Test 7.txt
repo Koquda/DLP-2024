@@ -1,0 +1,47 @@
+/*
+Test para probar la Fase de Generación de Código
+
+COMPROBACION. Deberá salir:
+6 * 1 = 6 
+6 * 2 = 12 
+6 * 3 = 18 
+6 * 4 = 24 
+6 * 5 = 30 
+6 * 6 = 36 
+6 * 7 = 42 
+6 * 8 = 48 
+6 * 9 = 54 
+6 * 10 = 60 
+
+CONSEJO: No limitarse a comprobar el resultado de la ejecución. Se recomienda además abrir el fichero generado usando el depurador GVM y comprobar sus instrucciones.
+
+Para facilitar esta tarea es de gran utilidad que el alumno haya generado directivas '#line' en el fichero de salida.
+Para información sobre la función de dicha directiva se debe abrir con GVM el siguiente tutorial:
+Tutorial\3 Uso básico del depurador\4 Fusión Alto Nivel.txt
+
+NOTA: Es posible que el alumno deba adaptar ligeramente la sintaxis de este ejemplo si no coincide
+con la del lenguaje que le corresponde.
+*/
+
+
+tablaMultiplicar(numero:int):char {
+    var index:int;
+
+    index = 1;
+    while (1) {
+
+        printsp numero, '*' , index, '=' , numero * index;
+        println;
+
+        if (index == 10) {  // Prueba de anidamiento
+            return 'x';
+        }
+
+        index = index + 1;
+    }
+    return 'a';
+}
+
+main() {
+    tablaMultiplicar(6);
+}
