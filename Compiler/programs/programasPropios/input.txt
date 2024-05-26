@@ -1,11 +1,9 @@
-f(p1:char, p2:float): int {
-	var loc1:float;
-	var loc2:char;
-
-	return <int>(p1);
-}
+var a:float;
 
 main() {
-    print f('a', 3.2);
-}
+    var i:int;
 
+    i = 1;
+
+	a = <float>(1000 + (i * 100));
+}

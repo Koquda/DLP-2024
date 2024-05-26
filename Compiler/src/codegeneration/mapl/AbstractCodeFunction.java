@@ -215,18 +215,18 @@ public abstract class AbstractCodeFunction extends ExceptionThrowerVisitor {
     protected void promoteTo(Type from, Type to) {
         //    System.out.println("FROM:" + from + " | TO:" + to);
         if (from instanceof IntType) {
-            if (to instanceof DoubleType) out("i2f");
+            if (to instanceof FloatType) out("i2f");
             if (to instanceof CharType) out("i2b");
         }
-        if (from instanceof DoubleType) {
-            if (to instanceof IntType) out("f2b");
+        if (from instanceof FloatType) {
+            if (to instanceof IntType) out("f2i");
             if (to instanceof CharType) {
                 out("f2i");
                 out("i2b");
             }
         }
         if (from instanceof CharType) {
-            if (to instanceof DoubleType) {
+            if (to instanceof FloatType) {
                 out("b2i");
                 out("i2f");
             }

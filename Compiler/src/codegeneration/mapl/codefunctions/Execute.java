@@ -30,9 +30,10 @@ public class Execute extends AbstractCodeFunction {
 	public Object visit(Assignment assignment, Object param) {
 
 		line(assignment);
-		address(assignment.getLeft());
-		value(assignment.getRight());
+		address(assignment.getLeft(), param);
+		value(assignment.getRight(), param);
 		out("store" + suffixFor(assignment.getRight().getType()));
+
 
 		return null;
 	}
@@ -47,7 +48,8 @@ public class Execute extends AbstractCodeFunction {
 		// address(functionCallStatement.expressions());
 
 		line(functionCallStatement);
-		value(functionCallStatement);
+		value(functionCallStatement.expressions());
+		out("call " + functionCallStatement.getName());
 		if (!(functionCallStatement.getDefinition().getType() instanceof VoidType)) {
 			out("pop" + suffixFor(functionCallStatement.getDefinition().getType()));
 		}
@@ -59,18 +61,18 @@ public class Execute extends AbstractCodeFunction {
 	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(If ifValue, Object param) {
+		var elseLabel = elseLabelCount++;
+		var endIfLabel = endIfLabelCount++;
 
 		line(ifValue);
 		value(ifValue.getCondition());
-		out("jz elseLabel" + elseLabelCount);
-		execute(ifValue.ifBody());
-		out("jmp endIfLabel" + endIfLabelCount);
-		out("elseLabel" + elseLabelCount + ":");
-		execute(ifValue.elseBody());
-		out("endIfLabel" + endIfLabelCount + ":");
+		out("jz elseLabel" + elseLabel);
+		execute(ifValue.ifBody(), param);
+		out("jmp endIfLabel" + endIfLabel);
+		out("elseLabel" + elseLabel + ":");
+		execute(ifValue.elseBody(), param);
+		out("endIfLabel" + endIfLabel + ":");
 
-		elseLabelCount++;
-		endIfLabelCount++;
 		return null;
 	}
 
@@ -84,11 +86,11 @@ public class Execute extends AbstractCodeFunction {
 
 		line(whileValue);
 		out( wLabel + ":");
-		out("\n ' While Condition");
-		value(whileValue.getCondition());
+		out("\n' While Condition");
+		value(whileValue.getCondition(), param);
 		out("jz " + wEndLabel);
-		out("\n ' While Body");
-		execute(whileValue.statements());
+		out("\n' While Body");
+		execute(whileValue.statements(), param);
 		out("jmp " + wLabel);
 		out("\n" + wEndLabel + ":");
 
@@ -116,17 +118,15 @@ public class Execute extends AbstractCodeFunction {
 	public Object visit(Print print, Object param) {
 
 		line(print);
-		print.expressions().forEach(expression -> {
-			value(expression);
-			out("out", expression.getType());
-			if (print.getLexema().equalsIgnoreCase("ln")) {
-				out("pushb 10");
-				out("outb");
-			} else if (print.getLexema().equalsIgnoreCase("sp")) {
-				out("pushb 32");
-				out("outb");
-			}
-		});
+		if (print.getExpressions() == null || print.getExpressions().size() <= 0) {
+			printLexeme(print);
+		} else {
+			print.expressions().forEach(expression -> {
+				value(expression);
+				out("out", expression.getType());
+				printLexeme(print);
+			});
+		}
 
 		return null;
 	}
@@ -140,11 +140,20 @@ public class Execute extends AbstractCodeFunction {
 		// address(returnValue.getExpression());
 
 		line(returnValue);
-		var funcDef = (FunctionDefinition) param;
 		if (returnValue.getExpression().isPresent()) {
 			Expression expr = returnValue.getExpression().get();
 			value(expr);
-			promoteTo(expr.getType(), funcDef.getType());
+			if (param instanceof FunctionDefinition funcDef) {
+				int paramSize = funcDef.varDefinitions()
+						.map(funcParam -> funcParam.getType().numberOfBytes())
+						.reduce(0, Integer::sum);
+
+				int localVariablesSize = funcDef.definitions()
+						.map(local -> ((VarDefinition) local).getType().numberOfBytes())
+						.reduce(0, Integer::sum);
+
+				out("ret " + funcDef.getType().numberOfBytes() + ", " + localVariablesSize + ", " + paramSize);
+			}
 		}
 
 		return null;
@@ -174,27 +183,27 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
-		// TODO: ver que hacer con el metadata
-		// metadata(functionDefinition);
+		// TODO
+//		metadata(functionDefinition);
 
 		line(functionDefinition);
 		out(functionDefinition.getName() + ":");
 
-		out("' Parameters");
 		execute(functionDefinition.varDefinitions(), param);
+		execute(functionDefinition.definitions(), param);
+
 		int paramSize = functionDefinition.varDefinitions()
 				.map(funcParam -> funcParam.getType().numberOfBytes())
 				.reduce(0, Integer::sum);
 
-		out("' Local variables");
-		execute(functionDefinition.varDefinitions(), param);
 		int localVariablesSize = functionDefinition.definitions()
 				.map(local -> ((VarDefinition) local).getType().numberOfBytes())
 				.reduce(0, Integer::sum);
 
-		out("enter\t" + localVariablesSize);
+		out("enter " + localVariablesSize);
 		execute(functionDefinition.statements(), functionDefinition);
-		out("ret\t" + functionDefinition.getType().numberOfBytes() + ", " + localVariablesSize + ", " + paramSize);
+		if (functionDefinition.getType() instanceof VoidType)
+			out("ret " + functionDefinition.getType().numberOfBytes() + ", " + localVariablesSize + ", " + paramSize);
 
 
 		return null;
@@ -202,6 +211,16 @@ public class Execute extends AbstractCodeFunction {
 
 
 	// Auxiliary methods for the generation of code
+	private void printLexeme(Print print) {
+		if (print.getLexema().equalsIgnoreCase("ln")) {
+			out("pushb 10");
+			out("outb");
+		} else if (print.getLexema().equalsIgnoreCase("sp")) {
+			out("pushb 32");
+			out("outb");
+		}
+	}
+
 
 	private void line(AST node) {
 		line(node.end());

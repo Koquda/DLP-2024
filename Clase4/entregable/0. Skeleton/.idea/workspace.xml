@@ -4,40 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93840700-08f5-4f5e-8349-fa1a14a66888" name="Changes" comment="quitado el atributo bytesLocals que estaba sin usar">
-      <change afterPath="$PROJECT_DIR$/../../../Compiler/programs/codeGen/Test 1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Compiler/programs/codeGen/Test 2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Compiler/programs/codeGen/Test 3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Compiler/programs/codeGen/Test 4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Compiler/programs/codeGen/Test 5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Compiler/programs/codeGen/Test 6.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Compiler/programs/codeGen/Test 7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d621ded547a583938ba6f748ad8fa29c64746f0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d621ded547a583938ba6f748ad8fa29c64746f0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/683dc63ab00a0a1591a773ebb5ff5fee98a06225" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/683dc63ab00a0a1591a773ebb5ff5fee98a06225" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/788ed66e2a9cc7d65019be241088bfed4709f87f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9aad66f5fc668cfb1d2b3e351cf0f918b22218c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9aad66f5fc668cfb1d2b3e351cf0f918b22218c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f47f59238d96db32c4cf373e070e53fca7f9ab3c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f47f59238d96db32c4cf373e070e53fca7f9ab3c" afterDir="false" />
+    <list default="true" id="93840700-08f5-4f5e-8349-fa1a14a66888" name="Changes" comment="progreso">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3d621ded547a583938ba6f748ad8fa29c64746f0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f47f59238d96db32c4cf373e070e53fca7f9ab3c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe03b4fd3afe162c6e01309b98a22588e093d274" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe03b4fd3afe162c6e01309b98a22588e093d274" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ff3ba2a4b1662f127ba72f591aa98b113244876f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ff3ba2a4b1662f127ba72f591aa98b113244876f" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/8/788ed66e2a9cc7d65019be241088bfed4709f87f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/d/3d621ded547a583938ba6f748ad8fa29c64746f0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/4/f47f59238d96db32c4cf373e070e53fca7f9ab3c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Compiler/programs/programasPropios/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/programs/programasPropios/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/AbstractGrammar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/AbstractGrammar.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/definition/VarDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/definition/VarDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/MemoryAllocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/MemoryAllocation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/AbstractCodeFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/AbstractCodeFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Address.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Execute.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Execute.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Metadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Metadata.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Value.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Compiler/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/visitor/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/visitor/AstPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/todo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeleton.visitor/SkeletonForNewVisitors.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/skeleton.visitor/SkeletonForNewVisitors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/uml/Class Diagram - Design.plantUml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/uml/Class Diagram - Design.plantUml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/vgen.output/uml/Class Diagram - Implementation.plantUml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/vgen.output/uml/Class Diagram - Implementation.plantUml.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +129,8 @@
       <workItem from="1714573802610" duration="3149000" />
       <workItem from="1716646155808" duration="103000" />
       <workItem from="1716646278503" duration="7158000" />
-      <workItem from="1716658597168" duration="3987000" />
+      <workItem from="1716658597168" duration="8759000" />
+      <workItem from="1716716273768" duration="2489000" />
     </task>
     <task id="LOCAL-00001" summary="mas arreglos todavia">
       <option name="closed" value="true" />
@@ -181,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714043915361</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="progreso">
+      <option name="closed" value="true" />
+      <created>1716662944879</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716662944879</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +182,8 @@
     <MESSAGE value="mas arreglos todavia" />
     <MESSAGE value="metadata hecho" />
     <MESSAGE value="quitado el atributo bytesLocals que estaba sin usar" />
-    <option name="LAST_COMMIT_MESSAGE" value="quitado el atributo bytesLocals que estaba sin usar" />
+    <MESSAGE value="progreso" />
+    <option name="LAST_COMMIT_MESSAGE" value="progreso" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

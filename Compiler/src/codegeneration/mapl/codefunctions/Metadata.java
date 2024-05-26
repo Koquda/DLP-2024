@@ -43,12 +43,12 @@ public class Metadata extends AbstractCodeFunction {
 	@Override
 	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
-		out("# FUNC " + functionDefinition.getName());
+		out("#FUNC " + functionDefinition.getName());
 		if (functionDefinition.getType() instanceof VoidType)
-			out("# RET VOID");
+			out("#RET VOID");
 		else
-			out("# RET " + getTypeName(functionDefinition.getType()));
-		functionDefinition.varDefinitions().forEach(def -> out("# PARAM " + def.getName() + ":" + getTypeName(def.getType())));
+			out("#RET " + getTypeName(functionDefinition.getType()));
+		functionDefinition.varDefinitions().forEach(def -> out("#PARAM " + def.getName() + ":" + getTypeName(def.getType())));
 
 
 		return null;
@@ -59,7 +59,10 @@ public class Metadata extends AbstractCodeFunction {
 	public Object visit(StructDefinition structDefinition, Object param) {
 
 		out("#TYPE " + structDefinition.getName() + ":{");
-		structDefinition.structFields().forEach(field -> out("\t" + field.getName() + ":" + getTypeName(field.getType())));
+		structDefinition.structFields().forEach(field -> {
+			if (!(field.getType() instanceof ArrayType))
+				out("\t" + field.getName() + ":" + getTypeName(field.getType()));
+		});
 		out("}\n");
 
 		return null;

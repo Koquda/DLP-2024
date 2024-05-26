@@ -96,7 +96,6 @@ public class Value extends AbstractCodeFunction {
 	@Override
 	public Object visit(ArithmeticComparison arithmeticComparison, Object param) {
 
-
 		value(arithmeticComparison.getLeft());
 		value(arithmeticComparison.getRight());
 		if (arithmeticComparison.getLeft().getType() instanceof CharType)
@@ -135,9 +134,6 @@ public class Value extends AbstractCodeFunction {
 	// phase TypeChecking { boolean lvalue, Type type }
 	@Override
 	public Object visit(FunctionCallExpression functionCallExpression, Object param) {
-
-		// value(functionCallExpression.expressions());
-		// address(functionCallExpression.expressions());
 
 		int i = 0;
 		for (Expression expr : functionCallExpression.getExpressions()) {
@@ -182,7 +178,7 @@ public class Value extends AbstractCodeFunction {
 	public Object visit(ArrayAccess arrayAccess, Object param) {
 
 		address(arrayAccess);
-		out("load", arrayAccess.getLeft().getType());
+		out("load", arrayAccess.getType());
 
 		return null;
 	}
@@ -193,8 +189,6 @@ public class Value extends AbstractCodeFunction {
 	// phase TypeChecking { FunctionDefinition functionWhereDefined }
 	@Override
 	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
-
-		// value(functionCallStatement.expressions());
 
 		int i = 0;
 		for (Expression expr : functionCallStatement.getExpressions()) {

@@ -24,7 +24,7 @@ public class Address extends AbstractCodeFunction {
 			out("pusha " + variable.getVarDefinition().getAddress());
 		} else {
 			out("pusha BP");
-			out("push " + variable.getVarDefinition().getAddress());
+			out("pushi " + variable.getVarDefinition().getAddress());
 			out("addi");
 		}
 
