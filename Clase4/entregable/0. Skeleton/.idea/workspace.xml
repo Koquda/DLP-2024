@@ -4,24 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93840700-08f5-4f5e-8349-fa1a14a66888" name="Changes" comment="CodeGen &quot;terminada&quot;, hay que comprobarlo bien">
-      <change afterPath="$PROJECT_DIR$/../../../Compiler/programs/pruebasFinales/prueba.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9aad66f5fc668cfb1d2b3e351cf0f918b22218c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9aad66f5fc668cfb1d2b3e351cf0f918b22218c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe03b4fd3afe162c6e01309b98a22588e093d274" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe03b4fd3afe162c6e01309b98a22588e093d274" afterDir="false" />
+    <list default="true" id="93840700-08f5-4f5e-8349-fa1a14a66888" name="Changes" comment="compilador terminado">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/programs/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/programs/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/programs/programasPropios/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/programs/programasPropios/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/Grammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/Grammar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Execute.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Execute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Metadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Metadata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Value.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Compiler/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/parser/GrammarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/parser/GrammarLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/parser/GrammarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/parser/GrammarParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/semantic/TypeChecking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/semantic/TypeChecking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Compiler/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,30 +40,30 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "openjdk-21",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/aleja/Desktop/dlp-compiler",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/aleja/Desktop/dlp-compiler&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\aleja\Desktop\DLP-2024\Compiler\programs\codeGen" />
@@ -135,7 +122,8 @@
       <workItem from="1716658597168" duration="8759000" />
       <workItem from="1716716273768" duration="2654000" />
       <workItem from="1716733567688" duration="1464000" />
-      <workItem from="1716740661105" duration="13089000" />
+      <workItem from="1716740661105" duration="13408000" />
+      <workItem from="1716760418396" duration="142000" />
     </task>
     <task id="LOCAL-00001" summary="mas arreglos todavia">
       <option name="closed" value="true" />
@@ -185,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716726016391</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="compilador terminado">
+      <option name="closed" value="true" />
+      <created>1716760389008</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716760389008</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +193,8 @@
     <MESSAGE value="quitado el atributo bytesLocals que estaba sin usar" />
     <MESSAGE value="progreso" />
     <MESSAGE value="CodeGen &quot;terminada&quot;, hay que comprobarlo bien" />
-    <option name="LAST_COMMIT_MESSAGE" value="CodeGen &quot;terminada&quot;, hay que comprobarlo bien" />
+    <MESSAGE value="compilador terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="compilador terminado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
