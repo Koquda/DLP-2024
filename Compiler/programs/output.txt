@@ -1,0 +1,221 @@
+#SOURCE "Hipoteca.txt"
+
+call main
+halt
+
+
+#line 25
+potencia:
+enter 4
+
+#line 21
+pusha BP
+pushi 4
+addi
+loadi
+push 0
+eqi
+jz elseLabel0
+
+#line 13
+pusha BP
+pushi -4
+addi
+pushf 1.0
+storef
+jmp endIfLabel0
+elseLabel0:
+
+#line 21
+pusha BP
+pushi 4
+addi
+loadi
+push 0
+lti
+jz elseLabel1
+
+#line 16
+pusha BP
+pushi -4
+addi
+pushf 1.0
+pusha BP
+pushi 6
+addi
+loadf
+push 0
+pusha BP
+pushi 4
+addi
+loadi
+subi
+call	potencia
+divf
+storef
+jmp endIfLabel1
+elseLabel1:
+
+#line 18
+pusha BP
+pushi -4
+addi
+pusha BP
+pushi 6
+addi
+loadf
+storef
+
+#line 21
+whileLabel0:
+
+' While Condition
+pusha BP
+pushi 4
+addi
+loadi
+push 1
+gti
+jz whileEndLabel0
+
+' While Body
+
+#line 20
+pusha BP
+pushi -4
+addi
+pusha BP
+pushi -4
+addi
+loadf
+pusha BP
+pushi 6
+addi
+loadf
+mulf
+storef
+
+#line 21
+pusha BP
+pushi 4
+addi
+pusha BP
+pushi 4
+addi
+loadi
+push 1
+subi
+storei
+jmp whileLabel0
+
+whileEndLabel0:
+endIfLabel1:
+endIfLabel0:
+
+#line 25
+pusha BP
+pushi -4
+addi
+loadf
+ret 4, 4, 6
+
+#line 33
+letraHipoteca:
+enter 4
+
+#line 32
+pusha BP
+pushi -4
+addi
+pusha BP
+pushi 4
+addi
+loadf
+pushf 12.0
+divf
+storef
+
+#line 33
+pusha BP
+pushi 10
+addi
+loadf
+pusha BP
+pushi -4
+addi
+loadf
+mulf
+pushf 100.0
+pushf 1.0
+pushf 1.0
+pusha BP
+pushi -4
+addi
+loadf
+pushf 100.0
+divf
+addf
+push 0
+pusha BP
+pushi 8
+addi
+loadi
+subi
+call	potencia
+subf
+mulf
+divf
+ret 4, 4, 10
+
+#line 51
+main:
+enter 10
+
+#line 47
+pusha BP
+pushi -4
+addi
+pushf 200000.0
+storef
+
+#line 48
+pusha BP
+pushi -6
+addi
+push 30
+push 12
+muli
+storei
+
+#line 49
+pusha BP
+pushi -10
+addi
+pushf 2.04
+storef
+
+#line 51
+pusha BP
+pushi -4
+addi
+loadf
+pusha BP
+pushi -6
+addi
+loadi
+pusha BP
+pushi -10
+addi
+loadf
+call	letraHipoteca
+outf
+pushb 10
+outb
+pusha BP
+pushi -4
+addi
+loadf
+outf
+pushb 10
+outb
+ret 0, 10, 0

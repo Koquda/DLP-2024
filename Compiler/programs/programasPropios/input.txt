@@ -1,9 +1,26 @@
-var a:float;
+var edad:int;
+var inicial:char;
+var sueldo:float;
+
+var cuatrimestre:[3] float;
+
+struct Punto {
+    x:int;
+    y:int;
+}
+
+var centro:Punto;
+
+var muestras:[10][20] float;
+
+pepe(a:int, b:int) : int {
+    var local:int;
+
+    local = a + b;
+
+    return local;
+}
 
 main() {
-    var i:int;
-
-    i = 1;
-
-	a = <float>(1000 + (i * 100));
+    println pepe(1, 2);
 }

@@ -20,6 +20,7 @@ public class Metadata extends AbstractCodeFunction {
 	public Object visit(Program program, Object param) {
 
 		out("#SOURCE \"" + getSpecification().getSourceFile() + "\"\n");
+		metadata(program.definitions());
 
 		return null;
 	}
@@ -28,9 +29,6 @@ public class Metadata extends AbstractCodeFunction {
 	// phase MemoryAllocation { int address }
 	@Override
 	public Object visit(VarDefinition varDefinition, Object param) {
-		if (varDefinition.getType() instanceof ArrayType) {
-			return null;
-		}
 
 		if (varDefinition.isGlobal())
 			out("#GLOBAL " + varDefinition.getName() + ":" + getTypeName(varDefinition.getType()) + "\n");
@@ -49,6 +47,11 @@ public class Metadata extends AbstractCodeFunction {
 		else
 			out("#RET " + getTypeName(functionDefinition.getType()));
 		functionDefinition.varDefinitions().forEach(def -> out("#PARAM " + def.getName() + ":" + getTypeName(def.getType())));
+		functionDefinition.definitions().forEach(def -> {
+			if (def instanceof VarDefinition varDefinition)
+				out("#LOCAL " + varDefinition.getName() + ":" + getTypeName(varDefinition.getType()));
+		});
+		out("");
 
 
 		return null;
@@ -78,8 +81,11 @@ public class Metadata extends AbstractCodeFunction {
 			return "real";
 		if (type instanceof CharType)
 			return "byte";
-		if (type instanceof ArrayType)
-			return "array";
+		if (type instanceof ArrayType arrayType) {
+			String str = arrayType.getSize() + " * ";
+			str += getTypeName(arrayType.getType());
+			return str;
+		}
 		if (type instanceof StructType t)
 			return t.getName();
 

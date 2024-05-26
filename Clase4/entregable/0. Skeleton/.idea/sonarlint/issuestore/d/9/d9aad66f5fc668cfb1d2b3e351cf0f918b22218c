@@ -1,53 +1,46 @@
 
 ”
-java:S3655ğ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(Ú®Éª8Òºÿåî1J$5fddce42-39e9-4415-8dd3-6a5d2dfd52d8
+java:S3655ì"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(Ú®Éª8å§ï´û1J$2e2c5f56-cd1b-4dd4-bdab-006b75c8656d
+}
+java:S3516Ü"9Refactor this method to not always return the same value.(¼´š8æ§ï´û1J$668d5ca3-44bf-4634-acdd-d00da24ff349
 ‚
-java:S3516Æ"9Refactor this method to not always return the same value.(ÿçà˜ıÿÿÿÿ8Õºÿåî1J$6f260dba-0964-4e99-abe6-33e32b8af511
+java:S3516ƒ"9Refactor this method to not always return the same value.(¨œœÑûÿÿÿÿ8æ§ï´û1J$51cc49e0-1157-4bb7-b2cc-b7a98bdd7e2f
+}
+java:S3516¤"9Refactor this method to not always return the same value.(ğŠ ´8æ§ï´û1J$e5c083db-7f05-479a-973f-727e64e58b2d
 
-java:S3516x"9Refactor this method to not always return the same value.(ü‡°äøÿÿÿÿ8Ôºÿåî1J$70a16c6b-7bd8-4d11-a500-682edf7c252c
+java:S3516t"9Refactor this method to not always return the same value.(ü‡°äøÿÿÿÿ8æ§ï´û1J$06f5898c-755f-4e8e-9b8b-7168bddb1e2b
+}
+java:S3516Ú"9Refactor this method to not always return the same value.(ÕàË‰8æ§ï´û1J$026e80ca-00b2-490d-b06a-7008c8e167fb
 ‚
-java:S3516†"9Refactor this method to not always return the same value.(¨œœÑûÿÿÿÿ8‡èºâì1J$db5157d0-0741-4387-a854-8f56d622bfe8
+java:S3516‡"9Refactor this method to not always return the same value.(ÈÁ’óúÿÿÿÿ8æ§ï´û1J$9c48ef52-0400-4e23-a9ec-dec275177fa4
 }
-java:S3516Ó"9Refactor this method to not always return the same value.(Åº‰8Ôºÿåî1J$a650817e-d6e9-4839-a34a-95822e805d03
+java:S3516 "9Refactor this method to not always return the same value.(‡ÔğÈ8æ§ï´û1J$847732d1-004c-4abe-bc1d-5ea02ccfadb5
 ‚
-java:S3516‹"9Refactor this method to not always return the same value.(ÈÁ’óúÿÿÿÿ8‡èºâì1J$808a37d8-749b-4ce1-8224-42cb07d34666
+java:S3516¿"9Refactor this method to not always return the same value.(Š‘€Ïÿÿÿÿÿ8æ§ï´û1J$3f0d9316-4172-4fde-9ded-3f2773c8a1d2
+‚
+java:S3516Ã"9Refactor this method to not always return the same value.(ÿçà˜ıÿÿÿÿ8æ§ï´û1J$574cdd44-466a-46a4-b6e2-b771406aa746
 }
-java:S3516¥"9Refactor this method to not always return the same value.(ğŠ ´8Ôºÿåî1J$d69a435f-5179-4062-9315-5967542a96c3
-}
-java:S3516İ"9Refactor this method to not always return the same value.(ÕàË‰8Ôºÿåî1J$f250dabd-48e4-4819-8d2d-f7049ae208e5
-}
-java:S3516œ"9Refactor this method to not always return the same value.(‡ÔğÈ8Õºÿåî1J$a2bbc32d-9d02-49a2-b49f-58d0503d16de
+java:S3516Ø"9Refactor this method to not always return the same value.(Åº‰8æ§ï´û1J$a2625097-e0ad-4f0c-938e-962263eda9cc
 z
-java:S1135"2Complete the task associated to this TODO comment.(à…ĞŠıÿÿÿÿ8Šèºâì1J$155d9e5c-5aed-417b-9950-e97b515f1e81
-~	java:S125e"<This block of commented-out lines of code should be removed.(×¶êŠ8¥èºâì1J$8b529688-5deb-4607-b092-a39cfcad1ad5
-z
-java:S1135d"2Complete the task associated to this TODO comment.(²ÂÇæùÿÿÿÿ8¥èºâì1J$62d0e858-061c-4dd3-9d82-114d0735f243
-~	java:S125v"<This block of commented-out lines of code should be removed.(¡“•â8ªèºâì1J$bd8b81d0-e5df-4505-9278-b26e888e5f98
-	java:S125‰"<This block of commented-out lines of code should be removed.(¡“•â8´èºâì1J$a55bb8c1-eacd-4151-99d5-adb93ffad99a
-	java:S125œ"<This block of commented-out lines of code should be removed.(¡“•â8Äèºâì1J$177b3b76-0813-4e3e-ba2f-e24b6e9a911c
-	java:S125¯"<This block of commented-out lines of code should be removed.(¡“•â8Éèºâì1J$9ddd27be-40db-402a-acf9-cd074eed4d3e
-	java:S125Â"<This block of commented-out lines of code should be removed.(¡“•â8Ôèºâì1J$c511a1b6-81c3-46a4-a46b-9ca92fef2dfc
-	java:S125Î"<This block of commented-out lines of code should be removed.(¡“•â8Öèºâì1J$01d5c564-2b03-461e-abe4-765c71905a33
-p
-java:S1602Ó",Remove useless curly braces around statement(ûÓÉœ8ıºÿåî1J$6f00ef6c-9f64-450c-9b05-79f9fff19ed6
-	java:S125Û"<This block of commented-out lines of code should be removed.(¡“•â8ÿºÿåî1J$80bab470-b247-4889-accf-3eed9a06cd10
-v
-java:S1135ì"2Complete the task associated to this TODO comment.(ŠÑš·8‚»ÿåî1J$4e00e661-d98a-47a6-b47f-986e5947c860
-„	java:S125ú"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8„»ÿåî1J$5e41c483-b6a3-4693-94bf-85c6a4d25394
-„	java:S125„"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8†»ÿåî1J$998a4a9f-3398-4340-8afc-74b41cd5616c
-„	java:S125"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8‡»ÿåî1J$866d3858-8fcc-4d55-b720-3e48ce1112a2
-~	java:S125˜"<This block of commented-out lines of code should be removed.(åñ™{8ˆ»ÿåî1J$80a6ea6d-6eac-419e-87fd-8c86c9d22de6
-„	java:S125£"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8Š»ÿåî1J$42858656-c241-4a64-9d19-1b4868783a49
-„	java:S125Ä"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8‘»ÿåî1J$5bb4e821-9e7c-40f9-9484-e81c232b038b
-„	java:S125İ"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8—»ÿåî1J$4f1e495c-ad9d-4a8c-977c-2236cfe00504
-„	java:S125ò"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8›»ÿåî1J$69ce04b9-38dc-4ae3-bf7e-f4184ab098ee
-~	java:S125ƒ"<This block of commented-out lines of code should be removed.(¤ÔšU8»ÿåî1J$9238bdc9-987d-443d-afcf-27872c4c4549
-„	java:S125š"<This block of commented-out lines of code should be removed.(á›¶„üÿÿÿÿ8¥»ÿåî1J$dcd2a1cb-8c42-4460-91a3-4674ec396ea0
-„	java:S125º"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8ª»ÿåî1J$d9c0cac5-dc64-4e5e-a135-0bd9acd3ceed
-„	java:S125Ñ"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8°»ÿåî1J$c93e16aa-0351-4f93-8760-a554a3689a83
-{
-java:S1135•"2Complete the task associated to this TODO comment.(ØÀ‘ãşÿÿÿÿ8±éºâì1J$6c615906-5a07-4b7a-84ca-773f04c68816
-†
-java:S6201š"BReplace this instanceof check and cast with 'instanceof If ifStmt'(Î€ƒè8Ğéºâì1J$93fdb7c9-7359-4a88-bc86-2bc77db331e3
-‘
-java:S6201Ÿ"HReplace this instanceof check and cast with 'instanceof While whileStmt'(´¸ßÈüÿÿÿÿ8ïéºâì1J$371ea821-f981-44c0-bdeb-1c021f318664
+java:S1135"2Complete the task associated to this TODO comment.(à…ĞŠıÿÿÿÿ8è§ï´û1J$0670f4c9-78e4-4e01-b466-281909dd27ab
+~	java:S125r"<This block of commented-out lines of code should be removed.(¡“•â8ï§ï´û1J$1bce2892-f924-4b12-a053-f9a71f27c97a
+	java:S125…"<This block of commented-out lines of code should be removed.(¡“•â8ñ§ï´û1J$817f6758-01e9-4f70-af68-18563f401b83
+	java:S125˜"<This block of commented-out lines of code should be removed.(¡“•â8ó§ï´û1J$7de60b03-c5f8-478d-b5b1-4eeddcb01b43
+	java:S125«"<This block of commented-out lines of code should be removed.(¡“•â8ô§ï´û1J$f43a3d0d-ee67-47d3-8310-ae138641eb55
+	java:S125¾"<This block of commented-out lines of code should be removed.(¡“•â8õ§ï´û1J$0dc524e0-28c1-4dde-bddd-ba9016235a90
+	java:S125Ê"<This block of commented-out lines of code should be removed.(¡“•â8ö§ï´û1J$22d56f36-2db7-4ff0-ab87-6e4db911054c
+	java:S125Ø"<This block of commented-out lines of code should be removed.(¡“•â8÷§ï´û1J$85f2939c-d56f-4529-93de-abc0e3eb0015
+„	java:S125ö"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8ù§ï´û1J$92103cdc-5b69-43e9-adf8-6dede73e5da6
+„	java:S125"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8ù§ï´û1J$8f14acfe-d8d6-430a-86e5-482b63b07f32
+„	java:S125Œ"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8ú§ï´û1J$02456d4e-1fa3-4fd0-8ebb-8d20faf5beeb
+~	java:S125—"<This block of commented-out lines of code should be removed.(åñ™{8ú§ï´û1J$b9997b9e-8f91-4715-8d65-52bbbbda5f25
+„	java:S125¢"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8û§ï´û1J$9503021f-81a0-4ef1-ae18-433380d14d6f
+„	java:S125Á"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8ı§ï´û1J$edc5ce2d-46b4-4881-8d6e-8499c642b1cf
+„	java:S125Ú"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8ÿ§ï´û1J$3b726610-5b1a-4c8c-90b7-87aa1e920c1b
+„	java:S125ï"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8€¨ï´û1J$47b57f88-8bc2-4f36-96e9-f2654852c827
+~	java:S125€"<This block of commented-out lines of code should be removed.(¤ÔšU8¨ï´û1J$7821b0cd-0b4e-4f83-8735-79445381c312
+„	java:S125"<This block of commented-out lines of code should be removed.(á›¶„üÿÿÿÿ8ƒ¨ï´û1J$31d729bc-86fc-4192-958c-56f7bea0f00f
+„	java:S125½"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8…¨ï´û1J$00cdeff4-7fe6-48e7-bdf8-f398f8629d75
+„	java:S125Ö"<This block of commented-out lines of code should be removed.(…Öëƒøÿÿÿÿ8‡¨ï´û1J$e8daf4be-7bf3-4578-85aa-af9871efb05b
+s
+java:S1128F"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8©ûëµû1J$1279e689-3089-4d04-9bd8-310c0439c99f

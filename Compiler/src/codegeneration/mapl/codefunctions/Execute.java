@@ -81,8 +81,8 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(While whileValue, Object param) {
 
-		String wLabel = "whileLabel" + whileLabel;
-		String wEndLabel = "whileEndLabel" + whileEndLabel;
+		String wLabel = "whileLabel" + whileLabel++;
+		String wEndLabel = "whileEndLabel" + whileEndLabel++;
 
 		line(whileValue);
 		out( wLabel + ":");
@@ -94,8 +94,6 @@ public class Execute extends AbstractCodeFunction {
 		out("jmp " + wLabel);
 		out("\n" + wEndLabel + ":");
 
-		whileLabel++;
-		whileEndLabel++;
 		return null;
 	}
 
@@ -164,7 +162,7 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(VarDefinition varDefinition, Object param) {
 
-		metadata(varDefinition);
+		out("'Variable " + varDefinition.getName());
 		return null;
 
 	}
@@ -173,7 +171,6 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(StructDefinition structDefinition, Object param) {
 
-		metadata(structDefinition);
 		return null;
 
 	}
@@ -183,10 +180,7 @@ public class Execute extends AbstractCodeFunction {
 	@Override
 	public Object visit(FunctionDefinition functionDefinition, Object param) {
 
-		// TODO
-//		metadata(functionDefinition);
-
-		line(functionDefinition);
+		lineStart(functionDefinition);
 		out(functionDefinition.getName() + ":");
 
 		execute(functionDefinition.varDefinitions(), param);
@@ -224,6 +218,10 @@ public class Execute extends AbstractCodeFunction {
 
 	private void line(AST node) {
 		line(node.end());
+	}
+
+	private void lineStart(AST node) {
+		line(node.start());
 	}
 	private void line(Position pos) {
 		if (pos != null)

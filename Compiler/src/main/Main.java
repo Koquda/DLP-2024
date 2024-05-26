@@ -29,7 +29,7 @@ import codegeneration.*;
 
 public class Main {
     public static final String TEST_FILE = "C:\\Users\\aleja\\Desktop\\DLP-2024\\Compiler\\programs\\codeGen\\" +
-            "Test 7.txt"; // Used in development and testing
+            "Test 2.txt"; // Used in development and testing
 //    public static final String TEST_FILE = "programs/tests type checking/tests sentences. ok. return.txt";
     public static final String OUTPUT_FILE = "output.txt";
 

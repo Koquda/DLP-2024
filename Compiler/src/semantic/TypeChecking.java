@@ -97,11 +97,7 @@ public class TypeChecking extends DefaultVisitor {
 
         // If the return type is not void, check if it is of type IntType, FloatType or CharType
         if (!(functionDefinition.getType() instanceof VoidType)) {
-            // TODO: mirar si tiene que estar o no
-            //if (isSimpleType(functionDefinition.getType()))
-                //predicate(hasReturn(functionDefinition.getStatements()), "Function must have a return statement", functionDefinition.start());
-            //else
-                predicate(isSimpleType(functionDefinition.getType()), "Return type must be a simple type", functionDefinition.start());
+            predicate(isSimpleType(functionDefinition.getType()), "Return type must be a simple type or void", functionDefinition.start());
         }
 
         // Semantic functions
@@ -209,7 +205,8 @@ public class TypeChecking extends DefaultVisitor {
         super.visit(print, param);
 
         print.expressions().forEach(expr -> {
-            predicate(isSimpleType(expr.getType()), "Expression must be of a simple type", expr.start());
+            var condition = isSimpleType(expr.getType()) || expr.getType() instanceof ErrorType;
+            predicate(condition, "Expression must be of a simple type", expr.start());
         });
 
         return null;
@@ -233,7 +230,6 @@ public class TypeChecking extends DefaultVisitor {
             predicate(condition,
                     "Return value is not present in a non void function", returnValue.start());
             if (!condition) {
-                // TODO: hay que poner el ErrorType
                 return null;
             }
 
@@ -253,6 +249,7 @@ public class TypeChecking extends DefaultVisitor {
 
         intLiteral.setType(new IntType());
         intLiteral.setLvalue(false);
+
         return null;
     }
 
@@ -263,6 +260,7 @@ public class TypeChecking extends DefaultVisitor {
 
         floatLiteral.setType(new FloatType());
         floatLiteral.setLvalue(false);
+
         return null;
     }
 
@@ -273,6 +271,7 @@ public class TypeChecking extends DefaultVisitor {
 
         charLiteral.setType(new CharType());
         charLiteral.setLvalue(false);
+
         return null;
     }
 
@@ -292,11 +291,11 @@ public class TypeChecking extends DefaultVisitor {
     @Override
     public Object visit(Arithmetic arithmetic, Object param) {
         super.visit(arithmetic, param);
+        arithmetic.setLvalue(false);
 
         var condition1 = sameType(arithmetic.getLeft().getType(), arithmetic.getRight().getType());
         predicate(condition1, "Both sides of the operation must be of the same type", arithmetic.getLeft().start());
         if (hasErrors(arithmetic, condition1)) {
-            arithmetic.setLvalue(false);
             return null;
         }
 
@@ -309,13 +308,11 @@ public class TypeChecking extends DefaultVisitor {
             predicate(condition2, "Both operands have to be Int or Float", arithmetic.getLeft().start());
         }
 
-        
         if (hasErrors(arithmetic, condition1, condition2)) {
-            arithmetic.setLvalue(false);
-        } else {
-            arithmetic.setType(arithmetic.getLeft().getType());
-            arithmetic.setLvalue(false);
+            return null;
         }
+
+        arithmetic.setType(arithmetic.getLeft().getType());
 
         return null;
     }
@@ -350,6 +347,7 @@ public class TypeChecking extends DefaultVisitor {
     @Override
     public Object visit(LogicalComparison logicalComparison, Object param) {
         super.visit(logicalComparison, param);
+        logicalComparison.setLvalue(false);
 
         var condition1 = logicalComparison.getLeft().getType() instanceof IntType;
         predicate(condition1, "First operand expected to be an integer, found a " + logicalComparison.getLeft().getType(), logicalComparison.getLeft().start());
@@ -357,11 +355,10 @@ public class TypeChecking extends DefaultVisitor {
         predicate(condition2, "Second operand expected to be an integer, found a " + logicalComparison.getRight().getType(), logicalComparison.getRight().start());
 
         if (hasErrors(logicalComparison, condition1, condition2)) {
-            logicalComparison.setLvalue(false);
-        } else {
-            logicalComparison.setType(logicalComparison.getLeft().getType());
-            logicalComparison.setLvalue(false);
+            return null;
         }
+
+        logicalComparison.setType(logicalComparison.getLeft().getType());
 
         return null;
     }
@@ -390,7 +387,14 @@ public class TypeChecking extends DefaultVisitor {
     public Object visit(FunctionCallExpression functionCallExpression, Object param) {
         super.visit(functionCallExpression, param);
 
-        var condition = functionCallExpression.getExpressions().size() == functionCallExpression.getDefinition().getVarDefinitions().size();
+        var condition = !(functionCallExpression.getDefinition().getType() instanceof VoidType);
+        predicate(condition, "Function call return void", functionCallExpression.start());
+        if (!condition) {
+            functionCallExpression.setType(functionCallExpression.getDefinition().getType());
+            return null;
+        }
+
+        condition = functionCallExpression.getExpressions().size() == functionCallExpression.getDefinition().getVarDefinitions().size();
         predicate(condition, "Function call parameters do not match the definition", functionCallExpression.start());
         if (hasErrors(functionCallExpression, condition))
             return null;
@@ -411,29 +415,28 @@ public class TypeChecking extends DefaultVisitor {
     @Override
     public Object visit(StructAccess structAccess, Object param) {
         super.visit(structAccess, param);
+        structAccess.setLvalue(true);
 
         if (structAccess.getExpression().getType() instanceof ErrorType) {
-            structAccess.setLvalue(true);
             structAccess.setType(structAccess.getExpression().getType());
             return null;
         }
 
         var condition = structAccess.getExpression().getType() instanceof StructType;
         predicate(condition, "Expression must be StructType", structAccess.getExpression().start());
-        if (hasErrors(structAccess, condition)) {
-            structAccess.setLvalue(true);
+        if (!condition) {
             return null;
         }
 
         StructField field = ((StructType) structAccess.getExpression().getType()).getField(structAccess.getField());
         condition = field != null;
         predicate(condition, "Field not found in struct", structAccess.start());
-
-        if (!hasErrors(structAccess, condition)) {
-            structAccess.setStructField(field);
-            structAccess.setLvalue(true);
-            structAccess.setType(structAccess.getStructField().getType());
+        if (!condition) {
+            return null;
         }
+
+        structAccess.setStructField(field);
+        structAccess.setType(structAccess.getStructField().getType());
 
         return null;
     }
@@ -443,6 +446,7 @@ public class TypeChecking extends DefaultVisitor {
     @Override
     public Object visit(Cast cast, Object param) {
         super.visit(cast, param);
+        cast.setLvalue(false);
 
         var condition1 = !sameType(cast.getExpression().getType(), cast.getCastType());
         predicate(condition1, "Cannot cast to the same type " + cast.getCastType(), cast.start());
@@ -453,10 +457,11 @@ public class TypeChecking extends DefaultVisitor {
         var condition3 = isSimpleType(cast.getExpression().getType());
         predicate(condition3, "Cannot cast from type " + cast.getExpression().getType(), cast.start());
 
-        if (!hasErrors(cast, condition1, condition2, condition3)) {
-            cast.setType(cast.getCastType());
-            cast.setLvalue(false);
+        if (hasErrors(cast, condition1, condition2, condition3)) {
+            return null;
         }
+
+        cast.setType(cast.getCastType());
 
         return null;
     }
@@ -466,43 +471,27 @@ public class TypeChecking extends DefaultVisitor {
     @Override
     public Object visit(ArrayAccess arrayAccess, Object param) {
         super.visit(arrayAccess, param);
+        arrayAccess.setLvalue(true);
 
         if (arrayAccess.getLeft().getType() instanceof ErrorType) {
-            arrayAccess.setLvalue(false);
+            arrayAccess.setType(arrayAccess.getLeft().getType());
             return null;
         }
 
         var condition = sameType(arrayAccess.getRight().getType(), new IntType());
         predicate(condition, "Array index must be of type IntType", arrayAccess.getRight().start());
         if (hasErrors(arrayAccess, condition)) {
-            arrayAccess.setLvalue(false);
             return null;
         }
 
         condition = arrayAccess.getLeft().getType() instanceof ArrayType;
         predicate(condition, "Trying to access an array, found " + arrayAccess.getLeft().getType(), arrayAccess.getLeft().start());
-        if (hasErrors(arrayAccess, condition)) {
-            arrayAccess.setLvalue(false);
+        if (!condition) {
             return null;
         }
 
-        condition = arrayAccess.getLeft().getType() instanceof ArrayType;
-        predicate(condition, "Not accessing an array", arrayAccess.getLeft().start());
-        if (hasErrors(arrayAccess, condition)) {
-            arrayAccess.setLvalue(false);
-            return null;
-        }
-
-        condition = arrayAccess.getRight().getType() instanceof IntType;
-        predicate(condition, "Array index must be of type IntType", arrayAccess.getRight().start());
-
-        if (hasErrors(arrayAccess, condition)) {
-            arrayAccess.setLvalue(false);
-        } else {
-            var arrayType = (ArrayType) arrayAccess.getLeft().getType();
-            arrayAccess.setType(arrayType.getType());
-            arrayAccess.setLvalue(true);
-        }
+        var arrayType = (ArrayType) arrayAccess.getLeft().getType();
+        arrayAccess.setType(arrayType.getType());
 
         return null;
     }
@@ -528,26 +517,6 @@ public class TypeChecking extends DefaultVisitor {
 
     private boolean intOrFloat(Type type) {
         return type instanceof IntType || type instanceof FloatType;
-    }
-
-    // TODO: refactor
-    private boolean hasReturn(List<Statement> statements) {
-        for (Statement stmt : statements) {
-            if (stmt instanceof Return)
-                return true;
-            if (stmt instanceof If) {
-                If ifStmt = (If) stmt;
-                if (hasReturn(ifStmt.getIfBody()) && hasReturn(ifStmt.getElseBody()))
-                    return true;
-            }
-            if (stmt instanceof While) {
-                While whileStmt = (While) stmt;
-                if (hasReturn(whileStmt.getStatements()))
-                    return true;
-            }
-        }
-
-        return false;
     }
 
     private boolean hasErrors(Expression expr, boolean... conditions) {

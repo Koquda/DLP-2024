@@ -1,4 +1,8 @@
+Cosas a comprobar:
+
 TypeChecking:
-    Comprobar lo del print
+    Lo del print
+    Los demas errores a ver si dan bien
 
 CodeGen:
+    Comprobar que funcionan bien los programas

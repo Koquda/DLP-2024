@@ -190,15 +190,7 @@ public class Value extends AbstractCodeFunction {
 	@Override
 	public Object visit(FunctionCallStatement functionCallStatement, Object param) {
 
-		int i = 0;
-		for (Expression expr : functionCallStatement.getExpressions()) {
-			value(expr);
-			promoteTo(
-					functionCallStatement.getExpressions().get(i).getType(),
-					functionCallStatement.getDefinition().getVarDefinitions().get(i).getType()
-			);
-			i++;
-		}
+		value(functionCallStatement.expressions());
 		out("call\t" + functionCallStatement.getName());
 
 		return null;
