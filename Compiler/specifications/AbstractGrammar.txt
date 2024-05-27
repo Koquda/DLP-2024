@@ -65,7 +65,7 @@ structAccess -> structField;
 ATTRIBUTE GRAMMAR MemoryAllocation
 
 varDefinition -> [inh] address:int;
-varDefinition -> [inh] global:boolean;
+varDefinition -> global:boolean;
 structField -> [inh] address:int;
 
 // -----------------------

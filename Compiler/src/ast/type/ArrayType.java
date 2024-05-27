@@ -107,7 +107,7 @@ public class ArrayType extends AbstractType  {
         // Methods/attributes in this section will be preserved. Delete if not needed
     @Override
     public int numberOfBytes() {
-        return size * type.numberOfBytes() ;
+        return size * type.numberOfBytes();
     }
 
 

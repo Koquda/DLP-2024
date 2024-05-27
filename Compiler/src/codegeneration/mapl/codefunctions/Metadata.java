@@ -63,8 +63,7 @@ public class Metadata extends AbstractCodeFunction {
 
 		out("#TYPE " + structDefinition.getName() + ":{");
 		structDefinition.structFields().forEach(field -> {
-			if (!(field.getType() instanceof ArrayType))
-				out("\t" + field.getName() + ":" + getTypeName(field.getType()));
+			out("\t" + field.getName() + ":" + getTypeName(field.getType()));
 		});
 		out("}\n");
 

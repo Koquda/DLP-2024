@@ -4,16 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93840700-08f5-4f5e-8349-fa1a14a66888" name="Changes" comment="compilador terminado">
+    <list default="true" id="93840700-08f5-4f5e-8349-fa1a14a66888" name="Changes" comment="gramaticas attribuidas del typChecking y especificacion CodeGen">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/683dc63ab00a0a1591a773ebb5ff5fee98a06225" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/8/683dc63ab00a0a1591a773ebb5ff5fee98a06225" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe03b4fd3afe162c6e01309b98a22588e093d274" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fe03b4fd3afe162c6e01309b98a22588e093d274" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/specifications/AbstractGrammar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/specifications/AbstractGrammar.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/ast/type/ArrayType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/ast/type/ArrayType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Metadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/codegeneration/mapl/codefunctions/Metadata.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Compiler/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Compiler/src/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../0. Skeleton\exportToHTML" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
@@ -124,6 +133,8 @@
       <workItem from="1716733567688" duration="1464000" />
       <workItem from="1716740661105" duration="13408000" />
       <workItem from="1716760418396" duration="142000" />
+      <workItem from="1716760650737" duration="123000" />
+      <workItem from="1716765150067" duration="3272000" />
     </task>
     <task id="LOCAL-00001" summary="mas arreglos todavia">
       <option name="closed" value="true" />
@@ -181,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716760389008</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="gramaticas attribuidas del typChecking y especificacion CodeGen">
+      <option name="closed" value="true" />
+      <created>1716760700559</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716760700559</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +213,8 @@
     <MESSAGE value="progreso" />
     <MESSAGE value="CodeGen &quot;terminada&quot;, hay que comprobarlo bien" />
     <MESSAGE value="compilador terminado" />
-    <option name="LAST_COMMIT_MESSAGE" value="compilador terminado" />
+    <MESSAGE value="gramaticas attribuidas del typChecking y especificacion CodeGen" />
+    <option name="LAST_COMMIT_MESSAGE" value="gramaticas attribuidas del typChecking y especificacion CodeGen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -56,7 +56,7 @@ public class Address extends AbstractCodeFunction {
 
 		address(arrayAccess.getLeft());
 		value(arrayAccess.getRight());
-		out("pushi " + arrayAccess.getLeft().getType().numberOfBytes());
+		out("pushi " + arrayAccess.getType().numberOfBytes());
 		out("muli");
 		out("addi");
 
